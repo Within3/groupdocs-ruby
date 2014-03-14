@@ -69,7 +69,7 @@
       %input{:type=>'text', :name=>'email[]', :value=>""}
       %br/
       %label callbackUrl
-      %span{:class => 'optional'} (Optional) <br/> (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample41/signature_callback)
+      %span{:class => 'optional'} (Optional) <br/> (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample41/callback)
       %br/
       %input{:type=>'text', :name=>'callbackUrl', :id => 'callbackUrl', :value=>"#{(defined? callbackUrl) ? callbackUrl : ''}"}
       %br/
@@ -109,10 +109,8 @@
   $(document).ready(setTimeout(check, 5000));
 
       function check() {
-           console.log($("input[name=callbackUrl]").val())
           if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
               $('#resultsStatus').fadeIn("slow");
-              console.log('test');
               $.ajax({
                   type: 'POST',
                   url: '/sample41/check_guid',

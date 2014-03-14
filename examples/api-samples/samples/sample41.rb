@@ -59,13 +59,12 @@ post '/sample41/check_guid' do
       #Check is downloads folder exist
       if File.exist?("#{File.dirname(__FILE__)}/../public/callback_info.txt")
         result = File.read("#{File.dirname(__FILE__)}/../public/callback_info.txt")
-        if result.nil?
+        if result != ''
          break
         end
       end
       sleep(3)
     end
-    pp result
     #Check result
     if result == 'Error'
       result = "File was not found. Looks like something went wrong."
