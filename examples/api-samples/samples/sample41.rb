@@ -1,118 +1,230 @@
-# GET request
+#GET request
 get '/sample41' do
   haml :sample41
 end
 
-# POST request
+#POST request
+post '/sample41/callback' do
+  begin
+    #Get callback request
+    data = JSON.parse(request.body.read)
+    serialized_data = JSON.parse(data['SerializedData'])
+
+    raise 'Empty params!' if data.empty?
+
+    file_guid = serialized_data['DocumentGuid']
+    collaborator_guid = serialized_data['UserGuid']
+    client_id = nil
+    private_key = nil
+     #Get private key and client_id from file user_info.txt
+    if File.exist?("#{File.dirname(__FILE__)}/../public/user_info.txt")
+      contents = File.read("#{File.dirname(__FILE__)}/../public/user_info.txt")
+      contents = contents.split(' ')
+      client_id = contents.first
+      private_key = contents.last
+    end
+    status = nil
+    if file_guid != '' and collaborator_guid != ''
+      document = GroupDocs::Storage::File.new(:guid => file_guid).to_document
+       #Get all collaborators for the document
+      get_collaborator = document.collaborators!
+      get_collaborator.each do |reviewer|
+         #Set reviewer rights to view only
+        reviewer.access_rights = %w(view)
+      end
+       #Make request to API to update reviewer rights
+     status = document.set_reviewers! get_collaborator
+    end
+
+    #Create new file callback_info.txt and write the guid document
+    out_file = File.new("#{File.dirname(__FILE__)}/../public/callback_info.txt", 'w')
+    #White space is required
+    out_file.write(status.nil? ? "Error" : "User rights was set to view only")
+    out_file.close
+
+  rescue Exception => e
+    err = e.message
+  end
+end
+
+#POST request
+post '/sample41/check_guid' do
+  pp 'test'
+  begin
+    result = nil
+    i = 0
+    for i in 1..10
+      i +=1
+
+      #Check is downloads folder exist
+      if File.exist?("#{File.dirname(__FILE__)}/../public/callback_info.txt")
+        result = File.read("#{File.dirname(__FILE__)}/../public/callback_info.txt")
+        if result != ''
+         break
+        end
+      end
+      sleep(3)
+    end
+    #Check result
+    if result == 'Error'
+      result = "File was not found. Looks like something went wrong."
+    else
+      result
+    end
+
+  rescue Exception => e
+    err = e.message
+  end
+end
+
+
+
+#POST request
 post '/sample41' do
-  # set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
+  set :email, params[:email]
   set :source, params[:source]
   set :file_id, params[:fileId]
   set :url, params[:url]
   set :base_path, params[:basePath]
+  set :callback, params[:callbackUrl]
 
-  # Set download path
+  #Set download path
   downloads_path = "#{File.dirname(__FILE__)}/../public/downloads"
 
-  # Remove all files from download directory or create folder if it not there
+  #Remove all files from download directory or create folder if it not there
   if File.directory?(downloads_path)
     Dir.foreach(downloads_path) { |f| fn = File.join(downloads_path, f); File.delete(fn) if f != '.' && f != '..' }
+    if File.exist?("#{File.dirname(__FILE__)}/../public/callback_info.txt")
+      File.delete("#{File.dirname(__FILE__)}/../public/callback_info.txt")
+    end
   else
     Dir::mkdir(downloads_path)
   end
 
+
   begin
-    # Check required variables
-    raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty?
+    #Check required variables
+    raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty? or settings.email.empty?
 
     if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
+      #Optionally specify API server and version
       groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
     end
 
-    # Get document by file GUID
+    #Write client and private key to the file for callback job
+    if settings.callback
+      out_file = File.new("#{File.dirname(__FILE__)}/../public/user_info.txt", 'w')
+      #White space is required
+      out_file.write("#{settings.client_id} ")
+      out_file.write("#{settings.private_key}")
+      out_file.close
+    end
+
+    #Get document by file GUID
     case settings.source
       when 'guid'
-        # Create instance of File
+        #Create instance of File
         file = GroupDocs::Storage::File.new({:guid => settings.file_id})
       when 'local'
-        # Construct path
+        #Construct path
         file_path = "#{Dir.tmpdir}/#{params[:file][:filename]}"
-        # Open file
+        #Open file
         File.open(file_path, 'wb') { |f| f.write(params[:file][:tempfile].read) }
-        # Make a request to API using client_id and private_key
+        #Make a request to API using client_id and private_key
         file = GroupDocs::Storage::File.upload!(file_path, {})
       when 'url'
-        # Upload file from defined url
+        #Upload file from defined url
         file = GroupDocs::Storage::File.upload_web!(settings.url)
       else
         raise 'Wrong GUID source.'
     end
-
-    # Raise exception if something went wrong
-    raise 'No such file' unless file.is_a?(GroupDocs::Storage::File)
-
-    # Make GroupDocs::Storage::Document instance
+     #Create document object
     document = file.to_document
-
-    # Create Hash with the options for job. :status=> -1 means the Draft status of the job
-    options = {:actions => [:convert, :number_lines], :out_formats => ['doc'], :name => 'sample'}
-
-    # Create Job with provided options with Draft status (Sheduled job)
-    job = GroupDocs::Job.create!(options)
-
-    # Add the documents to previously created Job
-    job.add_document!(document, {:check_ownership => false})
+     #Set file sesion callback - will be trigered when user add, remove or edit commit for annotation
+    session = document.set_session_callback! settings.callback
 
 
-    # Update the Job with new status. :status => '0' mean Active status of the job (Start the job)
-    id = job.update!({:status => 'pending'})
+    #Get all users from accaunt
+    users = GroupDocs::User.new.users!
+    user_guid = nil
+    # Number of collaborators
+    number = Array.new
+    if users
+       #Pass of each email
+      settings.email.each do |email|
+         #Pass of each user and get user GUID if user with same email already exist
+        users.map do |user|
+           if user.primary_email == email
+              #Get user GUID
+             user_guid = user.guid
+             break
+           end
+        end
 
-    i = 1
+         #Check is user with entered email was founded in GroupDocs account, if not user will be created
+        if user_guid.nil?
+          #Create new User object
+          userNew = GroupDocs::User.new
+          #Set email as entered email
+          userNew.primary_email = settings.email
+          #Set first name as entered first name
+          userNew.firstname = settings.email
+          #Set last name as entered last name
+          userNew.lastname = settings.email
+          #Set roles
+          userNew.roles = [{:id => '3', :name => 'User'}]
 
-    while i<5 do
-      sleep(5)
-      job = GroupDocs::Job.get!(id[:job_id])
-      break if job.status == :archived
-      i  = i + 1
-    end
+          #Update account
+          new_user = GroupDocs::User.update_account!(userNew)
+          #Get user GUID
+          user_guid = new_user.guid
+        end
+         #Get all collaborators for current document
+        collaborators = document.collaborators!
 
-    # Get the document into Pdf format
-    file = job.documents!()
-
-    document = file[:inputs][0].outputs[0]
-
-    # Set iframe with document GUID or raise an error
-    if document
-
-      #Get url from request
-      case settings.base_path
-
-        when 'https://stage-api-groupdocs.dynabic.com'
-          url = "http://stage-apps-groupdocs.dynabic.com/document-viewer/embed/#{document.guid}"
-        when 'https://dev-api-groupdocs.dynabic.com'
-          url = "http://dev-apps-groupdocs.dynabic.com/document-viewer/embed/#{document.guid}"
-        else
-          url = "https://apps.groupdocs.com/document-viewer/embed/#{document.guid}"
+        if collaborators
+           #Pass of each collaborator
+          collaborators.map do |collaborator|
+             #Check is user with entered email already in collaborators
+            if collaborator.primary_email == email
+              number << collaborator.guid
+            end
+          end
+        end
       end
 
-      # Add the signature in url
-      iframe = GroupDocs::Api::Request.new(:path => url).prepare_and_sign_url
-      iframe = "<iframe width='100%' height='600' frameborder='0' src='#{iframe}'></iframe>"
-    else
-      raise 'File was not converted'
+       #Add user as collaborators for the document
+      document.set_collaborators! settings.email if number.size < 2
+       #Add user GUID as "uid" parameter to the iframe URL
+      iframe = "/document-annotation2/embed/#{file.guid}?uid=#{user_guid}"
+       # Construct result string
+      url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
+       #Generate iframe URL
+      case settings.base_path
+        when 'https://stage-api-groupdocs.dynabic.com'
+          iframe = "https://stage-api-groupdocs.dynabic.com#{url}"
+        when 'https://dev-api-groupdocs.dynabic.com'
+          iframe = "https://dev-apps.groupdocs.com#{url}"
+        else
+          iframe = "https://apps.groupdocs.com#{url}"
+      end
+
+      iframe = "<iframe src='#{iframe}' width='800' height='1000'></iframe>"
     end
+
+
   rescue Exception => e
     err = e.message
   end
 
-  # Set variables for template
-  haml :sample41, :locals => {:userId => settings.client_id, :privateKey => settings.private_key, :err => err, :iframe => iframe}
+  #Set variables for template
+  haml :sample41, :locals => {:userId => settings.client_id, :fileId => file.guid, :privateKey => settings.private_key, :iframe => iframe, :callbackUrl => settings.callback, :err => err}
 end
