@@ -23,7 +23,7 @@ post '/sample41/callback' do
       client_id = contents.first
       private_key = contents.last
     end
-
+    status = nil
     if file_guid != '' and collaborator_guid != ''
       document = GroupDocs::Storage::File.new(:guid => file_guid).to_document
        #Get all collaborators for the document
@@ -33,13 +33,13 @@ post '/sample41/callback' do
         reviewer.access_rights = %w(view)
       end
        #Make request to API to update reviewer rights
-      document.set_reviewers! get_collaborator
+     status = document.set_reviewers! get_collaborator
     end
 
     #Create new file callback_info.txt and write the guid document
     out_file = File.new("#{File.dirname(__FILE__)}/../public/callback_info.txt", 'w')
     #White space is required
-    out_file.write("User rights was set to view only")
+    out_file.write(status.nil? ? "Error" : "User rights was set to view only")
     out_file.close
 
   rescue Exception => e
@@ -59,11 +59,11 @@ post '/sample41/check_guid' do
       #Check is downloads folder exist
       if File.exist?("#{File.dirname(__FILE__)}/../public/callback_info.txt")
         result = File.read("#{File.dirname(__FILE__)}/../public/callback_info.txt")
-        if result != ''
+        if result.nil?
          break
         end
       end
-      sleep(5)
+      sleep(3)
     end
     pp result
     #Check result
