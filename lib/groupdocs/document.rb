@@ -1136,7 +1136,7 @@ module GroupDocs
     end
 
     #
-    # @Changed in realese 1.5.8
+    # @Changed in release 1.5.9
     # Returns an array of changes in document.
     #
     # @example
@@ -1155,7 +1155,7 @@ module GroupDocs
       api = Api::Request.new do |request|
         request[:access] = access
         request[:method] = :GET
-        request[:path] = '/comparison/public/#{file.guid}/changes'
+        request[:path] = "/comparison/public/#{file.guid}/changes"
       end
       json = api.execute!
 
@@ -1165,7 +1165,7 @@ module GroupDocs
     end
 
     #
-    # Changed in realese 1.5.8
+    # Changed in release 1.5.8
     # Download comparison result file.
     #
     # @example

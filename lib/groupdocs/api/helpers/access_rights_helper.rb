@@ -4,12 +4,13 @@ module GroupDocs
       module AccessRights
 
         include Api::Helpers::ByteFlag
-
+        #Changed in release 1.5.9
         ACCESS_RIGHTS = {
-          :export   => 1,
-          :download => 2,
-          :proof    => 4,
-          :view     => 8,
+          :view     => 1,
+          :annotate => 2,
+          :download => 4,
+          :export   => 8,
+          :all => 31
         }
 
         private
