@@ -52,6 +52,7 @@ module GroupDocs
           options[:path].sub!(/\{\{client_id\}\}/, client_id)
         end
 
+
         #
         # Adds signature to path.
         #
@@ -59,7 +60,7 @@ module GroupDocs
         #
         def sign_url
           # calculate a hash of the path with private key
-          hash = OpenSSL::Digest::Digest.new('sha1')
+          hash = OpenSSL::Digest.new('sha1')  # Changed in release 1.5.9
           hash = OpenSSL::HMAC.digest(hash, private_key, options[:path])
           # convert hash to base64
           hash = Base64.strict_encode64(hash)
