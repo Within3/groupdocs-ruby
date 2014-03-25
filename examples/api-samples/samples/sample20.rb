@@ -1,11 +1,11 @@
-# GET request
+#GET request
 get '/sample20' do
   haml :sample20
 end
 
-# POST request
+#POST request
 post '/sample20' do
-  # set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :resultFileId, params[:resultFileId]
@@ -13,26 +13,33 @@ post '/sample20' do
 
   begin
 
-    # check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty? or settings.resultFileId.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
-    # construct new storage file
+    #Construct new storage file
     file = GroupDocs::Storage::File.new(guid: settings.resultFileId)
-    # construct new document
+    #Construct new document
     document = GroupDocs::Document.new(file: file)
-    # get compare changes
-    changes = document.changes!()
 
+    #Get compare changes
+    changes = document.changes!()
     result = ''
     result += "<table class='border'>"
     result += "<tr><td><font color='green'>Change Name</font></td><td><font color='green'>Change</font></td></tr>"
@@ -56,6 +63,6 @@ post '/sample20' do
     err = e.message
   end
 
-  # set variables for template
+  #Set variables for template
   haml :sample20, :locals => {:userId => settings.client_id, :privateKey => settings.private_key, :resultFileId => settings.resultFileId, :result => result, :err => err}
 end

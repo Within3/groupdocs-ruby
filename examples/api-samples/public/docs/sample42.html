@@ -59,7 +59,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>set variables</p>
+              <p>Set variables</p>
 
             </div>
             
@@ -83,9 +83,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty?
-
-    <span class="keyword">if</span> settings.base_path.empty? <span class="keyword">then</span> settings.base_path = <span class="string">'https://api.groupdocs.com'</span> <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty?</pre></div></div>
             
         </li>
         
@@ -95,6 +93,27 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Prepare base path</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
+      base_path = <span class="string">'https://api.groupdocs.com'</span>
+    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
+    <span class="keyword">else</span>
+      base_path = settings.base_path
+    <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Configure your access to API server</p>
 
@@ -107,35 +126,21 @@
         </li>
         
         
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>Optionally specify API server and version</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = settings.base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span>
-
-    document = <span class="constant">GroupDocs::Storage::File</span>.new(<span class="symbol">:guid</span> =&gt; settings.file_id).to_document</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Check, has document the annotations?</p>
+              <p>Optionally specify API server and version</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Your document has no annotations'</span> <span class="keyword">if</span> document.annotations!.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
+
+    <span class="keyword">end</span>
+
+    document = <span class="constant">GroupDocs::Storage::File</span>.new(<span class="symbol">:guid</span> =&gt; settings.file_id).to_document</pre></div></div>
             
         </li>
         
@@ -146,11 +151,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Create Hash with the options for job. :status=&gt; -1 means the Draft status of the job</p>
+              <p>Check, has document the annotations?</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    options = {<span class="symbol">:actions</span> =&gt; [<span class="symbol">:import_annotations</span>], <span class="symbol">:name</span> =&gt; <span class="string">'sample'</span>}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Your document has no annotations'</span> <span class="keyword">if</span> document.annotations!.empty?</pre></div></div>
             
         </li>
         
@@ -161,11 +166,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>Create Job with provided options with Draft status (Sheduled job)</p>
+              <p>Create Hash with the options for job. :status=&gt; -1 means the Draft status of the job</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    job = <span class="constant">GroupDocs::Job</span>.create!(options)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    options = {<span class="symbol">:actions</span> =&gt; [<span class="symbol">:import_annotations</span>], <span class="symbol">:name</span> =&gt; <span class="string">'sample'</span>}</pre></div></div>
             
         </li>
         
@@ -176,11 +181,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>Add the documents to previously created Job</p>
+              <p>Create Job with provided options with Draft status (Sheduled job)</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    job.add_document!(document, {<span class="symbol">:check_ownership</span> =&gt; <span class="keyword">false</span>})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    job = <span class="constant">GroupDocs::Job</span>.create!(options)</pre></div></div>
             
         </li>
         
@@ -190,6 +195,21 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Add the documents to previously created Job</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    job.add_document!(document, {<span class="symbol">:check_ownership</span> =&gt; <span class="keyword">false</span>})</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Update the Job with new status. :status =&gt; &#39;0&#39; mean Active status of the job (Start the job)</p>
 
@@ -209,11 +229,11 @@
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Get the document into Pdf format</p>
 
@@ -226,40 +246,17 @@
         </li>
         
         
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>Set iframe with document GUID or raise an error</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> document</pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>Get url from request</p>
+              <p>Set iframe with document GUID or raise an error</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="keyword">case</span> settings.base_path
-
-        <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-          url = <span class="string">"http://stage-apps-groupdocs.dynabic.com/document-annotation/embed/<span class="subst">#{document[<span class="number">0</span>].guid}</span>"</span>
-        <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-          url = <span class="string">"http://dev-apps-groupdocs.dynabic.com/document-annotation/embed/<span class="subst">#{document[<span class="number">0</span>].guid}</span>"</span>
-        <span class="keyword">else</span>
-          url = <span class="string">"https://apps.groupdocs.com/document-annotation/embed/<span class="subst">#{document[<span class="number">0</span>].guid}</span>"</span>
-      <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> document</pre></div></div>
             
         </li>
         
@@ -274,12 +271,70 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      iframe = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; url).prepare_and_sign_url
-      iframe = <span class="string">"&lt;iframe width='100%' height='600' frameborder='0' src='<span class="subst">#{iframe}</span>'&gt;&lt;/iframe&gt;"</span>
+            <div class="content"><div class='highlight'><pre>      iframe = <span class="string">"/document-annotation2/embed/<span class="subst">#{document[<span class="number">0</span>].guid}</span>"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Construct result string</p>
 
-      path = <span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/downloads"</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Generate iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="keyword">case</span> base_path
+        <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
+          iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
+        <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
+          iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+        <span class="keyword">else</span>
+          iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+      <span class="keyword">end</span>
+
+      iframe = <span class="string">"&lt;iframe width='100%' height='600' id='downloadframe' frameborder='0' src='<span class="subst">#{iframe}</span>'&gt;&lt;/iframe&gt;"</span>
+
+      path = <span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/downloads"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Remove all files from download directory or create folder if it not there</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      <span class="keyword">if</span> <span class="constant">File</span>.directory?(path)
+        <span class="constant">Dir</span>.foreach(path) { |f| fn = <span class="constant">File</span>.join(path, f); <span class="constant">File</span>.delete(fn) <span class="keyword">if</span> f != <span class="string">'.'</span> &amp;&amp; f != <span class="string">'..'</span> }
+      <span class="keyword">else</span>
+        <span class="constant">Dir::</span>mkdir(path)
+      <span class="keyword">end</span>
+
       <span class="constant">GroupDocs::User</span>.download!(path, document[<span class="number">0</span>].outputs[<span class="number">0</span>].name, document[<span class="number">0</span>].outputs[<span class="number">0</span>].guid)
-      message = <span class="string">"&lt;span style=\"color:green\"&gt;File with annotations was downloaded to server's local folder. You can check them &lt;a href=\"/downloads/<span class="subst">#{document[<span class="number">0</span>].outputs[<span class="number">0</span>].name}</span>\"&gt;here&lt;/a&gt;&lt;/span&gt;"</span>
+      message = <span class="string">"&lt;span style=\"color:green\"&gt;File with annotations was downloaded to server's local folder. You can check them &lt;a href=\"/downloads/<span class="subst">#{document[<span class="number">0</span>].outputs[<span class="number">0</span>].name}</span>\" download&gt;here&lt;/a&gt;&lt;/span&gt;"</span>
     <span class="keyword">else</span>
       raise <span class="string">'File was not converted'</span>
     <span class="keyword">end</span>
@@ -290,11 +345,11 @@
         </li>
         
         
-        <li id="section-16">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Set variables for template</p>
 

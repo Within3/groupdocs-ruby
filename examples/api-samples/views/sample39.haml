@@ -194,7 +194,7 @@
         %br/
         %input{:type=>'text', :name=>'privateKey', :id=>'privateKey'}
         %br/
-        %input{:type=>'checkbox', :name=>'useWidget', :value=>'use', :id=>'useWidget', :onclick=> 'setLogic();'}
+        %input{:type=>'checkbox', :name=>'useWidget', :value=>'use', :id=>'useWidget', :onclick=> 'setLogic();'}    Sign document with Widget
         %br/
         %label{:for => 'email', :id=>"emailLabel"} Email
         %br/
@@ -222,11 +222,16 @@
           %span{:class => 'optional'} (Optional) <br/> (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample39/signature_callback)
         %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callbackUrl', :id=>'callbackUrl'}
         %br/
+        %label{:for => 'basePath'} Base Path
+        %font{:color=>'grey'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath', :id=>'base_path', :value=>"#{(defined? base_path) ? base_path : ''}"}
+        %br/
+        %br/
         %br/
         %input{:type => 'submit', :id=>'btnLoad', :value => 'Upload and sign the document'}
         %span{:id=>'resultsStatus', :style=>'color:red;display:none;'} (Please wait for ajax response)
         %br/
-      %iframe{:id=>'downloadframe', :style=>'display:none'}
     %div{:style => 'padding:20px; border:1px solid black;', :id=>'result'}
       %p
         Results:

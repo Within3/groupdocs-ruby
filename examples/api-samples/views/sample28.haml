@@ -43,10 +43,10 @@
       %br/
       %input{:type => 'submit', :value => 'Delete all annotations'}/
   %div{:style => 'padding:20px; border:1px solid black;'}
-    %p
-      Results:
-      %br/
-      %font{:color => 'green'}#{(defined? messages) ? messages : ''}
-      %br/
+    Results:
+    %br/
+    %span{:style => 'color:green'}#{(defined? messages) ? messages : ''}
+    #{(defined? iframe) ? iframe : ''}
+    %br/
 
 = partial :_others_samples

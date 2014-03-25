@@ -1,14 +1,14 @@
-# GET request
+#GET request
 get '/sample31' do
   haml :sample31
 end
 
-# POST request
+#POST request
 post '/sample31/callback' do
-  # Set download path
+  #Set download path
   downloads_path = "#{File.dirname(__FILE__)}/../public/downloads"
 
-  # Get callback request
+  #Get callback request
   data = JSON.parse(request.body.read)
   begin
     raise 'Empty params!' if data.empty?
@@ -16,14 +16,14 @@ post '/sample31/callback' do
     client_id = nil
     private_key = nil
 
-    # Get value of SourceId
+    #Get value of SourceId
     data.each do |key, value|
       if key == 'SourceId'
         source_id = value
       end
     end
 
-    # Get private key and client_id from file user_info.txt
+    #Get private key and client_id from file user_info.txt
     if File.exist?("#{File.dirname(__FILE__)}/../public/user_info.txt")
       contents = File.read("#{File.dirname(__FILE__)}/../public/user_info.txt")
       contents = contents.split(' ')
@@ -31,13 +31,13 @@ post '/sample31/callback' do
       private_key = contents.last
     end
 
-    # Create Job instance
+    #Create Job instance
     job = GroupDocs::Job.new({:id => source_id})
 
-    # Get document by job id
+    #Get document by job id
     documents = job.documents!({:client_id => client_id, :private_key => private_key})
 
-    # Download converted file
+    #Download converted file
     documents[:inputs].first.outputs.first.download!(downloads_path, {:client_id => client_id, :private_key => private_key})
 
   rescue Exception => e
@@ -46,15 +46,15 @@ post '/sample31/callback' do
 end
 
 
-# GET request
+#GET request
 get '/sample31/check' do
 
-  # Check is there download directory
+  #Check is there download directory
   unless File.directory?("#{File.dirname(__FILE__)}/../public/downloads")
     return 'Directory was not found.'
   end
 
-  # Get file name from download directory
+  #Get file name from download directory
   name = nil
   Dir.entries("#{File.dirname(__FILE__)}/../public/downloads").each do |file|
     name = file if file != '.' && file != '..'
@@ -63,16 +63,16 @@ get '/sample31/check' do
   name
 end
 
-# GET request
+#GET request
 get '/sample31/downloads/:filename' do |filename|
-  # Send file with header to download it
+  #Send file with header to download it
   send_file "#{File.dirname(__FILE__)}/../public/downloads/#{filename}", :filename => filename, :type => 'Application/octet-stream'
 end
 
 
-# POST request
+#POST request
 post '/sample31' do
-  # set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :template_guid, params[:templateGuid]
@@ -96,112 +96,116 @@ post '/sample31' do
   end
 
   begin
-    # check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
-    # Write client and private key to the file for callback job
+    #Write client and private key to the file for callback job
     if settings.callback[0]
       out_file = File.new("#{File.dirname(__FILE__)}/../public/user_info.txt", 'w')
-      # white space is required
+      #White space is required
       out_file.write("#{settings.client_id} ")
       out_file.write("#{settings.private_key}")
       out_file.close
     end
-    if settings.last_name.empty?
-      settings.last_name = 'test'
-    end
+
     file = nil
-    # Create instance of File
+    #Create instance of File
     file = GroupDocs::Storage::File.new({:guid => settings.template_guid})
-    # Raise exception if something went wrong
+    #Raise exception if something went wrong
     raise 'No such file' unless file.is_a?(GroupDocs::Storage::File)
 
-    # Make GroupDocs::Storage::Document instance
+    #Make GroupDocs::Storage::Document instance
     document = file.to_document
 
-    # Create datasource with fields
+    #Create datasource with fields
     datasource = GroupDocs::DataSource.new
 
-    # Get arry of document's fields
-    enteredData = {"email" => settings.email, "name" => settings.name, "last_name" => settings.last_name, "country"=> settings.country, "city" => settings.city, "street" => settings.street}
+    #Get arry of document's fields
+    enteredData = {"email" => settings.email, "name" => settings.name, "country"=> settings.country, "city" => settings.city, "street" => settings.street}
 
 
-    # Create Field instance and fill the fields
+    #Create Field instance and fill the fields
     datasource.fields = enteredData.map { |key, value| GroupDocs::DataSource::Field.new(name: key, type: :text, values: Array.new() << value) }
 
-    # Adds datasource.
+    #Adds datasource.
     datasource.add!()
 
 
-    # Creates new job to merge datasource into document.
+    #Creates new job to merge datasource into document.
     job = document.datasource!(datasource, {:new_type => "pdf"})
     sleep 10 # wait for merge and convert
 
-    # Returns an hash of input and output documents associated to job.
+    #Returns an hash of input and output documents associated to job.
     jobInfo = job.documents!()
 
-    # Creates new document to envelope
+    #Creates new document to envelope
     document = jobInfo[:inputs][0].outputs[0].to_document
 
-    # Creates envelope using user id and entered by user name
+    #Creates envelope using user id and entered by user name
     envelope = GroupDocs::Signature::Envelope.new
     envelope.name = jobInfo[:inputs][0].outputs[0].name
     envelope.create!({})
 
-    # Adds uploaded document to envelope
-    envelope.add_document!(document, {})
+    #Adds uploaded document to envelope
+    envelope.add_document!(document, {parseFields: true})
 
-    # Get role list for current user
+    #Get role list for current user
     roles = GroupDocs::Signature::Role.get!({})
 
-    # Creates new recipient
+    #Creates new recipient
     recipient = GroupDocs::Signature::Recipient.new
     recipient.email = settings.email
     recipient.first_name = settings.name
-    recipient.last_name = settings.last_name
+    recipient.last_name = "lastName"
     recipient.role_id = roles.detect { |role| role.name == 'Signer' }.id
 
-    # Adds recipient to envelope
+    #Adds recipient to envelope
     envelope.add_recipient!(recipient)
     #Get recipients
     recipientGet = envelope.recipients!({}).first
 
-    # Send envelope
+    #Send envelope
     envelope.send!({:callbackUrl => settings.callback})
 
-    #Get url from request
-    case settings.base_path
-
+    #Prepare to sign url
+    iframe = "/signature2/signembed/#{envelope.id}/#{recipientGet.id}"
+    # Construct result string
+    url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
+    #Generate iframe URL
+    case base_path
       when 'https://stage-api-groupdocs.dynabic.com'
-        url = "http://stage-apps-groupdocs.dynabic.com/signature2/signembed/#{envelope.id}/#{recipientGet.id}"
+        iframe = "https://stage-api-groupdocs.dynabic.com#{url}"
       when 'https://dev-api-groupdocs.dynabic.com'
-        url = "http://dev-apps-groupdocs.dynabic.com/signature2/signembed/#{envelope.id}/#{recipientGet.id}"
+        iframe = "https://dev-apps.groupdocs.com#{url}"
       else
-        url = "https://apps.groupdocs.com/signature2/signembed/#{envelope.id}/#{recipientGet.id}"
+        iframe = "https://apps.groupdocs.com#{url}"
     end
 
-    # Add the signature in url
-    iframe = GroupDocs::Api::Request.new(:path => url).prepare_and_sign_url
-
-    # Make iframe
-    iframe = "<iframe src='#{iframe}' frameborder='0' width='720' height='600'></iframe>"
-
+    #Make iframe
+    iframe = "<iframe id='downloadframe' src='#{iframe}' width='800' height='1000'></iframe>"
 
   rescue Exception => e
     err = e.message
   end
 
-  # set variables for template
+  #Set variables for template
   haml :sample31, :locals => {:userId => settings.client_id,
                               :privateKey => settings.private_key,
                               :callback => settings.callback,
@@ -211,5 +215,6 @@ post '/sample31' do
                               :city => settings.city,
                               :street => settings.street,
                               :iframe => iframe,
+                              :templateGuid => settings.template_guid,
                               :err => err}
 end

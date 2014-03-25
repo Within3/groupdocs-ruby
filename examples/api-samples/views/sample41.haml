@@ -38,20 +38,20 @@
 
 
       %div.guid_radio{:style=>"#{(defined? userId) ? 'display:none' : 'display:block'}"}
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+        %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
         %br/
         %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
         %br/
 
       %div.fields{:style=>"#{(defined? userId) ? 'display:none' : 'display:block'}"}
-        %div.guid_field
+        %div.guid_field{:style=>'display:none;'}
           %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
           %br/
           %input{:type=>'text', :name=>'fileId', :id=>'guid', :value=>"#{(defined? fileId) ? fileId : ''}"}
 
-        %div.guid_field{:style=>'display:none;'}
+        %div.guid_field
           %label{:for=>'file'} Upload local file
           %br/
           %input{:type=>'file', :name=>'file', :id=>'file'}

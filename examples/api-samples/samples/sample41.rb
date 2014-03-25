@@ -109,14 +109,22 @@ post '/sample41' do
     #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty? or settings.email.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
     #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
       #Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
+
     end
 
     #Write client and private key to the file for callback job
@@ -146,6 +154,7 @@ post '/sample41' do
       else
         raise 'Wrong GUID source.'
     end
+    guid = file.guid
      #Create document object
     document = file.to_document
      #Set file sesion callback - will be trigered when user add, remove or edit commit for annotation
@@ -200,7 +209,8 @@ post '/sample41' do
           end
         end
       end
-
+       #Delete empty email
+      if settings.email[1].empty? then settings.email.delete("") end
        #Add user as collaborators for the document
       document.set_collaborators! settings.email if number.size < 2
        #Add user GUID as "uid" parameter to the iframe URL
@@ -208,7 +218,7 @@ post '/sample41' do
        # Construct result string
       url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
        #Generate iframe URL
-      case settings.base_path
+      case base_path
         when 'https://stage-api-groupdocs.dynabic.com'
           iframe = "https://stage-api-groupdocs.dynabic.com#{url}"
         when 'https://dev-api-groupdocs.dynabic.com'
@@ -217,7 +227,7 @@ post '/sample41' do
           iframe = "https://apps.groupdocs.com#{url}"
       end
 
-      iframe = "<iframe src='#{iframe}' width='800' height='1000'></iframe>"
+      iframe = "<iframe src='#{iframe}' id='downloadframe' width='800' height='1000'></iframe>"
     end
 
 
@@ -226,5 +236,5 @@ post '/sample41' do
   end
 
   #Set variables for template
-  haml :sample41, :locals => {:userId => settings.client_id, :fileId => file.guid, :privateKey => settings.private_key, :iframe => iframe, :callbackUrl => settings.callback, :err => err}
+  haml :sample41, :locals => {:userId => settings.client_id, :fileId => settings.file_id, :privateKey => settings.private_key, :iframe => iframe, :callbackUrl => settings.callback, :err => err}
 end

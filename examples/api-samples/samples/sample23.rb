@@ -1,12 +1,12 @@
-# GET request
+#GET request
 get '/sample23' do
   haml :sample23
 end
 
-# POST request
+#POST request
 post '/sample23' do
-  # set variables
 
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :source, params[:source]
@@ -15,42 +15,49 @@ post '/sample23' do
   set :base_path, params[:basePath]
 
   begin
-    # check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
-    # get document by file GUID
+    #Get document by file GUID
     case settings.source
     when 'guid'
-        # Create instance of File
+        #Create instance of File
         file = GroupDocs::Storage::File.new({:guid => settings.file_id})
     when 'local'
-        # Construct path
+        #Construct path
         file_path = "#{Dir.tmpdir}/#{params[:file][:filename]}"
-        # Open file
+        #Open file
         File.open(file_path, 'wb') { |f| f.write(params[:file][:tempfile].read) }
-        # Make a request to API using client_id and private_key
+        #Make a request to API using client_id and private_key
         file = GroupDocs::Storage::File.upload!(file_path, {})
     when 'url'
-        # Upload file from defined url
+        #Upload file from defined url
         file = GroupDocs::Storage::File.upload_web!(settings.url)
     else
         raise 'Wrong GUID source.'
     end
 
-    # Raise exception if something went wrong
+    #Raise exception if something went wrong
     raise 'No such file' unless file.is_a?(GroupDocs::Storage::File)
 
-    # Make GroupDocs::Storage::Document instance
+    #Make GroupDocs::Storage::Document instance
     document = file.to_document
 
     #Create new page
@@ -60,6 +67,6 @@ post '/sample23' do
     err = e.message
   end
 
-  # set variables for template
+  #Set variables for template
   haml :sample23,  :locals => {:userId => settings.client_id, :privateKey => settings.private_key, :page_image => page_image, :err => err}
 end

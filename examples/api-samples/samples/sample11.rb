@@ -1,11 +1,11 @@
-# GET request
+#GET request
 get '/sample11' do
   haml :sample11
 end
 
-# POST request
+#POST request
 post '/sample11' do
-  # Set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :file_id, params[:fileId]
@@ -15,17 +15,24 @@ post '/sample11' do
 
   begin
 
-    # Check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty? or settings.file_id.empty? or settings.annotation_type.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
     if settings.annotation_id != ''
@@ -33,92 +40,82 @@ post '/sample11' do
       file = GroupDocs::Storage::File.new({:guid => settings.file_id}).to_document
       annotation = file.annotations!()
 
-      # Remove annotation from document
+      #Remove annotation from document
       remove = annotation.last.remove!()
       message = "You delete the annotation id = #{remove[:guid]} "
     else
-    # Annotation types
-    types = {:text => "0", :area => "1", :point => "2"}
+      #Annotation types
+      types = {:text => "0", :area => "1", :point => "2"}
 
 
-    # Required parameters
-    all_params = all_params = ['annotationType', 'boxX', 'boxY', 'text']
+      #Required parameters
+      all_params = all_params = ['annotationType', 'boxX', 'boxY', 'text']
 
-    # Added required parameters depends on  annotation type ['text' or 'area']
-    if settings.annotation_type == 'text'
-      all_params = all_params | ['boxWidth', 'boxHeight', 'annotationPositionX', 'annotationPositionY', 'rangePosition', 'rangeLength']
-    elsif settings.annotation_type == 'area'
-      all_params = all_params | ['boxWidth', 'boxHeight']
-    end
-
-    # Checking required parameters
-    all_params.each do |param|
-      raise 'Please enter all required parameters' if params[param].empty?
-    end
-
-    # Make a request to API using client_id and private_key
-    files_list = GroupDocs::Storage::Folder.list!('/', {})
-
-    document = ''
-
-    # Get document by file ID
-    files_list.each do |element|
-      if element.respond_to?('guid') == true and element.guid == settings.file_id
-        document = element
-      end
-    end
-
-    unless document.instance_of? String
-
-      # Start create new annotation
-      annotation = GroupDocs::Document::Annotation.new(document: document.to_document)
-
-
-      info = nil
-      # Construct requestBody depends on annotation type
-      # Text annotation
+      #Added required parameters depends on  annotation type ['text' or 'area']
       if settings.annotation_type == 'text'
-        annotation.box = GroupDocs::Document::Rectangle.new ({x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']})
-        annotation.annotationPosition = {x: params['annotationPositionX'], y: params['annotationPositionY']}
-        range = {position: params['rangePosition'], length: params['rangeLength']}
-        info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :range => range, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}]}
-        # Area annotation
+        all_params = all_params | ['boxWidth', 'boxHeight', 'annotationPositionX', 'annotationPositionY', 'rangePosition', 'rangeLength']
       elsif settings.annotation_type == 'area'
-        annotation_box = {x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']}
-        annotation_annotationPosition = {x: 0, y: 0}
-        info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}]}
-        # Point annotation
-      elsif settings.annotation_type == 'point'
-        annotation_box = {x: params['boxX'], y: params['boxY'], width: 0, height: 0}
-        annotation_annotationPosition = {x: 0, y: 0}
-
-        info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}] }
+        all_params = all_params | ['boxWidth', 'boxHeight']
       end
 
-
-      # Call create method
-      annotation.create!(info)
-      id = annotation.document.file.id
-      # Get document guid
-      guid = annotation.document.file.guid
-
-      case settings.base_path
-
-        when 'https://stage-api-groupdocs.dynabic.com'
-          url = "http://stage-apps-groupdocs.dynabic.com/document-annotation2/embed/#{guid}"
-        when 'https://dev-api-groupdocs.dynabic.com'
-          url = "http://dev-apps-groupdocs.dynabic.com/document-annotation2/embed/#{guid}"
-        else
-          url = "http://apps.groupdocs.com/document-annotation2/embed/#{guid}"
+      #Checking required parameters
+      all_params.each do |param|
+        raise 'Please enter all required parameters' if params[param].empty?
       end
 
-        #Add the signature in url
-        url = GroupDocs::Api::Request.new(:path => url).prepare_and_sign_url
-        # Set iframe with document GUID
-        iframe = "<iframe src='#{url}' frameborder='0' width='720' height='600'></iframe>"
+      #Create document object
+      document = GroupDocs::Storage::File.new(guid: settings.file_id).to_document
 
-    end
+      unless document.instance_of? String
 
+        #Start create new annotation
+        annotation = GroupDocs::Document::Annotation.new(document: document)
+
+        info = nil
+        #Construct requestBody depends on annotation type
+        #Text annotation
+        if settings.annotation_type == 'text'
+          annotation.box = GroupDocs::Document::Rectangle.new ({x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']})
+          annotation.annotationPosition = {x: params['annotationPositionX'], y: params['annotationPositionY']}
+          range = {position: params['rangePosition'], length: params['rangeLength']}
+          info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :range => range, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}]}
+          #Area annotation
+        elsif settings.annotation_type == 'area'
+          annotation_box = {x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']}
+          annotation_annotationPosition = {x: 0, y: 0}
+          info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}]}
+          #Point annotation
+        elsif settings.annotation_type == 'point'
+          annotation_box = {x: params['boxX'], y: params['boxY'], width: 0, height: 0}
+          annotation_annotationPosition = {x: 0, y: 0}
+
+          info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}] }
+        end
+
+        #Call create method
+        annotation.create!(info)
+        id = annotation.document.file.id
+        #Get document guid
+        guid = annotation.document.file.guid
+
+        #Prepare to sign url
+        iframe = "/document-annotation2/embed/#{guid}"
+        #Construct result string
+        url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
+        #Generate iframe URL
+        case base_path
+          when 'https://stage-api-groupdocs.dynabic.com'
+            iframe = "https://stage-api-groupdocs.dynabic.com#{url}"
+          when 'https://dev-api-groupdocs.dynabic.com'
+            iframe = "https://dev-apps.groupdocs.com#{url}"
+          else
+            iframe = "https://apps.groupdocs.com#{url}"
+        end
+
+        #Make iframe
+        iframe = "<iframe id='downloadframe' src='#{iframe}' width='800' height='1000'></iframe>"
+
+      end
     end
 
   rescue Exception => e

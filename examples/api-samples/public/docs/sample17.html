@@ -59,7 +59,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>set variables</p>
+              <p>Set variables</p>
 
             </div>
             
@@ -79,13 +79,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>check required variables</p>
+              <p>Check required variables</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.file.<span class="keyword">nil</span>?
-
-    <span class="keyword">if</span> settings.base_path.empty? <span class="keyword">then</span> settings.base_path = <span class="string">'https://api.groupdocs.com'</span> <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.file.<span class="keyword">nil</span>?</pre></div></div>
             
         </li>
         
@@ -95,6 +93,27 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Prepare base path</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
+      base_path = <span class="string">'https://api.groupdocs.com'</span>
+    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
+    <span class="keyword">else</span>
+      base_path = settings.base_path
+    <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Configure your access to API server</p>
 
@@ -107,33 +126,18 @@
         </li>
         
         
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <p>Optionally specify API server and version</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = settings.base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>construct path</p>
+              <p>Optionally specify API server and version</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    filepath = <span class="string">"<span class="subst">#{<span class="constant">Dir</span>.tmpdir}</span>/<span class="subst">#{params[<span class="symbol">:file</span>][<span class="symbol">:filename</span>]}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="keyword">end</span></pre></div></div>
             
         </li>
         
@@ -144,11 +148,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>open file</p>
+              <p>Construct path</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">File</span>.open(filepath, <span class="string">'wb'</span>) { |f| f.write(params[<span class="symbol">:file</span>][<span class="symbol">:tempfile</span>].read) }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    filepath = <span class="string">"<span class="subst">#{<span class="constant">Dir</span>.tmpdir}</span>/<span class="subst">#{params[<span class="symbol">:file</span>][<span class="symbol">:filename</span>]}</span>"</span></pre></div></div>
             
         </li>
         
@@ -159,11 +163,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>upload file</p>
+              <p>Open file</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    file = <span class="constant">GroupDocs::Storage::File</span>.upload!(filepath, {})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="constant">File</span>.open(filepath, <span class="string">'wb'</span>) { |f| f.write(params[<span class="symbol">:file</span>][<span class="symbol">:tempfile</span>].read) }</pre></div></div>
             
         </li>
         
@@ -174,11 +178,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
-              <p>compress file</p>
+              <p>Upload file</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    file.compress!()</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    file = <span class="constant">GroupDocs::Storage::File</span>.upload!(filepath, {})</pre></div></div>
             
         </li>
         
@@ -189,11 +193,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>construct result messages</p>
+              <p>Compress file</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    massage = <span class="string">"&lt;p&gt;Archive created and saved successfully. Here you can see your &lt;strong&gt;<span class="subst">#{params[<span class="symbol">:file</span>][<span class="symbol">:filename</span>]}</span>&lt;/strong&gt; file in the GroupDocs Embedded Viewer.&lt;/p&gt;"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    file.compress!()</pre></div></div>
             
         </li>
         
@@ -204,19 +208,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Get url from request</p>
+              <p>Construct result messages</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">case</span> settings.base_path
-
-      <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-        url = <span class="string">"http://stage-apps-groupdocs.dynabic.com/document-viewer/embed/<span class="subst">#{file.guid}</span>"</span>
-      <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-        url = <span class="string">"http://dev-apps-groupdocs.dynabic.com/document-viewer/embed/<span class="subst">#{file.guid}</span>"</span>
-      <span class="keyword">else</span>
-        url = <span class="string">"https://apps.groupdocs.com/document-viewer/embed/<span class="subst">#{file.guid}</span>"</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    massage = <span class="string">"&lt;p&gt;Archive created and saved successfully. Here you can see your &lt;strong&gt;<span class="subst">#{params[<span class="symbol">:file</span>][<span class="symbol">:filename</span>]}</span>&lt;/strong&gt; file in the GroupDocs Embedded Viewer.&lt;/p&gt;"</span></pre></div></div>
             
         </li>
         
@@ -227,11 +223,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Add the signature to the url request</p>
+              <p>Prepare to sign url</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; url).prepare_and_sign_url</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"/document-viewer/embed/<span class="subst">#{file.guid}</span>"</span></pre></div></div>
             
         </li>
         
@@ -242,15 +238,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>Construct result iframe</p>
+              <p>Construct result string</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"&lt;iframe src='<span class="subst">#{iframe}</span>' frameborder='0' width='100%' height='600'&gt;&lt;/iframe&gt;"</span>
-
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
-    err = e.message
-  <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
             
         </li>
         
@@ -260,6 +252,47 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Generate iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">case</span> base_path
+      <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
+      <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+      <span class="keyword">else</span>
+        iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+    <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Make iframe</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"&lt;iframe id='downloadframe' src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+
+  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+    err = e.message
+  <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>set variables for template</p>
 

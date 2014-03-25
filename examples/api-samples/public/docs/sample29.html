@@ -27,7 +27,8 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+              <p>GET request</p>
+
             </div>
             
             <div class="content"><div class='highlight'><pre>get <span class="string">'/sample29'</span> <span class="keyword">do</span>
@@ -58,7 +59,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
-              <p>set variables</p>
+              <p>Set variables</p>
 
             </div>
             
@@ -81,11 +82,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>If base base is empty seting base path to prod server</p>
+              <p>Prepare base path</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    base_path = <span class="string">'https://api.groupdocs.com/v2.0'</span> <span class="keyword">unless</span> !base_path.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
+      base_path = <span class="string">'https://api.groupdocs.com'</span>
+    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
+    <span class="keyword">end</span></pre></div></div>
             
         </li>
         
@@ -103,7 +108,7 @@
             <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (!url.empty?)
 
       <span class="keyword">if</span> (base_path == <span class="string">"https://api.groupdocs.com/v2.0"</span>)
-        iframe = <span class="string">"https://apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span> &amp;user_id=<span class="subst">#{client_id}</span>"</span>
+        iframe = <span class="string">"https://apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
       <span class="keyword">elsif</span> (base_path == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>)</pre></div></div>
             
         </li>
@@ -119,7 +124,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"https://dev-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span> &amp;user_id=<span class="subst">#{client_id}</span>"</span>
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"https://dev-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
       <span class="keyword">elsif</span> (base_path == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>)</pre></div></div>
             
         </li>
@@ -135,9 +140,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"https://stage-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span> &amp;user_id=<span class="subst">#{client_id}</span>"</span>
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"https://stage-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
       <span class="keyword">elsif</span> (base_path == <span class="string">"http://realtime-api.groupdocs.com"</span>)
-        iframe = <span class="string">"http://realtime-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span> &amp;user_id=<span class="subst">#{client_id}</span>"</span>
+        iframe = <span class="string">"http://realtime-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
       <span class="keyword">end</span>
 
 

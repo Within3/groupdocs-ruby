@@ -1,41 +1,50 @@
-# GET request
+#GET request
 get '/sample02' do
   haml :sample02
 end
 
-# POST request
+#POST request
 post '/sample02' do
-  # Set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :base_path, params[:basePath]
 
   begin
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
-    # Check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty?
 
-    # Make a request to API using client_id and private_key
+    #Make a request to API using client_id and private_key
     files_list = GroupDocs::Storage::Folder.list!('/', {})
 
-    # Construct list of files
+    #Construct list of files
     filelist = ''
-    files_list.each { |element| filelist << "#{element.name}<br />" }
+    files_list.each do |element|
+     if element.class.name.split('::').last == 'File' then filelist << "#{element.name}<br />" end
+    end
 
   rescue Exception => e
     err = e.message
   end
 
-  # Set variables for template
+  #Set variables for template
   haml :sample02, :locals => {:userId => settings.client_id, :privateKey => settings.private_key, :filelist => filelist, :err => err}
 end

@@ -1,11 +1,11 @@
-# GET request
+#GET request
 get '/sample03' do
   haml :sample03
 end
 
-# POST request
+#POST request
 post '/sample03' do
-  # Set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :source, params[:source]
@@ -15,59 +15,65 @@ post '/sample03' do
   set :base_path, params[:basePath]
 
   begin
-    # Check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
-    # Get document by file GUID
+    #Get document by file GUID
     case settings.source
 
     when 'file'
-      # Construct path
+      #Construct path
       filepath = "#{Dir.tmpdir}/#{params[:file][:filename]}"
-      # Open file
+      #Open file
       File.open(filepath, 'wb') { |f| f.write(params[:file][:tempfile].read) }
-      # Make a request to API using client_id and private_key
+      #Make a request to API using client_id and private_key
       file = GroupDocs::Storage::File.upload!(filepath, {path: settings.folder_path, callbackUrl: settings.callback})
 
     when 'url'
 
-      # Upload file from defined url
+      #Upload file from defined url
       file = GroupDocs::Storage::File.upload_web!(settings.url)
     else raise 'Wrong GUID source.'
     end
 
-    #Get url from request
-    case settings.base_path
-
-    when 'https://stage-api-groupdocs.dynabic.com'
-      url = "http://stage-apps-groupdocs.dynabic.com/document-viewer/embed/#{file.guid}"
-    when 'https://dev-api-groupdocs.dynabic.com'
-      url = "http://dev-apps-groupdocs.dynabic.com/document-viewer/embed/#{file.guid}"
-    else
-      url = "https://apps.groupdocs.com/document-viewer/embed/#{file.guid}"
+    #Prepare to sign url
+    iframe = "/document-viewer/embed/#{file.guid}"
+    # Construct result string
+    url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
+    #Generate iframe URL
+    case base_path
+      when 'https://stage-api-groupdocs.dynabic.com'
+        iframe = "https://stage-api-groupdocs.dynabic.com#{url}"
+      when 'https://dev-api-groupdocs.dynabic.com'
+        iframe = "https://dev-apps.groupdocs.com#{url}"
+      else
+        iframe = "https://apps.groupdocs.com#{url}"
     end
 
-
-    # Add the signature in url
-    url = GroupDocs::Api::Request.new(:path => url).prepare_and_sign_url
-
-    # Set iframe with document GUID
-    iframe = "<iframe src='#{url}' frameborder='0' width='720' height='600'></iframe>"
+    #Set iframe with document GUID
+    iframe = "<iframe src='#{iframe}' frameborder='0' width='720' height='600'></iframe>"
 
   rescue Exception => e
     err = e.message
   end
 
-  # set variables for template
+  #Set variables for template
   haml :sample03, :locals => {:userId => settings.client_id, :privateKey => settings.private_key, :iframe => iframe, :err => err}
 end
