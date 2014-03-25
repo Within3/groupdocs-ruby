@@ -82,8 +82,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>raise params.to_yaml
-Set download path</p>
+              <p>Set download path</p>
 
             </div>
             
@@ -108,7 +107,6 @@ Set download path</p>
     <span class="constant">Dir::</span>mkdir(downloads_path)
   <span class="keyword">end</span>
 
-
   <span class="keyword">begin</span></pre></div></div>
             
         </li>
@@ -120,13 +118,11 @@ Set download path</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Check required variables
-raise &#39;Please enter all required parameters&#39; if settings.client_id.empty? or settings.private_key.empty? or settings.email.empty? or settings.first_name.empty? or settings.last_name?</p>
+              <p>Check required variables</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>
-    <span class="keyword">if</span> settings.base_path.empty? <span class="keyword">then</span> settings.base_path = <span class="string">'https://api.groupdocs.com'</span> <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.email.empty? <span class="keyword">or</span> settings.first_name.empty? <span class="keyword">or</span> settings.last_name.empty?</pre></div></div>
             
         </li>
         
@@ -136,6 +132,27 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Prepare base path</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
+      base_path = <span class="string">'https://api.groupdocs.com'</span>
+    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
+    <span class="keyword">else</span>
+      base_path = settings.base_path
+    <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Configure your access to API server</p>
 
@@ -148,27 +165,28 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <p>Optionally specify API server and version</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = settings.base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Optionally specify API server and version</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="keyword">end</span>
+    file = <span class="keyword">nil</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Get document by file GUID</p>
 
@@ -180,11 +198,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-10">
+        <li id="section-11">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
+                <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Create instance of File</p>
 
@@ -196,11 +214,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-11">
+        <li id="section-12">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
+                <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
               <p>Construct path</p>
 
@@ -211,11 +229,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-12">
+        <li id="section-13">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
+                <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Open file</p>
 
@@ -226,11 +244,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-13">
+        <li id="section-14">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
+                <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
               <p>Make a request to API using client_id and private_key</p>
 
@@ -242,11 +260,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-14">
+        <li id="section-15">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
+                <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>Upload file from defined url</p>
 
@@ -260,11 +278,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-15">
+        <li id="section-16">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
+                <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Get all users from accaunt</p>
 
@@ -279,11 +297,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-16">
+        <li id="section-17">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Check whether there is a user with entered email</p>
 
@@ -294,11 +312,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-17">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Get user GUID</p>
 
@@ -312,11 +330,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-18">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Check is user with entered email was founded in GroupDocs account, if not user will be created</p>
 
@@ -328,11 +346,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-19">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
               <p>Set email as entered email</p>
 
@@ -343,11 +361,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-20">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>Set nick name as entered first name</p>
 
@@ -358,11 +376,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-21">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Set first name as entered first name</p>
 
@@ -373,11 +391,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-22">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Set last name as entered last name</p>
 
@@ -388,11 +406,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-23">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Set roles</p>
 
@@ -403,11 +421,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-24">
+        <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
+                <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
               <p>Update account</p>
 
@@ -420,11 +438,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Create array with entered email for set_collaborators! method</p>
 
@@ -436,11 +454,11 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Make request to Ant api for set new user as annotation collaborator</p>
 
@@ -452,37 +470,8 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
         reviewer.access_rights = <span class="string">%w(view)</span>
       <span class="keyword">end</span>
       setReviewers = document.set_reviewers! getCollaborator
-      <span class="keyword">if</span> setReviewers
-        <span class="keyword">case</span> settings.base_path
-          <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-            iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com/document-annotation2/embed/<span class="subst">#{file.guid}</span>?&amp;uid=<span class="subst">#{guid}</span>&amp;download=true"</span>
-          <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-            iframe = <span class="string">"https://dev-apps.groupdocs.com//document-annotation2/embed/<span class="subst">#{file.guid}</span>?&amp;uid=<span class="subst">#{guid}</span>&amp;download=true"</span>
-          <span class="keyword">else</span>
-            iframe = <span class="string">"https://apps.groupdocs.com//document-annotation2/embed/<span class="subst">#{file.guid}</span>?&amp;uid=<span class="subst">#{guid}</span>&amp;download=true"</span>
-        <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-27">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-27">&#182;</a>
-              </div>
-              <p>Construct result string</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url
-        iframe = <span class="string">"&lt;iframe src='<span class="subst">#{url}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
-      <span class="keyword">end</span>
-    <span class="keyword">end</span>
-
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
-    err = e.message
-  <span class="keyword">end</span></pre></div></div>
+      <span class="keyword">if</span> setReviewers</pre></div></div>
             
         </li>
         
@@ -493,11 +482,71 @@ raise &#39;Please enter all required parameters&#39; if settings.client_id.empty
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
-              <p>set variables for template</p>
+              <p>Add user GUID as &quot;uid&quot; parameter to the iframe URL</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample38</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:userId</span> =&gt; settings.client_id, <span class="symbol">:fileId</span> =&gt; file.guid, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:iframe</span> =&gt; iframe, <span class="symbol">:email</span> =&gt; settings.email, <span class="symbol">:firstName</span> =&gt; settings.first_name, <span class="symbol">:lastName</span> =&gt; settings.last_name, <span class="symbol">:err</span> =&gt; err}
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"/document-annotation2/embed/<span class="subst">#{file.guid}</span>?&amp;uid=<span class="subst">#{guid}</span>&amp;download=true"</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Construct result string</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <p>Generate iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">case</span> base_path
+          <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
+            iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
+          <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
+            iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+          <span class="keyword">else</span>
+            iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+        <span class="keyword">end</span>
+
+        iframe = <span class="string">"&lt;iframe src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+
+  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+    err = e.message
+  <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Set variables for template</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample38</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:userId</span> =&gt; settings.client_id, <span class="symbol">:fileId</span> =&gt; settings.file_id, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:iframe</span> =&gt; iframe, <span class="symbol">:email</span> =&gt; settings.email, <span class="symbol">:firstName</span> =&gt; settings.first_name, <span class="symbol">:lastName</span> =&gt; settings.last_name, <span class="symbol">:err</span> =&gt; err}
 <span class="keyword">end</span></pre></div></div>
             
         </li>

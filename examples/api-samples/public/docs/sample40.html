@@ -227,7 +227,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>white space is required</p>
+              <p>White space is required</p>
 
             </div>
             
@@ -263,7 +263,7 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>set variables</p>
+              <p>Set variables</p>
 
             </div>
             
@@ -288,9 +288,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.form_guid.empty?
-
-    <span class="keyword">if</span> settings.base_path.empty? <span class="keyword">then</span> settings.base_path = <span class="string">'https://api.groupdocs.com'</span> <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.form_guid.empty?</pre></div></div>
             
         </li>
         
@@ -300,6 +298,44 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Delete file callback_info.txt</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> <span class="constant">File</span>.exist?(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/callback_info.txt"</span>)
+      <span class="constant">File</span>.delete(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/callback_info.txt"</span>)
+    <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Prepare base path</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
+      base_path = <span class="string">'https://api.groupdocs.com'</span>
+    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
+    <span class="keyword">else</span>
+      base_path = settings.base_path
+    <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>Configure your access to API server</p>
 
@@ -312,27 +348,28 @@
         </li>
         
         
-        <li id="section-16">
+        <li id="section-18">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
+                <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Optionally specify API server and version</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = settings.base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
+
     <span class="keyword">end</span></pre></div></div>
             
         </li>
         
         
-        <li id="section-17">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-17">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Write client and private key to the file for callback job</p>
 
@@ -344,13 +381,13 @@
         </li>
         
         
-        <li id="section-18">
+        <li id="section-20">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-18">&#182;</a>
+                <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
-              <p>white space is required</p>
+              <p>White space is required</p>
 
             </div>
             
@@ -364,11 +401,11 @@
         </li>
         
         
-        <li id="section-19">
+        <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
+                <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
               <p>Create new Form with guid</p>
 
@@ -380,11 +417,11 @@
         </li>
         
         
-        <li id="section-20">
+        <li id="section-22">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
               <p>Get id with new Form</p>
 
@@ -395,11 +432,11 @@
         </li>
         
         
-        <li id="section-21">
+        <li id="section-23">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-21">&#182;</a>
+                <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
               <p>Get Form</p>
 
@@ -410,11 +447,11 @@
         </li>
         
         
-        <li id="section-22">
+        <li id="section-24">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-22">&#182;</a>
+                <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
               <p>Publish the Form</p>
 
@@ -425,62 +462,17 @@
         </li>
         
         
-        <li id="section-23">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-23">&#182;</a>
-              </div>
-              <p>Get url from request</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">case</span> settings.base_path
-
-      <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-        url = <span class="string">"http://stage-apps-groupdocs.dynabic.com/signature2/forms/signembed/ <span class="subst">#{guid}</span>"</span>
-      <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-        url = <span class="string">"http://dev-apps-groupdocs.dynabic.com/signature2/forms/signembed/ <span class="subst">#{guid}</span>"</span>
-      <span class="keyword">else</span>
-        url = <span class="string">"https://apps.groupdocs.com/signature2/forms/signembed/ <span class="subst">#{guid}</span>"</span>
-    <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-24">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-24">&#182;</a>
-              </div>
-              <p>Delete file callback_info.txt</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> <span class="constant">File</span>.exist?(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/callback_info.txt"</span>)
-      <span class="constant">File</span>.delete(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/callback_info.txt"</span>)
-    <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
         <li id="section-25">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
-              <p>Add the signature to url the request</p>
+              <p>Prepare to sign url</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; url).prepare_and_sign_url
-    iframe = <span class="string">"&lt;iframe width='100%' id='downloadframe' height='600' src='<span class="subst">#{iframe}</span>'&gt;&lt;/iframe&gt;"</span>
-
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
-    err = e.message
-  <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"//signature2/forms/signembed/<span class="subst">#{guid}</span>"</span></pre></div></div>
             
         </li>
         
@@ -490,6 +482,49 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <p>Construct result string</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p>Generate iframe URL</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">case</span> base_path
+      <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
+      <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+      <span class="keyword">else</span>
+        iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
+    <span class="keyword">end</span>
+
+    iframe = <span class="string">"&lt;iframe src='<span class="subst">#{iframe}</span>' id='downloadframe' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+
+  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+    err = e.message
+  <span class="keyword">end</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Set variables for template</p>
 

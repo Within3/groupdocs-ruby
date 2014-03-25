@@ -18,7 +18,7 @@
   %p
     PrivateKey = #{(defined? privateKey) ? privateKey : ''}
   %p
-    Template file GUID = #{(defined? template_guid) ? template_guid : ''}
+    Template file GUID = #{(defined? templateGuid) ? templateGuid : ''}
   %p
     Name = #{(defined? name) ? name : ''}
   %p
@@ -57,10 +57,6 @@
         %input{:type=>'text', :name=>'name'}
         %br/
         %br/
-        %label{:for => 'lastName'} What is your last name?
-        %input{:type=>'text', :name=>'lastName'}
-        %br/
-        %br/
         %label{:for => 'country'} What is your country?
         %input{:type=>'text', :name=>'country'}
         %br/
@@ -96,7 +92,6 @@
       %br/
   %div{:style => 'padding:20px; border:1px solid black;'}
     %p Results:
-    %iframe{:id=>'downloadframe', :style=>'display:none'}
     #{(defined? iframe) ? iframe : ''}
 
 = partial :_others_samples

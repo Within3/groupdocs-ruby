@@ -1,11 +1,11 @@
-# GET request
+#GET request
 get '/sample05' do
   haml :sample05
 end
 
-# POST request
+#POST request
 post '/sample05' do
-  # set variables
+  #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :file_id, params[:srcPath]
@@ -18,51 +18,58 @@ post '/sample05' do
 
   begin
 
-    # check required variables
+    #Check required variables
     raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty?
 
-    if settings.base_path.empty? then settings.base_path = 'https://api.groupdocs.com' end
+    #Prepare base path
+    if settings.base_path.empty?
+      base_path = 'https://api.groupdocs.com'
+    elsif settings.base_path.match('/v2.0')
+      base_path = settings.base_path.split('/v2.0')[0]
+    else
+      base_path = settings.base_path
+    end
 
-    # Configure your access to API server
+    #Configure your access to API server
     GroupDocs.configure do |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key
-      # Optionally specify API server and version
-      groupdocs.api_server = settings.base_path # default is 'https://api.groupdocs.com'
+      #Optionally specify API server and version
+      groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
     file = nil
-    # get document by file GUID
+    #Get document by file GUID
     case settings.source
       when 'guid'
         file = GroupDocs::Storage::File.new({:guid => settings.file_id}).to_document.metadata!()
         file = file.last_view.document.file
       when 'local'
-        # construct path
+        #Construct path
         filepath = "#{Dir.tmpdir}/#{params[:file][:filename]}"
-        # open file
+        #Open file
         File.open(filepath, 'wb') { |f| f.write(params[:file][:tempfile].read) }
-        # make a request to API using client_id and private_key
+        #Make a request to API using client_id and private_key
         file = GroupDocs::Storage::File.upload!(filepath, {})
       when 'url'
         file = GroupDocs::Storage::File.upload_web!(settings.url)
       else
         raise 'Wrong GUID source.'
     end
-     # raise files_list.to_yaml
-    # copy file using request to API
+
+    #Copy file using request to API
     unless settings.copy.nil?
       file = file.copy!(settings.dest_path, {})
       button = settings.copy
     end
 
-    # move file using request to API
+    #Move file using request to API
     unless settings.move.nil?
       file = file.move!(settings.dest_path, {})
       button = settings.move
     end
 
-    # result message
+    #Result message
     if file
       massage = "File was #{button}'ed to the <font color=\"blue\">#{settings.dest_path}</font> folder"
     end
@@ -71,6 +78,6 @@ post '/sample05' do
     err = e.message
   end
 
-  # set variables for template
+  #Set variables for template
   haml :sample05, :locals => {:clientId => settings.client_id, :privateKey => settings.private_key, :fileId => settings.file_id, :destPath => settings.dest_path, :massage => massage, :err => err}
 end
