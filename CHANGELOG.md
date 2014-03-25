@@ -1,3 +1,12 @@
+## v1.5.9
+
+**Changes**
+
+* `Api::Helpers::URL#sign_url` changes an initialize library OpenSSL 
+* `Api::Helpers::AccessRights` changes an array ACCESS_RIGHTS 
+* `Document#changes` updates in request path
+
+
 ## v1.5.8
 
 **Changes**
