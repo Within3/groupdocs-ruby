@@ -99,13 +99,19 @@ module GroupDocs
     attr_accessor :output_format
     # @attr [Boolean] open_on_completion
     attr_accessor :open_on_completion
-    # @atrr [Integer] allowed_operations
+    # @attr [Integer] allowed_operations
     attr_accessor :allowed_operations
 
+    # added in release 1.6.0
+    # @attr [Integer] totalCount
+    attr_accessor :totalCount
 
 
     # Human-readable accessors
     alias_accessor :description, :descr
+
+    # added in release 1.6.0
+    alias_accessor :total_count, :totalCount
 
     #
     # Converts each page to GroupDocs::Questionnaire::Page object.
@@ -123,6 +129,8 @@ module GroupDocs
         end
       end
     end
+
+
 
     #
     # Converts status to human-readable format.

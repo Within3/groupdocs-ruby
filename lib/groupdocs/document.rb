@@ -196,6 +196,15 @@ module GroupDocs
     attr_accessor :order
     # @attr [Integer] field_count
     attr_accessor :field_count
+
+    #added in release 1.6.0
+    # @attr [String] fieldType
+    attr_accessor :fileType
+    # @attr [Int] dependent_questionnaires_count
+    attr_accessor :dependent_questionnaires_count
+    # @attr [Long] upload_time
+    attr_accessor :upload_time
+
     [
         :news                            ,
         :alerts                          ,

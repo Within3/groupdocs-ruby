@@ -6,9 +6,10 @@ module GroupDocs
 
     include Api::Helpers::AccessMode
 
-    #AnnotationType = { Text: 0, Area: 1, Point: 2, TextStrikeout: 3, Polyline: 4, TextField: 5, Watermark: 6 }
+    #AnnotationType = { Text: 0, Area: 1, Point: 2, TextStrikeout: 3, Polyline: 4, TextField: 5, Watermark: 6,  TextReplacement: 7, TextRemoval: 8 }
 
-    TYPES  = %w(Text Area Point TextStrikeout Polyline)
+    # updateed in release 1.6.0
+    TYPES  = %w(Text Area Point TextStrikeout Polyline TextField Watermark TextReplacement TextRemoval )
 
     # @attr [GroupDocs::Document] document
     attr_accessor :document
@@ -47,11 +48,24 @@ module GroupDocs
     attr_accessor :fontColor
 
     #added in release 1.5.8
-    #@attr [Int]pageNumber
+    #@attr [Int] pageNumber
     attr_accessor :pageNumber
     #@attr [Long] serverTime
     attr_accessor :serverTime
     #attr [Array]
+
+    #added in release 1.6.0
+    #@attr [Int] penColor
+    attr_accessor :penColor
+    #@attr [Int] penWidth
+    attr_accessor :penWidth
+    #@attr [Int] penStyle
+    attr_accessor :penStyle
+    #@attr [Int] creatorName
+    attr_accessor :creatorName
+    #@attr [Int] creatorEmail
+    attr_accessor :creatorEmail
+
 
     # Compatibility with response JSON
     alias_method :annotationGuid=, :guid=
@@ -67,6 +81,13 @@ module GroupDocs
     #added in release 1.5.8
     alias_accessor :page_number,         :pageNumber
     alias_accessor :server_time,         :serverTime
+
+    #added in release 1.6.0
+    alias_accessor :pen_color,           :penColor
+    alias_accessor :pen_width,           :penWidth
+    alias_accessor :pen_style,           :penStyle
+    alias_accessor :creator_name,        :creatorName
+    alias_accessor :creator_email,       :creatorEmail
 
     #
     # Creates new GroupDocs::Document::Annotation.
@@ -177,7 +198,7 @@ module GroupDocs
     #
     # @example
     #   document = GroupDocs::Storage::Folder.list!.first.to_document
-    #   annotation = GroupDocs::Document::Annotation.new(document: document)     #
+    #   annotation = GroupDocs::Document::Annotation.new(document: document)
     #   annotation.create!
     #
     # @param [Hash] info Annotation info
@@ -200,6 +221,7 @@ module GroupDocs
       end
     end
 
+
     #
     # Removes annotation.
     #
@@ -213,6 +235,29 @@ module GroupDocs
         request[:method] = :DELETE
         request[:path] = "/ant/{{client_id}}/annotations/#{guid}"
       end.execute!
+    end
+
+    #
+    # added in release 1.6.0
+    #
+    # @example
+    #   document = GroupDocs::Storage::Folder.list!.first.to_document
+    #   annotation = GroupDocs::Document::Annotation.new(document: document)
+    #   annotation.remove_annotations!
+    #
+    # Removes all annotations from document.
+    #
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def remove_annotations!(access = {})
+      json = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :DELETE
+        request[:path] = "/ant/{{client_id}}/files/#{document.file.guid}/annotations"
+      end.execute!
+        json[:delete_annotation_results]
     end
 
     #

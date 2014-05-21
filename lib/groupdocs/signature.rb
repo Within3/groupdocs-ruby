@@ -296,5 +296,83 @@ module GroupDocs
       end.execute!
     end
 
+    # added in release 1.6.0
+    TEMPLATE_TYPES = {
+        :EnvelopeSentOwnerTemplate           => 1,
+        :EnvelopeSentOtherTemplate           => 2,
+        :EnvelopeCompletedTemplate           => 3,
+        :EnvelopeSignedTemplate              => 4,
+        :EnvelopeCancelledTemplate           => 5,
+        :EnvelopeDeclinedTemplate            => 6,
+        :EnvelopeFailedTemplate              => 7,
+        :EnvelopeExpiredTemplate             => 8,
+        :EnvelopeStepExpiredTemplate         => 9,
+        :EnvelopeRecipientReminderTemplate   => 10,
+        :FormSignedTemplate                  => 11
+    }
+
+
+    #
+    # Added in release 1.6.0
+    #
+    #
+    # Get default email template.
+    #
+    # @param [String] path Path to save new file
+    # @param [String] name Name new file (file extension should be html)
+    # @param [Int] template_type Template type
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    # @return [Array]
+    #
+    def self.public_get_default_email_template!(path, name, template_type, access = {})
+      response = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :DOWNLOAD
+        request[:path] = "/signature/public/email-template/#{template_type}/default"
+      end.execute!
+
+
+      filepath = "#{path}/#{name}."
+
+      Object::File.open(filepath, 'wb') do |file|
+        file.write(response)
+      end
+
+      filepath
+    end
+
+    #
+    # Added in release 1.6.0
+    #
+    #
+    # Get user email template.
+    #
+    # @param [String] path Path to save new file
+    # @param [String] name Name new file (file extension should be html)
+    # @param [Int] template_type Template type
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    # @return [Array]
+    #
+    def self.get_email_template!(path, name, template_type, access = {})
+      response = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :DOWNLOAD
+        request[:path] = "/signature/email-template/#{template_type}"
+      end.execute!
+
+
+      filepath = "#{path}/#{name}."
+
+      Object::File.open(filepath, 'wb') do |file|
+        file.write(response)
+      end
+
+      filepath
+    end
+
   end # Signature
 end # GroupDocs
