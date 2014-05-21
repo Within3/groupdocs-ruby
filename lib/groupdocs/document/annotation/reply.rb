@@ -58,6 +58,11 @@ module GroupDocs
     # @attr [Boolean] isAvatarExist
     attr_accessor :isAvatarExist
 
+    # added in release 1.6.0
+    # @attr [String] userEmail
+    attr_accessor :userEmail
+
+
     # Human-readable accessors
     alias_accessor :annotation_guid, :annotationGuid
     alias_accessor :user_guid,       :userGuid
@@ -66,6 +71,8 @@ module GroupDocs
     # added in release 1.5.8
     alias_accessor :parent_reply_guid, :parentReplyGuid
     alias_accessor :is_avatar_exist,   :isAvatarExist
+    # added in release 1.6.0
+    alias_accessor :user_email, :userEmail
 
     #
     # Creates new GroupDocs::Document::Annotation.

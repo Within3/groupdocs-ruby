@@ -105,6 +105,10 @@ module GroupDocs
     # @attr [Boolean] notifyOwnerOnSign
     attr_accessor :notifyOwnerOnSign
 
+    #added in release 1.6.0
+    # @attr [Boolean] canParticipantPrintForm
+    attr_accessor :canParticipantPrintForm
+
 
     # Human-readable accessors
     alias_accessor :owner_guid,                    :ownerGuid
@@ -119,6 +123,8 @@ module GroupDocs
     alias_accessor :water_mark_image,              :waterMarkImage
     alias_accessor :notify_owner_on_sign,          :notifyOwnerOnSign
 
+    #added in release 1.6.0
+    alias_accessor :can_participant_print_form,    :canParticipantPrintForm
 
     #
     # Converts status to human-readable format.

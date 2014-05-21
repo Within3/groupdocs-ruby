@@ -681,7 +681,25 @@ module GroupDocs
         request[:method] = :GET
         request[:path] = "/signature/public/envelopes/#{id}/fields/recipient/#{recipient.id}/field/#{field.id}"
       end.execute!
+    end
 
+
+    #
+    #  added in release 1.6.0
+    #
+    #
+    # Resend envelope email notification.
+    #
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def resend!(access = {})
+      Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :PUT
+        request[:path] = "/signature/{{client_id}}/envelopes/#{id}/resend-notification"
+      end.execute!
     end
 
 
