@@ -1,3 +1,21 @@
+## v1.6.0
+
+**Changes**
+
+* `Document::Annotation` updated types of annotation
+* `Signature::FieldMethods#modify_field!` added parament "recipientGuid"
+
+**New**
+
+* Added `Documet::Annotation#remove_annotations!`
+* Added `Document::Annotation` attributes
+* Added `Document::Annotation::Reply` attributes
+* Added `Document` attributes
+* Added `Signature.public_get_default_email_template!`
+* Added `Signature` template fields
+* Added `Signature::Form` attribute
+* Added `Signature::Envelope#resend!`
+
 ## v1.5.9
 
 **Changes**
