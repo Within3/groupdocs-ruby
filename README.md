@@ -85,6 +85,9 @@ GroupDocs::Storage::Folder.new do |folder|
 end
 #=> #<GroupDocs::Storage::Folder:0x0000000171f432 @name="Folder">
 ```
+## License
+
+GroupDocs Ruby SDK is released under the [MIT License](https://github.com/groupdocs/groupdocs-ruby/blob/master/LICENSE.txt).
 
 ### Copyright
 
