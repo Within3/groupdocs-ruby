@@ -47,9 +47,12 @@ post '/sample44' do
       groupdocs.api_server = base_path # default is 'https://api.groupdocs.com'
     end
 
-    second_signer_name = settings.first_name + "2";
+    (settings.last_name.nil? or settings.last_name.empty?) ? settings.last_name = settings.first_name : settings.last_name
+
+    second_signer_name = settings.first_name + "2"
     second_signer_last_name = settings.last_name + "2"
     #Construct path
+
     file_path = "#{Dir.tmpdir}/#{params[:file][:filename]}"
     #Open file
     File.open(file_path, 'wb') { |f| f.write(params[:file][:tempfile].read) }
