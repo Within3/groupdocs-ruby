@@ -48,6 +48,7 @@
         %br/
       %br/
       %label{:for => 'lastName'} Signer last name
+      %span{:class => 'optional'} (Optional)
       %br/
       %input{:type=>'text', :name=>'lastName'}
       %br/
@@ -67,7 +68,6 @@
       %br/
       %input{:type => 'submit', :value => 'Make request'}
       %br/
-    %iframe{:id=>'downloadframe', :style=>'display:none'}
   %div{:style => 'padding:20px; border:1px solid black;'}
     %p
       Results:
