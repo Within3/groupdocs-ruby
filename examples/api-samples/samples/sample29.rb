@@ -1,10 +1,10 @@
 #GET request
-get '/sample29' do
+get '/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url' do
   haml :sample29
 end
 
 #POST request
-post '/sample29' do
+post '/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url' do
 
   #Set variables
   set :client_id, params[:clientId]

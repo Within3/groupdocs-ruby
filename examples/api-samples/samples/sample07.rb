@@ -1,10 +1,10 @@
 #GET request
-get '/sample07' do
+get '/sample-7-how-to-create-a-list-of-thumbnails-for-a-document' do
   haml :sample07
 end
 
 #POST request
-post '/sample07' do
+post '/sample-7-how-to-create-a-list-of-thumbnails-for-a-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

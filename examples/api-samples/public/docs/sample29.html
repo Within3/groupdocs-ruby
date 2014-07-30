@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample29'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample29</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample29</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample29'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,15 +63,15 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:serverType</span>]
-  set <span class="symbol">:url</span>, params[<span class="symbol">:url</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:serverType</span>]
+  set <span class="hljs-symbol">:url</span>, params[<span class="hljs-symbol">:url</span>]
 
   url = settings.url
   base_path = settings.base_path
   client_id = settings.client_id
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -86,11 +86,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -105,11 +105,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> (!url.empty?)
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!url.empty?)
 
-      <span class="keyword">if</span> (base_path == <span class="string">"https://api.groupdocs.com/v2.0"</span>)
-        iframe = <span class="string">"https://apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
-      <span class="keyword">elsif</span> (base_path == <span class="string">"https://dev-api.groupdocs.com/v2.0"</span>)</pre></div></div>
+      <span class="hljs-keyword">if</span> (base_path == <span class="hljs-string">"https://api.groupdocs.com/v2.0"</span>)
+        iframe = <span class="hljs-string">"https://apps.groupdocs.com/document-viewer/embed?url=<span class="hljs-subst">#{url}</span>&amp;user_id=<span class="hljs-subst">#{client_id}</span>"</span>
+      <span class="hljs-keyword">elsif</span> (base_path == <span class="hljs-string">"https://dev-api.groupdocs.com/v2.0"</span>)</pre></div></div>
             
         </li>
         
@@ -124,8 +124,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"https://dev-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
-      <span class="keyword">elsif</span> (base_path == <span class="string">"https://stage-api.groupdocs.com/v2.0"</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="hljs-string">"https://dev-apps.groupdocs.com/document-viewer/embed?url=<span class="hljs-subst">#{url}</span>&amp;user_id=<span class="hljs-subst">#{client_id}</span>"</span>
+      <span class="hljs-keyword">elsif</span> (base_path == <span class="hljs-string">"https://stage-api.groupdocs.com/v2.0"</span>)</pre></div></div>
             
         </li>
         
@@ -140,20 +140,20 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"https://stage-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
-      <span class="keyword">elsif</span> (base_path == <span class="string">"http://realtime-api.groupdocs.com"</span>)
-        iframe = <span class="string">"http://realtime-apps.groupdocs.com/document-viewer/embed?url=<span class="subst">#{url}</span>&amp;user_id=<span class="subst">#{client_id}</span>"</span>
-      <span class="keyword">end</span>
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="hljs-string">"https://stage-apps.groupdocs.com/document-viewer/embed?url=<span class="hljs-subst">#{url}</span>&amp;user_id=<span class="hljs-subst">#{client_id}</span>"</span>
+      <span class="hljs-keyword">elsif</span> (base_path == <span class="hljs-string">"http://realtime-api.groupdocs.com"</span>)
+        iframe = <span class="hljs-string">"http://realtime-apps.groupdocs.com/document-viewer/embed?url=<span class="hljs-subst">#{url}</span>&amp;user_id=<span class="hljs-subst">#{client_id}</span>"</span>
+      <span class="hljs-keyword">end</span>
 
 
-    <span class="keyword">end</span>
+    <span class="hljs-keyword">end</span>
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span>
+  <span class="hljs-keyword">end</span>
 
-  <span class="keyword">require</span> <span class="string">'json'</span>
-  content_type <span class="string">'text/html'</span></pre></div></div>
+  <span class="hljs-keyword">require</span> <span class="hljs-string">'json'</span>
+  content_type <span class="hljs-string">'text/html'</span></pre></div></div>
             
         </li>
         
@@ -168,9 +168,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  iframe = {<span class="symbol">:iframe</span> =&gt; iframe, <span class="symbol">:error</span> =&gt; <span class="string">''</span>}.to_json
+            <div class="content"><div class='highlight'><pre>  iframe = {<span class="hljs-symbol">:iframe</span> =&gt; iframe, <span class="hljs-symbol">:error</span> =&gt; <span class="hljs-string">''</span>}.to_json
 
-<span class="keyword">end</span></pre></div></div>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

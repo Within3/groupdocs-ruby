@@ -1,10 +1,10 @@
 #GET request
-get '/sample36' do
+get '/sample-36-how-to-download-signed-documents-when-envelope-was-signed' do
   haml :sample36
 end
 
 #POST request
-post '/sample36' do
+post '/sample-36-how-to-download-signed-documents-when-envelope-was-signed' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

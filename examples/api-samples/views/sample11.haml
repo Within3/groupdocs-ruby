@@ -1,136 +1,140 @@
-%script{ :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', :type => 'text/javascript', :charset => 'utf-8' }
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample11
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how programmatically create and post an annotation into document. How to delete the annotation using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample11.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileId = #{(defined? fileId) ? fileId : ''}
-  %p
-    Annotation ID = #{(defined? annotationId) ? annotationId : ''}
-  %p
-    Annotation Type = #{(defined? annotationType) ? annotationType : ''}
-  %p
-    Annotation Text = #{(defined? annotationText) ? annotationText : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
+%head
+  %title Sample11 - How to programmatically create and post an annotation into document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample11 - How to programmatically create and post an annotation into document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how programmatically create and post an annotation into document. How to delete the annotation using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample11.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileId = #{(defined? fileId) ? fileId : ''}
+    %p
+      Annotation ID = #{(defined? annotationId) ? annotationId : ''}
+    %p
+      Annotation Type = #{(defined? annotationType) ? annotationType : ''}
+    %p
+      Annotation Text = #{(defined? annotationText) ? annotationText : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
 
 
 
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %form{:action => '/sample11', :method => 'post'}
-      %input{:type => 'hidden', :name => 'annotationId', :value => (defined? annotationId) ? annotationId : ''}
-      %p Enter data for request and press "Make request" button
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %form{:action => '/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document', :method => 'post'}
+        %input{:type => 'hidden', :name => 'annotationId', :value => (defined? annotationId) ? annotationId : ''}
+        %p Enter data for request and press "Make request" button
 
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId', :value => (defined? client_id) ? client_id: ''}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey', :value => (defined? private_key) ? private_key : ''}
-      %br/
-      %label{:for => 'fileId'} GroupDocs FileID
-      %br/
-      %input{:type=>'text', :name=>'fileId', :value => (defined? fileId) ? fileId : ''}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      Annotation Type
-      %br/
-      %select{:name => 'annotationType', :id => 'annotation_type'}
-        %option{:value => 'text'}Text
-        %option{:value => 'area'}Area
-        %option{:value => 'point', :selected => 'selected'}Point
-      %br/
-      %br/
-
-      %fieldset
-        %legend Parameters (all are required)
-        %div
-          %span Box X
-          %input{:type=>'text', :name=>'boxX', :placeholder => 'double'}
-        %div
-          %span Box Y
-          %input{:type=>'text', :name=>'boxY', :placeholder => 'double'}
-
-        %div{:style => 'display:none', :id => 'box-params'}
-          %div
-            %span Box Width
-            %input{:type=>'text', :name=>'boxWidth', :placeholder => 'double'}
-          %div
-            %span Box Height
-            %input{:type=>'text', :name=>'boxHeight', :placeholder => 'double'}
-
-        %div{:style => 'display:none', :id => 'annotation-position'}
-          %div
-            %span Annotation Position X
-            %input{:type=>'text', :name=>'annotationPositionX', :placeholder => 'double'}
-          %div
-            %span Annotation Position Y
-            %input{:type=>'text', :name=>'annotationPositionY', :placeholder => 'double'}
-
-        %div{:style => 'display:none', :id => 'range-position'}
-          %div
-            %span Range Position
-            %input{:type=>'text', :name=>'rangePosition', :placeholder => 'double'}
-          %div
-            %span Range Length
-            %input{:type=>'text', :name=>'rangeLength', :placeholder => 'double'}
-        %div
-          %span Text
-          %input{:type=>'text', :name=>'text', :placeholder => 'text'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId', :value => (defined? client_id) ? client_id: ''}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey', :value => (defined? private_key) ? private_key : ''}
+        %br/
+        %label{:for => 'fileId'} GroupDocs FileID
+        %br/
+        %input{:type=>'text', :name=>'fileId', :value => (defined? fileId) ? fileId : ''}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        Annotation Type
+        %br/
+        %select{:name => 'annotationType', :id => 'annotation_type'}
+          %option{:value => 'text'}Text
+          %option{:value => 'area'}Area
+          %option{:value => 'point', :selected => 'selected'}Point
+        %br/
         %br/
 
-      %input{:type => 'submit', :value => 'Make request'}/
+        %fieldset
+          %legend Parameters (all are required)
+          %div
+            %span Box X
+            %input{:type=>'text', :name=>'boxX', :placeholder => 'double'}
+          %div
+            %span Box Y
+            %input{:type=>'text', :name=>'boxY', :placeholder => 'double'}
 
-      %button{:name => 'delete-annotation', :id => 'delete', :value => "#{(defined? annotationId) ? annotationId : ''}", :style=>'display:none;'} Delete Annotation
+          %div{:style => 'display:none', :id => 'box-params'}
+            %div
+              %span Box Width
+              %input{:type=>'text', :name=>'boxWidth', :placeholder => 'double'}
+            %div
+              %span Box Height
+              %input{:type=>'text', :name=>'boxHeight', :placeholder => 'double'}
 
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
-    %p #{(defined? iframe) ? iframe : ''}
-    %span{:color=>'green', :style => 'font-size:4'}#{(defined? message) ? message : ''}
-= partial :_others_samples
+          %div{:style => 'display:none', :id => 'annotation-position'}
+            %div
+              %span Annotation Position X
+              %input{:type=>'text', :name=>'annotationPositionX', :placeholder => 'double'}
+            %div
+              %span Annotation Position Y
+              %input{:type=>'text', :name=>'annotationPositionY', :placeholder => 'double'}
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  $(function() {
-      $('select[name="annotationType"]').change(function() {
-          var obj = $(this);
+          %div{:style => 'display:none', :id => 'range-position'}
+            %div
+              %span Range Position
+              %input{:type=>'text', :name=>'rangePosition', :placeholder => 'double'}
+            %div
+              %span Range Length
+              %input{:type=>'text', :name=>'rangeLength', :placeholder => 'double'}
+          %div
+            %span Text
+            %input{:type=>'text', :name=>'text', :placeholder => 'text'}
+          %br/
 
-          if (obj.val() == "text") {
-              $('#text-params, #annotation-position, #box-params, #range-position').show();
-          }
-          else if (obj.val() == "area") {
-              $('#box-params').show();
-              $('#annotation-position, #range-position').hide();
-          }
-          else if (obj.val() == "point") {
-              $('#annotation-position, #box-params, #range-position').hide();
-          }
-      });
-   if ($('input[name="annotationId"]').val() == '') {
-       $('button[name="delete-annotation"]').hide();
-   }
-   else {
-       $('button[name="delete-annotation"]').show();
-   };
+        %input{:type => 'submit', :value => 'Make request'}/
 
-  });
+        %button{:name => 'delete-annotation', :id => 'delete', :value => "#{(defined? annotationId) ? annotationId : ''}", :style=>'display:none;'} Delete Annotation
+
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      %p #{(defined? iframe) ? iframe : ''}
+      %span{:color=>'green', :style => 'font-size:4'}#{(defined? message) ? message : ''}
+  = partial :_others_samples
+
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    $(function() {
+        $('select[name="annotationType"]').change(function() {
+            var obj = $(this);
+            if (obj.val() == "text") {
+                $('#text-params, #annotation-position, #box-params, #range-position').show();
+            }
+            else if (obj.val() == "area") {
+                $('#box-params').show();
+                $('#annotation-position, #range-position').hide();
+            }
+            else if (obj.val() == "point") {
+                $('#annotation-position, #box-params, #range-position').hide();
+            }
+        });
+     if ($('input[name="annotationId"]').val() == '') {
+         $('button[name="delete-annotation"]').hide();
+     }
+     else {
+         $('button[name="delete-annotation"]').show();
+     };
+
+    });
 

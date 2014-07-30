@@ -1,10 +1,10 @@
 #GET request
-get '/sample25' do
+get '/sample-25-how-to-merge-assemble-and-convert-document' do
   haml :sample25
 end
 
 #POST request
-post '/sample25' do
+post '/sample-25-how-to-merge-assemble-and-convert-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

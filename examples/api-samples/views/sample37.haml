@@ -1,124 +1,130 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample37
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to create envelop and download signed document when envelop was signed using callback
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample37.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    Name = #{(defined? name) ? name : ''}
-  %p
-    Last Name = #{(defined? lastName) ? lastName : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample37', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'email'} Email
-      %br/
-      %input{:type=>'text', :name=>'email'}
-      %br/
-      %label{:for => 'name'} Name
-      %br/
-      %input{:type=>'text', :name=>'name'}
-      %br/
-      %label{:for => 'lastName'} Last Name
-      %br/
-      %input{:type=>'text', :name=>'lastName'}
-      %br/
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
-        %br/
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'text', :name=>'fileId'}
-
-      %div.guid_field
-        %label{:for=>'file'} Upload local file
-        %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
-        %br/
-        %input{:type=>'text', :name=>'url'}
-
-      %br/
-      %label{:for=>'callback'}
-        Callback URL
-        %span.optional (Optional)
-        %br/
-        %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample37/signature_callback)
-      %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callback'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}
-      %span{:id=>'results_status', :style=>'color:red;display:none;'} (Please wait for ajax response)
-      %br/
-    %iframe{:id=>'downloadframe', :style=>'display:none'}
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample37 - How to create envelop and download signed document when envelop was signed using callback
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample37 - How to create envelop and download signed document when envelop was signed using callback
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to create envelop and download signed document when envelop was signed using callback
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample37.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Results:
-      %br/
-    #{(defined? message) ? message : ''}
-    #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      Name = #{(defined? name) ? name : ''}
+    %p
+      Last Name = #{(defined? lastName) ? lastName : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-37-how-to-create-envelop-and-download-signed-document-when-envelop-was-signed-using-callback', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'email'} Email
+        %br/
+        %input{:type=>'text', :name=>'email'}
+        %br/
+        %label{:for => 'name'} Name
+        %br/
+        %input{:type=>'text', :name=>'name'}
+        %br/
+        %label{:for => 'lastName'} Last Name
+        %br/
+        %input{:type=>'text', :name=>'lastName'}
+        %br/
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
 
-= partial :_others_samples
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  function callback_handler(data) {
-    if (data === undefined) {
-      return check();
-    }
-    $('#results_status').fadeOut("slow");
-    $('#downloadframe').attr("src", "/sample37/downloads/" + data);
-  };
-  
-  function check() {
-    $.get('/sample37/check', callback_handler, 'text');
-  };
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
 
-  $(function($) {
-    callbackUrl = $("input[name=callback]").val();
-    if(callbackUrl !== "") {
-      $('#results_status').fadeIn("slow");
-      setTimeout(check, 5000);
+        %div.guid_field
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
+        %br/
+        %label{:for=>'callback'}
+          Callback URL
+          %span.optional (Optional)
+          %br/
+          %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample37/signature_callback)
+        %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callback'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}
+        %span{:id=>'results_status', :style=>'color:red;display:none;'} (Please wait for ajax response)
+        %br/
+      %iframe{:id=>'downloadframe', :style=>'display:none'}
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+        %br/
+      #{(defined? message) ? message : ''}
+      #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    function callback_handler(data) {
+      if (data === undefined) {
+        return check();
+      }
+      $('#results_status').fadeOut("slow");
+      $('#downloadframe').attr("src", "/sample37/downloads/" + data);
     };
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+
+    function check() {
+      $.get('/sample37/check', callback_handler, 'text');
+    };
+
+    $(function($) {
+      callbackUrl = $("input[name=callback]").val();
+      if(callbackUrl !== "") {
+        $('#results_status').fadeIn("slow");
+        setTimeout(check, 5000);
+      };
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

@@ -1,10 +1,10 @@
 #GET request
-get '/sample28' do
+get '/sample-28-how-to-delete-all-annotations-from-document' do
   haml :sample28
 end
 
 #POST request
-post '/sample28' do
+post '/sample-28-how-to-delete-all-annotations-from-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

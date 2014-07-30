@@ -1,79 +1,85 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample44
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to assemble document and add multiple Signatures and Signers to a document using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample44.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %span.documentation
-    %a{:href => '/templates/merge_field3_doc.docx'} Document with merge fields sample
-  %br/
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample44', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %div.guid_field
-        %label{:for=>'file'} Upload local file
-        %br/
-        %input{:type=>'file', :name=>'file'}
-      %br/
-      %div{:style => 'background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;'}
-        %label{:for=>'firstName'} Signer first name?
-        %br/
-        %input{:type=>'text', :name=>'firstName'}
-        %br/
-        %label{:for=>'gender'} What is signer gender?
-        %input{:type=>'checkbox', :name=>'gender', :value=>'man'}Man
-        %input{:type=>'checkbox', :name=>'gender', :value=>'woman'}Woman
-        %br/
-      %br/
-      %label{:for => 'lastName'} Signer last name
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'lastName'}
-      %br/
-      %label{:for => 'firstEmail'} First signer email
-      %br/
-      %input{:type=>'text', :name=>'firstEmail'}
-      %br/
-      %label{:for => 'secondEmail'} Second signer email
-      %br/
-      %input{:type=>'text', :name=>'secondEmail'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample44 - How to assemble document and add multiple Signatures and Signers to a document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample44 - How to assemble document and add multiple Signatures and Signers to a document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to assemble document and add multiple Signatures and Signers to a document using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample44.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Results:
-      %br/
-    #{(defined? message) ? message : ''}
-    #{(defined? first_iframe) ? first_iframe : ''}
-    #{(defined? second_iframe) ? second_iframe : ''}
-= partial :_others_samples
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %span.documentation
+      %a{:href => '/templates/merge_field3_doc.docx'} Document with merge fields sample
+    %br/
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %div.guid_field
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+        %br/
+        %div{:style => 'background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;'}
+          %label{:for=>'firstName'} Signer first name?
+          %br/
+          %input{:type=>'text', :name=>'firstName'}
+          %br/
+          %label{:for=>'gender'} What is signer gender?
+          %input{:type=>'checkbox', :name=>'gender', :value=>'man'}Man
+          %input{:type=>'checkbox', :name=>'gender', :value=>'woman'}Woman
+          %br/
+        %br/
+        %label{:for => 'lastName'} Signer last name
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'lastName'}
+        %br/
+        %label{:for => 'firstEmail'} First signer email
+        %br/
+        %input{:type=>'text', :name=>'firstEmail'}
+        %br/
+        %label{:for => 'secondEmail'} Second signer email
+        %br/
+        %input{:type=>'text', :name=>'secondEmail'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+        %br/
+      #{(defined? message) ? message : ''}
+      #{(defined? first_iframe) ? first_iframe : ''}
+      #{(defined? second_iframe) ? second_iframe : ''}
+  = partial :_others_samples
 

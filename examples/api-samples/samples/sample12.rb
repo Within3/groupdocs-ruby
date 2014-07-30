@@ -1,10 +1,10 @@
 #GET request
-get '/sample12' do
+get '/sample-12-how-to-list-all-annotations-from-document' do
   haml :sample12
 end
 
 #POST request
-post '/sample12' do
+post '/sample-12-how-to-list-all-annotations-from-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

@@ -1,47 +1,53 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample7
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to list thumbnails for documents in the GroupDocs account using Ruby SDK
+%head
+  %title Sample07 - How to create a list of thumbnails for a document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample07 - How to create a list of thumbnails for a document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to list thumbnails for documents in the GroupDocs account using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample7.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-7-how-to-create-a-list-of-thumbnails-for-a-document', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId', :id=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey', :id=>'privateKey'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath', :id=>'basePath'}
+        %br/
+        %input{:type => 'submit', :value => 'Make Request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      %table{:style => 'border:1px double black;'}
+        %tr
+          %th Field
+          %th Value
+        %tr
+          %td #{(defined? thumbnailList) ? thumbnailList : ''} #{(defined? file_List) ? file_List : ''}
   %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample7.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample07', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId', :id=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey', :id=>'privateKey'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath', :id=>'basePath'}
-      %br/
-      %input{:type => 'submit', :value => 'Make Request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
-    %table{:style => 'border:1px double black;'}
-      %tr
-        %th Field
-        %th Value
-      %tr
-        %td #{(defined? thumbnailList) ? thumbnailList : ''} #{(defined? file_List) ? file_List : ''}
-%br/
 
-= partial :_others_samples
+  = partial :_others_samples

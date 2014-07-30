@@ -1,81 +1,87 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample05
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to Copy/Move particular file in your GroupDocs account using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample05.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Copy" button
-    %form{:action => '/sample05', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+%head
+  %title Sample05 - How to copy / move a file using the GroupDocs Storage API
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample05 - How to copy / move a file using the GroupDocs Storage API
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to Copy/Move particular file in your GroupDocs account using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample05.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Copy" button
+      %form{:action => '/sample-5-how-to-copy-move-a-file-using-the-groupdocs-storage-api', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'text', :name=>'clientId'}
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
         %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
 
-      %div.guid_field
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+        %div.guid_field
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'srcPath', }
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
         %br/
-        %input{:type=>'text', :name=>'srcPath', }
-      
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'file'} Upload local file
+        %label{:for => 'destPath'} Destination folder name in which you want to copy/move file
         %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
+        %input{:type=>'text', :name=>'destPath'}
         %br/
-        %input{:type=>'text', :name=>'url'}
-        
-      %br/
-      %label{:for => 'destPath'} Destination folder name in which you want to copy/move file
-      %br/
-      %input{:type=>'text', :name=>'destPath'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %input{:name => 'copy', :type => 'submit', :value => 'Copy'}/
-      %input{:name => 'move', :type => 'submit', :value => 'Move'}/
-  %h4
-    %span{:style => 'color: green'} #{(defined? massage) ? massage : ''}
-  %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %input{:name => 'copy', :type => 'submit', :value => 'Copy'}/
+        %input{:name => 'move', :type => 'submit', :value => 'Move'}/
+    %h4
+      %span{:style => 'color: green'} #{(defined? massage) ? massage : ''}
+    %br/
 
-= partial :_others_samples
+  = partial :_others_samples
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
 
-  $(function($){
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

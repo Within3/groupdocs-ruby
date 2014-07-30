@@ -1,114 +1,120 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample38
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    This sample will show how to get fields and their data from PDF file programmatically and dynamically create HTML form using the data about fields.
-  %br/
-  %br/
-  /
-  %span.documentation
-    %a{:href => '/docs/sample38.html'} Builtin documentation for this sample
+%head
+  %title Sample38 - How to create new user and add him as collaborator to doc with annotations
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample38 - How to create new user and add him as collaborator to doc with annotations
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      This sample will show how to create new user and add him as collaborator to doc with annotations.
+    %br/
+    %br/
+    /
+    %span.documentation
+      %a{:href => '/docs/sample38.html'} Builtin documentation for this sample
 
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileID = #{(defined? fileId) ? fileId : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    First Name = #{(defined? firstName) ? firstName : ''}
-  %p
-    Last Name = #{(defined? lastName) ? lastName : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileID = #{(defined? fileId) ? fileId : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      First Name = #{(defined? firstName) ? firstName : ''}
+    %p
+      Last Name = #{(defined? lastName) ? lastName : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
 
-    %form{:action => "/sample38", :enctype => 'multipart/form-data', :method => 'post', :id=>'form'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId', :id=>'client_id', :value=>"#{(defined? userId) ? userId : ''}"}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey', :id=>'private_key', :value=>"#{(defined? privateKey) ? privateKey : ''}"}
-      %br/
-
-
-      %div.guid_radio{:style=>"#{(defined? userId) ? 'display:none' : 'display:block'}"}
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+      %form{:action => "/sample-38-how-to-create-new-user-and-add-him-as-collaborator-to-doc-with-annotations", :enctype => 'multipart/form-data', :method => 'post', :id=>'form'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'text', :name=>'clientId', :id=>'client_id', :value=>"#{(defined? userId) ? userId : ''}"}
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey', :id=>'private_key', :value=>"#{(defined? privateKey) ? privateKey : ''}"}
         %br/
 
-      %div.fields{:style=>"#{(defined? userId) ? 'display:none' : 'display:block'}"}
-        %div.guid_field
-          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+
+        %div.guid_radio{:style=>"#{(defined? userId) ? 'display:none' : 'display:block'}"}
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
           %br/
-          %input{:type=>'text', :name=>'fileId', :id=>'guid', :value=>"#{(defined? fileId) ? fileId : ''}"}
-
-        %div.guid_field{:style=>'display:none;'}
-          %label{:for=>'file'} Upload local file
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
           %br/
-          %input{:type=>'file', :name=>'file', :id=>'file'}
-
-        %div.guid_field{:style=>'display:none;'}
-          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
           %br/
-          %input{:type=>'text', :name=>'url', :id=>'url'}
-      %label User email
-      %br/
-      %input{:type=>'text', :name=>'email', :value=>""}
-      %br/
-      %label User first name
-      %br/
-      %input{:type=>'text', :name=>'firstName', :value=>""}
-      %br/
-      %label User last name
-      %br/
-      %input{:type=>'text', :name=>'lastName', :value=>""}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %font{:color=>'grey'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath', :id=>'base_path', :value=>"#{(defined? base_path) ? base_path : ''}"}
-      %br/
-      #{(defined? html) ? "<div style='background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;>#{html}</div>" : '' }
-      %br/
-      %input{:type => 'submit', :id => 'button', :value => 'Make request'}
 
-      %br/
-      %a{:href=>'/templates/test_all_fields2.pdf'} Download sample Pdf file
-      %br/
-      %br/
-    %div{:style => 'padding:20px; border:1px solid black;'}
-      %p
-        Results:
-        #result
-          %span{:style=>'color:green'} New collaborations: #{(defined? email) ? email : ''}
-          #{(defined? iframe) ? iframe : ''}
+        %div.fields{:style=>"#{(defined? userId) ? 'display:none' : 'display:block'}"}
+          %div.guid_field
+            %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+            %br/
+            %input{:type=>'text', :name=>'fileId', :id=>'guid', :value=>"#{(defined? fileId) ? fileId : ''}"}
 
-= partial :_others_samples
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+          %div.guid_field{:style=>'display:none;'}
+            %label{:for=>'file'} Upload local file
+            %br/
+            %input{:type=>'file', :name=>'file', :id=>'file'}
 
-:javascript
-  $(function($){
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+          %div.guid_field{:style=>'display:none;'}
+            %label{:for=>'url', :id=>'url'} Upload file from URL
+            %br/
+            %input{:type=>'text', :name=>'url', :id=>'url'}
+        %label User email
+        %br/
+        %input{:type=>'text', :name=>'email', :value=>""}
+        %br/
+        %label User first name
+        %br/
+        %input{:type=>'text', :name=>'firstName', :value=>""}
+        %br/
+        %label User last name
+        %br/
+        %input{:type=>'text', :name=>'lastName', :value=>""}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %font{:color=>'grey'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath', :id=>'base_path', :value=>"#{(defined? base_path) ? base_path : ''}"}
+        %br/
+        #{(defined? html) ? "<div style='background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;>#{html}</div>" : '' }
+        %br/
+        %input{:type => 'submit', :id => 'button', :value => 'Make request'}
+
+        %br/
+        %a{:href=>'/templates/test_all_fields2.pdf'} Download sample Pdf file
+        %br/
+        %br/
+      %div{:style => 'padding:20px; border:1px solid black;'}
+        %p
+          Results:
+          #result
+            %span{:style=>'color:green'} New collaborations: #{(defined? email) ? email : ''}
+            #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+
+  :javascript
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });
 
 
 

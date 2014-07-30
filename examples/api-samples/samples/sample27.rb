@@ -1,10 +1,10 @@
 #GET request
-get '/sample27' do
+get '/sample-27-how-to-create-your-own-questionnaire-using-forms-and-show-the-result-document' do
   haml :sample27
 end
 
 #POST request
-post '/sample27' do
+post '/sample-27-how-to-create-your-own-questionnaire-using-forms-and-show-the-result-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample11'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample11</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample11</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample11'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,14 +63,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:file_id</span>, params[<span class="symbol">:fileId</span>]
-  set <span class="symbol">:annotation_type</span>, params[<span class="symbol">:annotationType</span>]
-  set <span class="symbol">:annotation_id</span>, params[<span class="symbol">:annotationId</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:file_id</span>, params[<span class="hljs-symbol">:fileId</span>]
+  set <span class="hljs-symbol">:annotation_type</span>, params[<span class="hljs-symbol">:annotationType</span>]
+  set <span class="hljs-symbol">:annotation_id</span>, params[<span class="hljs-symbol">:annotationId</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -85,7 +85,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.file_id.empty? <span class="keyword">or</span> settings.annotation_type.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.file_id.empty? <span class="hljs-keyword">or</span> settings.annotation_type.empty?</pre></div></div>
             
         </li>
         
@@ -100,13 +100,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -121,7 +121,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key</pre></div></div>
             
@@ -138,12 +138,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span>
 
-    <span class="keyword">if</span> settings.annotation_id != <span class="string">''</span>
+    <span class="hljs-keyword">if</span> settings.annotation_id != <span class="hljs-string">''</span>
 
-      file = <span class="constant">GroupDocs::Storage::File</span>.new({<span class="symbol">:guid</span> =&gt; settings.file_id}).to_document
+      file = <span class="hljs-constant">GroupDocs::Storage::File</span>.new({<span class="hljs-symbol">:guid</span> =&gt; settings.file_id}).to_document
       annotation = file.annotations!()</pre></div></div>
             
         </li>
@@ -160,8 +160,8 @@
             </div>
             
             <div class="content"><div class='highlight'><pre>      remove = annotation.last.remove!()
-      message = <span class="string">"You delete the annotation id = <span class="subst">#{remove[<span class="symbol">:guid</span>]}</span> "</span>
-    <span class="keyword">else</span></pre></div></div>
+      message = <span class="hljs-string">"You delete the annotation id = <span class="hljs-subst">#{remove[<span class="hljs-symbol">:guid</span>]}</span> "</span>
+    <span class="hljs-keyword">else</span></pre></div></div>
             
         </li>
         
@@ -176,7 +176,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      types = {<span class="symbol">:text</span> =&gt; <span class="string">"0"</span>, <span class="symbol">:area</span> =&gt; <span class="string">"1"</span>, <span class="symbol">:point</span> =&gt; <span class="string">"2"</span>}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      types = {<span class="hljs-symbol">:text</span> =&gt; <span class="hljs-string">"0"</span>, <span class="hljs-symbol">:area</span> =&gt; <span class="hljs-string">"1"</span>, <span class="hljs-symbol">:point</span> =&gt; <span class="hljs-string">"2"</span>}</pre></div></div>
             
         </li>
         
@@ -191,7 +191,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      all_params = all_params = [<span class="string">'annotationType'</span>, <span class="string">'boxX'</span>, <span class="string">'boxY'</span>, <span class="string">'text'</span>]</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      all_params = all_params = [<span class="hljs-string">'annotationType'</span>, <span class="hljs-string">'boxX'</span>, <span class="hljs-string">'boxY'</span>, <span class="hljs-string">'text'</span>]</pre></div></div>
             
         </li>
         
@@ -202,15 +202,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
-              <p>Added required parameters depends on  annotation type [&#39;text&#39; or &#39;area&#39;]</p>
+              <p>Added required parameters depends on  annotation type [‘text’ or ‘area’]</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="keyword">if</span> settings.annotation_type == <span class="string">'text'</span>
-        all_params = all_params | [<span class="string">'boxWidth'</span>, <span class="string">'boxHeight'</span>, <span class="string">'annotationPositionX'</span>, <span class="string">'annotationPositionY'</span>, <span class="string">'rangePosition'</span>, <span class="string">'rangeLength'</span>]
-      <span class="keyword">elsif</span> settings.annotation_type == <span class="string">'area'</span>
-        all_params = all_params | [<span class="string">'boxWidth'</span>, <span class="string">'boxHeight'</span>]
-      <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> settings.annotation_type == <span class="hljs-string">'text'</span>
+        all_params = all_params | [<span class="hljs-string">'boxWidth'</span>, <span class="hljs-string">'boxHeight'</span>, <span class="hljs-string">'annotationPositionX'</span>, <span class="hljs-string">'annotationPositionY'</span>, <span class="hljs-string">'rangePosition'</span>, <span class="hljs-string">'rangeLength'</span>]
+      <span class="hljs-keyword">elsif</span> settings.annotation_type == <span class="hljs-string">'area'</span>
+        all_params = all_params | [<span class="hljs-string">'boxWidth'</span>, <span class="hljs-string">'boxHeight'</span>]
+      <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -225,9 +225,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      all_params.each <span class="keyword">do</span> |param|
-        raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> params[param].empty?
-      <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      all_params.each <span class="hljs-keyword">do</span> |param|
+        raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> params[param].empty?
+      <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -238,13 +238,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
-              <p>Make a request to API using client_id and private_key</p>
+              <p>Create document object</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      files_list = <span class="constant">GroupDocs::Storage::Folder</span>.list!(<span class="string">'/'</span>, {})
+            <div class="content"><div class='highlight'><pre>      document = <span class="hljs-constant">GroupDocs::Storage::File</span>.new(<span class="hljs-symbol">guid:</span> settings.file_id).to_document
 
-      document = <span class="string">''</span></pre></div></div>
+      <span class="hljs-keyword">unless</span> document.instance_of? <span class="hljs-constant">String</span></pre></div></div>
             
         </li>
         
@@ -255,17 +255,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
-              <p>Get document by file ID</p>
+              <p>Start create new annotation</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      files_list.each <span class="keyword">do</span> |element|
-        <span class="keyword">if</span> element.respond_to?(<span class="string">'guid'</span>) == <span class="keyword">true</span> <span class="keyword">and</span> element.guid == settings.file_id
-          document = element
-        <span class="keyword">end</span>
-      <span class="keyword">end</span>
+            <div class="content"><div class='highlight'><pre>        annotation = <span class="hljs-constant">GroupDocs::Document::Annotation</span>.new(<span class="hljs-symbol">document:</span> document)
 
-      <span class="keyword">unless</span> document.instance_of? <span class="constant">String</span></pre></div></div>
+        info = <span class="hljs-keyword">nil</span></pre></div></div>
             
         </li>
         
@@ -276,14 +272,16 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
-              <p>Start create new annotation</p>
+              <p>Construct requestBody depends on annotation type
+Text annotation</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        annotation = <span class="constant">GroupDocs::Document::Annotation</span>.new(<span class="symbol">document:</span> document.to_document)
-
-
-        info = <span class="keyword">nil</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> settings.annotation_type == <span class="hljs-string">'text'</span>
+          annotation.box = <span class="hljs-constant">GroupDocs::Document::Rectangle</span>.new ({<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'boxX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'boxY'</span>], <span class="hljs-symbol">width:</span> params[<span class="hljs-string">'boxWidth'</span>], <span class="hljs-symbol">height:</span> params[<span class="hljs-string">'boxHeight'</span>]})
+          annotation.annotationPosition = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'annotationPositionX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'annotationPositionY'</span>]}
+          range = {<span class="hljs-symbol">position:</span> params[<span class="hljs-string">'rangePosition'</span>], <span class="hljs-symbol">length:</span> params[<span class="hljs-string">'rangeLength'</span>]}
+          info = {<span class="hljs-symbol">:box</span> =&gt; annotation_box, <span class="hljs-symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="hljs-symbol">:range</span> =&gt; range, <span class="hljs-symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="hljs-symbol">:replies</span> =&gt; [{<span class="hljs-symbol">:text</span> =&gt; params[<span class="hljs-string">'text'</span>]}]}</pre></div></div>
             
         </li>
         
@@ -294,16 +292,14 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
-              <p>Construct requestBody depends on annotation type
-Text annotation</p>
+              <p>Area annotation</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">if</span> settings.annotation_type == <span class="string">'text'</span>
-          annotation.box = <span class="constant">GroupDocs::Document::Rectangle</span>.new ({<span class="symbol">x:</span> params[<span class="string">'boxX'</span>], <span class="symbol">y:</span> params[<span class="string">'boxY'</span>], <span class="symbol">width:</span> params[<span class="string">'boxWidth'</span>], <span class="symbol">height:</span> params[<span class="string">'boxHeight'</span>]})
-          annotation.annotationPosition = {<span class="symbol">x:</span> params[<span class="string">'annotationPositionX'</span>], <span class="symbol">y:</span> params[<span class="string">'annotationPositionY'</span>]}
-          range = {<span class="symbol">position:</span> params[<span class="string">'rangePosition'</span>], <span class="symbol">length:</span> params[<span class="string">'rangeLength'</span>]}
-          info = {<span class="symbol">:box</span> =&gt; annotation_box, <span class="symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="symbol">:range</span> =&gt; range, <span class="symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="symbol">:replies</span> =&gt; [{<span class="symbol">:text</span> =&gt; params[<span class="string">'text'</span>]}]}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">elsif</span> settings.annotation_type == <span class="hljs-string">'area'</span>
+          annotation_box = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'boxX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'boxY'</span>], <span class="hljs-symbol">width:</span> params[<span class="hljs-string">'boxWidth'</span>], <span class="hljs-symbol">height:</span> params[<span class="hljs-string">'boxHeight'</span>]}
+          annotation_annotationPosition = {<span class="hljs-symbol">x:</span> <span class="hljs-number">0</span>, <span class="hljs-symbol">y:</span> <span class="hljs-number">0</span>}
+          info = {<span class="hljs-symbol">:box</span> =&gt; annotation_box, <span class="hljs-symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="hljs-symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="hljs-symbol">:replies</span> =&gt; [{<span class="hljs-symbol">:text</span> =&gt; params[<span class="hljs-string">'text'</span>]}]}</pre></div></div>
             
         </li>
         
@@ -314,14 +310,16 @@ Text annotation</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
-              <p>Area annotation</p>
+              <p>Point annotation</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">elsif</span> settings.annotation_type == <span class="string">'area'</span>
-          annotation_box = {<span class="symbol">x:</span> params[<span class="string">'boxX'</span>], <span class="symbol">y:</span> params[<span class="string">'boxY'</span>], <span class="symbol">width:</span> params[<span class="string">'boxWidth'</span>], <span class="symbol">height:</span> params[<span class="string">'boxHeight'</span>]}
-          annotation_annotationPosition = {<span class="symbol">x:</span> <span class="number">0</span>, <span class="symbol">y:</span> <span class="number">0</span>}
-          info = {<span class="symbol">:box</span> =&gt; annotation_box, <span class="symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="symbol">:replies</span> =&gt; [{<span class="symbol">:text</span> =&gt; params[<span class="string">'text'</span>]}]}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">elsif</span> settings.annotation_type == <span class="hljs-string">'point'</span>
+          annotation_box = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'boxX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'boxY'</span>], <span class="hljs-symbol">width:</span> <span class="hljs-number">0</span>, <span class="hljs-symbol">height:</span> <span class="hljs-number">0</span>}
+          annotation_annotationPosition = {<span class="hljs-symbol">x:</span> <span class="hljs-number">0</span>, <span class="hljs-symbol">y:</span> <span class="hljs-number">0</span>}
+
+          info = {<span class="hljs-symbol">:box</span> =&gt; annotation_box, <span class="hljs-symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="hljs-symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="hljs-symbol">:replies</span> =&gt; [{<span class="hljs-symbol">:text</span> =&gt; params[<span class="hljs-string">'text'</span>]}] }
+        <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -331,26 +329,6 @@ Text annotation</p>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
-              </div>
-              <p>Point annotation</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">elsif</span> settings.annotation_type == <span class="string">'point'</span>
-          annotation_box = {<span class="symbol">x:</span> params[<span class="string">'boxX'</span>], <span class="symbol">y:</span> params[<span class="string">'boxY'</span>], <span class="symbol">width:</span> <span class="number">0</span>, <span class="symbol">height:</span> <span class="number">0</span>}
-          annotation_annotationPosition = {<span class="symbol">x:</span> <span class="number">0</span>, <span class="symbol">y:</span> <span class="number">0</span>}
-
-          info = {<span class="symbol">:box</span> =&gt; annotation_box, <span class="symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="symbol">:replies</span> =&gt; [{<span class="symbol">:text</span> =&gt; params[<span class="string">'text'</span>]}] }
-        <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-19">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Call create method</p>
 
@@ -362,11 +340,11 @@ Text annotation</p>
         </li>
         
         
-        <li id="section-20">
+        <li id="section-19">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-20">&#182;</a>
+                <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Get document guid</p>
 
@@ -377,17 +355,32 @@ Text annotation</p>
         </li>
         
         
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Prepare to sign url</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="hljs-string">"/document-annotation2/embed/<span class="hljs-subst">#{guid}</span>"</span></pre></div></div>
+            
+        </li>
+        
+        
         <li id="section-21">
             <div class="annotation">
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
-              <p>Prepare to sign url</p>
+              <p>Construct result string</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"/document-annotation2/embed/<span class="subst">#{guid}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        url = <span class="hljs-constant">GroupDocs::Api::Request</span>.new(<span class="hljs-symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
             
         </li>
         
@@ -398,11 +391,18 @@ Text annotation</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
-              <p>Construct result string</p>
+              <p>Generate iframe URL</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">case</span> base_path
+          <span class="hljs-keyword">when</span> <span class="hljs-string">'https://stage-api-groupdocs.dynabic.com'</span>
+            iframe = <span class="hljs-string">"https://stage-api-groupdocs.dynabic.com<span class="hljs-subst">#{url}</span>"</span>
+          <span class="hljs-keyword">when</span> <span class="hljs-string">'https://dev-api-groupdocs.dynabic.com'</span>
+            iframe = <span class="hljs-string">"https://dev-apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+          <span class="hljs-keyword">else</span>
+            iframe = <span class="hljs-string">"https://apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+        <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -413,18 +413,18 @@ Text annotation</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
-              <p>Generate iframe URL</p>
+              <p>Make iframe</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        <span class="keyword">case</span> base_path
-          <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-            iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
-          <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-            iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-          <span class="keyword">else</span>
-            iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-        <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>        iframe = <span class="hljs-string">"&lt;iframe id='downloadframe' src='<span class="hljs-subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
+    err = e.message
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -435,42 +435,20 @@ Text annotation</p>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
-              <p>Make iframe</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>        iframe = <span class="string">"&lt;iframe id='downloadframe' src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
-
-      <span class="keyword">end</span>
-    <span class="keyword">end</span>
-
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
-    err = e.message
-  <span class="keyword">end</span></pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-25">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
-              </div>
               <p>set variables for template</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample11</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:clientId</span> =&gt; settings.client_id,
-                              <span class="symbol">:privateKey</span> =&gt; settings.private_key,
-                              <span class="symbol">:fileId</span> =&gt; settings.file_id,
-                              <span class="symbol">:annotationType</span> =&gt; settings.annotation_type,
-                              <span class="symbol">:annotationId</span> =&gt; id,
-                              <span class="symbol">:annotationText</span> =&gt; params[<span class="string">'text'</span>],
-                              <span class="symbol">:err</span> =&gt; err,
-                              <span class="symbol">:iframe</span> =&gt; iframe,
-                              <span class="symbol">:message</span> =&gt; message}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample11</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:clientId</span> =&gt; settings.client_id,
+                              <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key,
+                              <span class="hljs-symbol">:fileId</span> =&gt; settings.file_id,
+                              <span class="hljs-symbol">:annotationType</span> =&gt; settings.annotation_type,
+                              <span class="hljs-symbol">:annotationId</span> =&gt; id,
+                              <span class="hljs-symbol">:annotationText</span> =&gt; params[<span class="hljs-string">'text'</span>],
+                              <span class="hljs-symbol">:err</span> =&gt; err,
+                              <span class="hljs-symbol">:iframe</span> =&gt; iframe,
+                              <span class="hljs-symbol">:message</span> =&gt; message}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

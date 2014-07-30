@@ -1,10 +1,10 @@
 #GET request
-get '/sample26' do
+get '/sample-26-how-to-use-login-method-in-the-api' do
   haml :sample26
 end
 
 #POST request
-post '/sample26' do
+post '/sample-26-how-to-use-login-method-in-the-api' do
   set :email, params[:login]
   set :password, params[:password]
   set :base_path, params[:basePath]

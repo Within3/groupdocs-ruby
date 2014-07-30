@@ -1,5 +1,5 @@
 #GET request
-get '/sample21' do
+get '/sample-21-how-to-create-and-upload-envelop-to-groupdocs-account' do
   haml :sample21
 end
 
@@ -70,7 +70,7 @@ get '/sample21/downloads/:filename' do |filename|
 end
 
 #POST request
-post '/sample21' do
+post '/sample-21-how-to-create-and-upload-envelop-to-groupdocs-account' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

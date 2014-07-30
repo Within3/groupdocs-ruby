@@ -1,49 +1,55 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample24
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to use StorageApi to upload file from URL to GroupDocs account using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample24.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Upload" button
-    %form{:action => '/sample24', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'url'} File Url
-      %br/
-      %input{:name => 'url', :type => 'text'}/
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Upload'}/
-    %div{:style => 'padding:20px; border:1px solid black;'}
-      %p
-        Results:
-        #{(defined? message) ? message : ''}
-        #{(defined? iframe) ? iframe : ''}
+%head
+  %title Sample24 - How to use StorageApi to upload file from URL to GroupDocs account
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample24 - How to use StorageApi to upload file from URL to GroupDocs account
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to use StorageApi to upload file from URL to GroupDocs account using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample24.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Upload" button
+      %form{:action => '/sample-24-how-to-use-storageapi-to-upload-fil-from-url-to-groupdocs-account', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'url'} File Url
+        %br/
+        %input{:name => 'url', :type => 'text'}/
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Upload'}/
+      %div{:style => 'padding:20px; border:1px solid black;'}
+        %p
+          Results:
+          #{(defined? message) ? message : ''}
+          #{(defined? iframe) ? iframe : ''}
 
-= partial :_others_samples
+  = partial :_others_samples

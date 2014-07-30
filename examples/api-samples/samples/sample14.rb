@@ -1,10 +1,10 @@
 #GET request
-get '/sample14' do
+get '/sample-14-how-to-check-the-list-of-shares-for-a-folder' do
   haml :sample14
 end
 
 #POST request
-post '/sample14' do
+post '/sample-14-how-to-check-the-list-of-shares-for-a-folder' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

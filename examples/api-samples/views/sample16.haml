@@ -1,45 +1,51 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample16
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to insert Assembly questionary into webpage using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample16.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    FileId = #{(defined? fileId) ? fileId : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample16', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId', :id => 'clientId' }
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey', :id => 'privateKey'}
-      %br/
-      %label{:for => 'fileId'} GroupDocs FileID
-      %br/
-      %input{:type=>'text', :name=>'fileId',}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample16 - How to insert Assembly questionnaire into webpage
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample16 - How to insert Assembly questionnaire into webpage
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to insert Assembly questionary into webpage using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample16.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Result:
-      #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      FileId = #{(defined? fileId) ? fileId : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-16-how-to-insert-assembly-questionnaire-into-webpage', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId', :id => 'clientId' }
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey', :id => 'privateKey'}
+        %br/
+        %label{:for => 'fileId'} GroupDocs FileID
+        %br/
+        %input{:type=>'text', :name=>'fileId',}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Result:
+        #{(defined? iframe) ? iframe : ''}
 
-= partial :_others_samples
+  = partial :_others_samples

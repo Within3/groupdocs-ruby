@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample28'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample28</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-28-how-to-delete-all-annotations-from-document'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample28</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample28'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-28-how-to-delete-all-annotations-from-document'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,12 +63,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:file_id</span>, params[<span class="symbol">:fileId</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:file_id</span>, params[<span class="hljs-symbol">:fileId</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -83,7 +83,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.file_id.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.file_id.empty?</pre></div></div>
             
         </li>
         
@@ -98,13 +98,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -119,7 +119,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key</pre></div></div>
             
@@ -136,8 +136,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -152,8 +152,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    files_list = <span class="constant">GroupDocs::Storage::Folder</span>.list!(<span class="string">'/'</span>, {})
-    document = <span class="string">''</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    files_list = <span class="hljs-constant">GroupDocs::Storage::Folder</span>.list!(<span class="hljs-string">'/'</span>, {})
+    document = <span class="hljs-string">''</span></pre></div></div>
             
         </li>
         
@@ -168,14 +168,15 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    files_list.each <span class="keyword">do</span> |element|
-      <span class="keyword">if</span> element.respond_to?(<span class="string">'guid'</span>) == <span class="keyword">true</span> <span class="keyword">and</span> element.guid == settings.file_id
+            <div class="content"><div class='highlight'><pre>    files_list.each <span class="hljs-keyword">do</span> |element|
+      <span class="hljs-keyword">if</span> element.respond_to?(<span class="hljs-string">'guid'</span>) == <span class="hljs-keyword">true</span> <span class="hljs-keyword">and</span> element.guid == settings.file_id
         document = element
-      <span class="keyword">end</span>
-    <span class="keyword">end</span>
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
 
+    document = <span class="hljs-constant">GroupDocs::Storage::File</span>.new(<span class="hljs-symbol">guid:</span> settings.file_id)
 
-    <span class="keyword">unless</span> document.instance_of? <span class="constant">String</span></pre></div></div>
+    <span class="hljs-keyword">unless</span> document.instance_of? <span class="hljs-constant">String</span></pre></div></div>
             
         </li>
         
@@ -205,9 +206,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      annotations.each <span class="keyword">do</span> |annotation|
+            <div class="content"><div class='highlight'><pre>      annotations.each <span class="hljs-keyword">do</span> |annotation|
           annotation.remove!()
-      <span class="keyword">end</span></pre></div></div>
+      <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -222,7 +223,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      iframe = <span class="string">"/document-viewer/embed/<span class="subst">#{settings.file_id}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      iframe = <span class="hljs-string">"/document-viewer/embed/<span class="hljs-subst">#{settings.file_id}</span>"</span></pre></div></div>
             
         </li>
         
@@ -237,7 +238,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      url = <span class="hljs-constant">GroupDocs::Api::Request</span>.new(<span class="hljs-symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
             
         </li>
         
@@ -252,14 +253,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="keyword">case</span> base_path
-        <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-          iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
-        <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-          iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-        <span class="keyword">else</span>
-          iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-      <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">case</span> base_path
+        <span class="hljs-keyword">when</span> <span class="hljs-string">'https://stage-api-groupdocs.dynabic.com'</span>
+          iframe = <span class="hljs-string">"https://stage-api-groupdocs.dynabic.com<span class="hljs-subst">#{url}</span>"</span>
+        <span class="hljs-keyword">when</span> <span class="hljs-string">'https://dev-api-groupdocs.dynabic.com'</span>
+          iframe = <span class="hljs-string">"https://dev-apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+        <span class="hljs-keyword">else</span>
+          iframe = <span class="hljs-string">"https://apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+      <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -274,14 +275,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      iframe = <span class="string">"&lt;iframe id='downloadframe' src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+            <div class="content"><div class='highlight'><pre>      iframe = <span class="hljs-string">"&lt;iframe id='downloadframe' src='<span class="hljs-subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
 
-      message = <span class="string">'Annotations was deleted from document'</span>
-    <span class="keyword">end</span>
+      message = <span class="hljs-string">'Annotations was deleted from document'</span>
+    <span class="hljs-keyword">end</span>
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -296,8 +297,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample28</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:userId</span> =&gt; settings.client_id, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:messages</span> =&gt; message, <span class="symbol">:iframe</span> =&gt; iframe, <span class="symbol">:fileId</span> =&gt; settings.file_id, <span class="symbol">:err</span> =&gt; err}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample28</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:userId</span> =&gt; settings.client_id, <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key, <span class="hljs-symbol">:messages</span> =&gt; message, <span class="hljs-symbol">:iframe</span> =&gt; iframe, <span class="hljs-symbol">:fileId</span> =&gt; settings.file_id, <span class="hljs-symbol">:err</span> =&gt; err}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

@@ -1,79 +1,85 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample45
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to check statistic info for the document using using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample45.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-
-  %br/
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample45', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %div.guid_field
-        %label{:for=>'folderName'} Folder name in which document is stored
-        %span{:class => 'optional'} (If document stored in the root, leave this field empty)
-        %br/
-        %input{:type=>'text', :name=>'folderName'}
-      %div
-        %label{:for=>'fileName'} File name to return info for it
-        %br/
-        %input{:type=>'text', :name=>'fileName'}
-        %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p
-      Results:
-    #{(defined? result) ? result : ''}
+%head
+  %title Sample45 - How to check statistic info for the document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
   %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-  :javascript
-    var allTd = document.getElementsByTagName("td");
-    var createClickHandler =
-      function(row)
-      {
-        return function() {
-          alert(row);
-                          };
-      };
-    for(var i = 0; i < allTd.length; i++) {
-        var td = allTd[i];
-        if (td.innerText.length > 72) {
-             var oldText = td.innerText;
-             newText = td.innerText.slice(0, td.innerText.length - 45) + '…';
-             td.innerText = newText
-             td.onclick = createClickHandler(oldText)
-        }
-    }
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample45 - How to check statistic info for the document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to check statistic info for the document using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample45.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+
+    %br/
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-45-how-to-check-statistic-info-for-the-document', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %div.guid_field
+          %label{:for=>'folderName'} Folder name in which document is stored
+          %span{:class => 'optional'} (If document stored in the root, leave this field empty)
+          %br/
+          %input{:type=>'text', :name=>'folderName'}
+        %div
+          %label{:for=>'fileName'} File name to return info for it
+          %br/
+          %input{:type=>'text', :name=>'fileName'}
+          %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+      #{(defined? result) ? result : ''}
+    %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+    :javascript
+      var allTd = document.getElementsByTagName("td");
+      var createClickHandler =
+        function(row)
+        {
+          return function() {
+            alert(row);
+                            };
+        };
+      for(var i = 0; i < allTd.length; i++) {
+          var td = allTd[i];
+          if (td.innerText.length > 72) {
+               var oldText = td.innerText;
+               newText = td.innerText.slice(0, td.innerText.length - 45) + '…';
+               td.innerText = newText
+               td.onclick = createClickHandler(oldText)
+          }
+      }
 
 
 
-= partial :_others_samples
+  = partial :_others_samples
 

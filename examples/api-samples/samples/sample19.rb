@@ -1,5 +1,5 @@
 #GET request
-get '/sample19' do
+get '/sample-19-how-to-compare-documents' do
   haml :sample19
 end
 
@@ -69,7 +69,7 @@ get '/sample19/downloads/:filename' do |filename|
 end
 
 #POST request
-post '/sample19' do
+post '/sample-19-how-to-compare-documents' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

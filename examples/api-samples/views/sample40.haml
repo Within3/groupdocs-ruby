@@ -1,95 +1,100 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample40
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i
-      This sample will show how to set callback for signature form and re-direct when it was signed using Ruby SDK
-  %br/
-  %br/
-  /
-  %span.documentation
-    %a{:href => '/docs/sample40.html'} Builtin documentation for this sample
+%head
+  %title Sample40 - How to set callback for Annotation and manage user rights
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample40 - How to set callback for Annotation and manage user rights
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+        This sample will show how to set callback for signature form and re-direct when it was signed using Ruby SDK
+    %br/
+    %br/
+    /
+    %span.documentation
+      %a{:href => '/docs/sample40.html'} Builtin documentation for this sample
 
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    Callback = #{(defined? callback) ? callback : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample40', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for=>'form', :id=>'form'} Form GUID
-      %br/
-      %input{:type=>'text', :name=>'formGuid'}
-      %br/
-      %label{:for=>'callback'}
-        Callback URL
-        %span.optional (Optional)
-        %br/
-        %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample40/callback)
-      %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callbackUrl'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath', :id=>'basePath'}
-      %br/
-      %br/
-
-      %input{:type => 'submit', :value => 'Publish form'}
-      %span{:id=>'resultsStatus', :style=>'color:red;display:none;'} (Please wait for ajax response)
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;', :id => 'result'}
+    %br/
+    %br/
     %p
-      Results:
-      #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      Callback = #{(defined? callback) ? callback : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-was-signed', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for=>'form', :id=>'form'} Form GUID
+        %br/
+        %input{:type=>'text', :name=>'formGuid'}
+        %br/
+        %label{:for=>'callback'}
+          Callback URL
+          %span.optional (Optional)
+          %br/
+          %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample40/callback)
+        %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callbackUrl'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath', :id=>'basePath'}
+        %br/
+        %br/
 
-= partial :_others_samples
+        %input{:type => 'submit', :value => 'Publish form'}
+        %span{:id=>'resultsStatus', :style=>'color:red;display:none;'} (Please wait for ajax response)
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;', :id => 'result'}
+      %p
+        Results:
+        #{(defined? iframe) ? iframe : ''}
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  $(document).ready(setTimeout(check, 15000));
-         function check() {
+  = partial :_others_samples
 
-             if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
-                 $('#resultsStatus').fadeIn("slow");
-                 $.ajax({
-                     type: 'POST',
-                     url: '/sample40/check_guid',
-                     success: function(data) {
-                         $('#resultsStatus').fadeOut("slow");
-                         var result = null;
-                         result = data;
-                         console.log(result)
-                         if (result) {
-                             $("#result").css("display", "none");
-                             var guid = result;
-                             var leftvar = (screen.width - 800) / 2;
-                             var topvar = (screen.height - 600) / 2;
-                             window.open('/popup?guid=' + guid, 'Redirect window', 'width=850,height=500,left=' + leftvar + ',top=' + topvar + ',resizable=no,scrollbars=no,location=no');
-                         }
-                     },
-                     dataType: "text"
-                 });
-             }
-         }
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    $(document).ready(setTimeout(check, 15000));
+           function check() {
+               if (($("input[name=callbackUrl]").val() != "") && (document.getElementById("result") != null)) {
+                   $('#resultsStatus').fadeIn("slow");
+                   $.ajax({
+                       type: 'POST',
+                       url: '/sample40/check_guid',
+                       success: function(data) {
+                           $('#resultsStatus').fadeOut("slow");
+                           var result = null;
+                           result = data;
+                           console.log(result)
+                           if (result) {
+                               $("#result").css("display", "none");
+                               var guid = result;
+                               var leftvar = (screen.width - 800) / 2;
+                               var topvar = (screen.height - 600) / 2;
+                               window.open('/popup?guid=' + guid, 'Redirect window', 'width=850,height=500,left=' + leftvar + ',top=' + topvar + ',resizable=no,scrollbars=no,location=no');
+                           }
+                       },
+                       dataType: "text"
+                   });
+               }
+           }
 

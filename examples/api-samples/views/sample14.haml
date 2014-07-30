@@ -1,55 +1,61 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample14
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to check the list of shares for a folder using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample14.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    Folder = #{(defined? folder) ? folder : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample14', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'path'} GroupDocs Folder
-      %br/
-      %input{:type=>'text', :name=>'path'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample14 - How to check the list of shares for a folder
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample14 - How to check the list of shares for a folder
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to check the list of shares for a folder using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample14.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      List of shares for a folder:
-      %br/
+      You entered:
     %p
-      Shared users:
-      - if defined? shares.first
-        - shares.each do |user|
-          %span{:style => "color: green"} #{user.primary_email}
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      Folder = #{(defined? folder) ? folder : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-14-how-to-check-the-list-of-shares-for-a-folder', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'path'} GroupDocs Folder
+        %br/
+        %input{:type=>'text', :name=>'path'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        List of shares for a folder:
+        %br/
+      %p
+        Shared users:
+        - if defined? shares.first
+          - shares.each do |user|
+            %span{:style => "color: green"} #{user.primary_email}
 
 
-= partial :_others_samples
+  = partial :_others_samples

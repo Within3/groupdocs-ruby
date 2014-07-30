@@ -1,88 +1,94 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample10
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to share particular document from your GroupDocs account to other GroupDocs users using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample10.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    client_id = #{(defined? clientId) ? clientId : ''}
-  %p
-    private_key = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    File GUID = #{(defined? guid) ? guid : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample10', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type => 'text', :id => 'clientId', :name => 'clientId', :value => "#{(defined? client_id) ? client_id : ''}"}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs private_key
-      %br/
-      %input{:type => 'text', :name => 'privateKey', :value => "#{(defined? private_key) ? private_key : ''}" }
-      %br/
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
-        %br/
-
-      %div.guid_field
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'text', :name=>'fileId'}
-        
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'file'} Upload local file
-        %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
-        %br/
-        %input{:type=>'text', :name=>'url'}
-      
-      %br/
-      %label{:for => 'email'} Your email
-      %br/
-      %input{:type => 'text', :name => 'email',  :value => "#{(defined? email) ? email : ''}"}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %input{:type => 'submit', :value => 'Make Request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample10 - How to share a document to other users
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample10 - How to share a document to other users
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to share particular document from your GroupDocs account to other GroupDocs users using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample10.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      %h3
-        %span{:color => 'green'}
-          Document shared to user with e-mail
-          %h1 #{(defined? shared) ? shared : ''}
+      You entered:
+    %p
+      client_id = #{(defined? clientId) ? clientId : ''}
+    %p
+      private_key = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      File GUID = #{(defined? guid) ? guid : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-10-how-to-share-a-document-to-other-users', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
+        %input{:type => 'text', :id => 'clientId', :name => 'clientId', :value => "#{(defined? client_id) ? client_id : ''}"}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs private_key
+        %br/
+        %input{:type => 'text', :name => 'privateKey', :value => "#{(defined? private_key) ? private_key : ''}" }
+        %br/
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
 
-= partial :_others_samples
+        %div.guid_field
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
 
-  $(function($){
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
+        %br/
+        %label{:for => 'email'} Your email
+        %br/
+        %input{:type => 'text', :name => 'email',  :value => "#{(defined? email) ? email : ''}"}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %input{:type => 'submit', :value => 'Make Request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        %h3
+          %span{:color => 'green'}
+            Document shared to user with e-mail
+            %h1 #{(defined? shared) ? shared : ''}
+          %br/
+
+  = partial :_others_samples
+
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

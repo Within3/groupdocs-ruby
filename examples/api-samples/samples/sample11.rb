@@ -1,10 +1,10 @@
 #GET request
-get '/sample11' do
+get '/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document' do
   haml :sample11
 end
 
 #POST request
-post '/sample11' do
+post '/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

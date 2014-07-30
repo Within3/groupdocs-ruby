@@ -1,10 +1,10 @@
 #GET request
-get '/sample23' do
+get '/sample-23-how-to-view-document-pages-as-images' do
   haml :sample23
 end
 
 #POST request
-post '/sample23' do
+post '/sample-23-how-to-view-document-pages-as-images' do
 
   #Set variables
   set :client_id, params[:clientId]

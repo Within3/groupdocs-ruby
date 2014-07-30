@@ -1,48 +1,53 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'}GroupDocs Ruby SDK Samples
-  \- Sample34
-  
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to create folder in the GroupDocs account using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample34.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-
-    #requestForm{:style => 'padding:20px; border:1px solid black;'}
-      %p Enter data for request and press "Make request" button
-      %form{:action => '/sample34', :enctype => 'multipart/form-data', :method => 'post'}
-        %label{:for => 'clientId'} GroupDocs Client ID
-        %br/
-        %input{:type=>'text', :name=>'clientId'}
-        %br/
-        %label{:for => 'privateKey'} GroupDocs Private Key
-        %br/
-        %input{:type=>'text', :name=>'privateKey'}
-        %br/
-        %label{:for => 'path'} Folder name
-        %br/
-        %input{:type=>'text', :name=>'folder'}
-        %br/
-        %label{:for => 'basePath'} Base Path
-        %span{:class => 'optional'} (Optional)
-        %br/
-        %input{:type=>'text', :name=>'basePath'}
-        %br/
-        %br/
-        %input{:type => 'submit', :value => 'Make Request'}
+%head
+  %title Sample34 - How to create folder in the GroupDocs account
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'}GroupDocs Ruby SDK Samples
     %br/
-    %p Results:
-    %div{:style => "color:green"} #{(defined? message) ? message : ''}
+    Sample34 - How to create folder in the GroupDocs account
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to create folder in the GroupDocs account using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample34.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
 
-= partial :_others_samples
+      #requestForm{:style => 'padding:20px; border:1px solid black;'}
+        %p Enter data for request and press "Make request" button
+        %form{:action => '/sample-34-how-to-create-folder-in-the-groupdocs-account', :enctype => 'multipart/form-data', :method => 'post'}
+          %label{:for => 'clientId'} GroupDocs Client ID
+          %br/
+          %input{:type=>'text', :name=>'clientId'}
+          %br/
+          %label{:for => 'privateKey'} GroupDocs Private Key
+          %br/
+          %input{:type=>'text', :name=>'privateKey'}
+          %br/
+          %label{:for => 'path'} Folder name
+          %br/
+          %input{:type=>'text', :name=>'folder'}
+          %br/
+          %label{:for => 'basePath'} Base Path
+          %span{:class => 'optional'} (Optional)
+          %br/
+          %input{:type=>'text', :name=>'basePath'}
+          %br/
+          %br/
+          %input{:type => 'submit', :value => 'Make Request'}
+      %br/
+      %p Results:
+      %div{:style => "color:green"} #{(defined? message) ? message : ''}
+
+  = partial :_others_samples

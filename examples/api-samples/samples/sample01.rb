@@ -1,10 +1,10 @@
 #GET request
-get '/sample01' do
+get '/sample-1-how-to-login-to-groupdocs-using-the-api' do
   haml :sample01
 end
 
 #POST request
-post '/sample01' do
+post '/sample-1-how-to-login-to-groupdocs-using-the-api' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

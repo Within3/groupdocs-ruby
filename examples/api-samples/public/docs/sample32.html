@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample32'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample32</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-via-callback'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample32</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,12 +48,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample32/callback'</span> <span class="keyword">do</span>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample32/callback'</span> <span class="hljs-keyword">do</span>
 
-  source_id = <span class="string">''</span>
-  client_id = <span class="string">''</span>
-  private_key = <span class="string">''</span>
-  subscriber_email = <span class="string">''</span></pre></div></div>
+  source_id = <span class="hljs-string">''</span>
+  client_id = <span class="hljs-string">''</span>
+  private_key = <span class="hljs-string">''</span>
+  subscriber_email = <span class="hljs-string">''</span></pre></div></div>
             
         </li>
         
@@ -68,9 +68,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  data = <span class="constant">JSON</span>.parse(request.body.read)
-  <span class="keyword">begin</span>
-    raise <span class="string">'Empty params!'</span> <span class="keyword">if</span> data.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>  data = <span class="hljs-constant">JSON</span>.parse(request.body.read)
+  <span class="hljs-keyword">begin</span>
+    raise <span class="hljs-string">'Empty params!'</span> <span class="hljs-keyword">if</span> data.empty?</pre></div></div>
             
         </li>
         
@@ -85,11 +85,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    data.each <span class="keyword">do</span> |key, value|
-      <span class="keyword">if</span> key == <span class="string">'SourceId'</span>
+            <div class="content"><div class='highlight'><pre>    data.each <span class="hljs-keyword">do</span> |key, value|
+      <span class="hljs-keyword">if</span> key == <span class="hljs-string">'SourceId'</span>
         source_id = value
-      <span class="keyword">end</span>
-    <span class="keyword">end</span></pre></div></div>
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -104,13 +104,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> <span class="constant">File</span>.exist?(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/user_info.txt"</span>)
-      contents = <span class="constant">File</span>.read(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/user_info.txt"</span>)
-      contents = contents.split(<span class="string">' '</span>)
-      client_id = contents[<span class="number">0</span>]
-      private_key = contents[<span class="number">1</span>]
-      subscriber_email = contents[<span class="number">2</span>]
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> <span class="hljs-constant">File</span>.exist?(<span class="hljs-string">"<span class="hljs-subst">#{<span class="hljs-constant">File</span>.dirname(__FILE_<span class="hljs-number">_</span>)}</span>/../public/user_info.txt"</span>)
+      contents = <span class="hljs-constant">File</span>.read(<span class="hljs-string">"<span class="hljs-subst">#{<span class="hljs-constant">File</span>.dirname(__FILE_<span class="hljs-number">_</span>)}</span>/../public/user_info.txt"</span>)
+      contents = contents.split(<span class="hljs-string">' '</span>)
+      client_id = contents[<span class="hljs-number">0</span>]
+      private_key = contents[<span class="hljs-number">1</span>]
+      subscriber_email = contents[<span class="hljs-number">2</span>]
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -125,7 +125,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    form = <span class="constant">GroupDocs::Signature::Form</span>.new({<span class="symbol">:id</span> =&gt; source_id})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    form = <span class="hljs-constant">GroupDocs::Signature::Form</span>.new({<span class="hljs-symbol">:id</span> =&gt; source_id})</pre></div></div>
             
         </li>
         
@@ -140,7 +140,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    document = form.documents!({<span class="symbol">:client_id</span> =&gt; client_id, <span class="symbol">:private_key</span> =&gt; private_key})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    document = form.documents!({<span class="hljs-symbol">:client_id</span> =&gt; client_id, <span class="hljs-symbol">:private_key</span> =&gt; private_key})</pre></div></div>
             
         </li>
         
@@ -170,13 +170,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    body = <span class="string">"
+            <div class="content"><div class='highlight'><pre>    body = <span class="hljs-string">"
           &lt;html&gt;
             &lt;head&gt;
               &lt;title&gt;Sign form notification&lt;/title&gt;
             &lt;/head&gt;
             &lt;body&gt;
-              &lt;p&gt;Document <span class="subst">#{document.name}</span> is signed&lt;/p&gt;
+              &lt;p&gt;Document <span class="hljs-subst">#{document.name}</span> is signed&lt;/p&gt;
             &lt;/body&gt;
           &lt;/html&gt;"</span></pre></div></div>
             
@@ -193,7 +193,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="function"><span class="keyword">def</span> <span class="title">send_mail</span><span class="params">(to, body)</span></span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-function"><span class="hljs-keyword">def</span> </span>send_mail(to, body)</pre></div></div>
             
         </li>
         
@@ -208,15 +208,15 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>       <span class="keyword">return</span> <span class="keyword">true</span>
-    <span class="keyword">end</span>
+            <div class="content"><div class='highlight'><pre>       <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>
+    <span class="hljs-keyword">end</span>
 
-    send_mail(to, body)  <span class="comment">#Send notification mail</span>
+    send_mail(to, body)  <span class="hljs-comment">#Send notification mail</span>
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span>
-<span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -231,7 +231,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample32'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-via-callback'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -246,16 +246,16 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:template_guid</span>, params[<span class="symbol">:templateGuid</span>]
-  set <span class="symbol">:form_guid</span>, params[<span class="symbol">:formGuid</span>]
-  set <span class="symbol">:email</span>, params[<span class="symbol">:email</span>]
-  set <span class="symbol">:callback</span>, params[<span class="symbol">:callbackUrl</span>]
-  set <span class="symbol">:source</span>, params[<span class="symbol">:source</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:template_guid</span>, params[<span class="hljs-symbol">:templateGuid</span>]
+  set <span class="hljs-symbol">:form_guid</span>, params[<span class="hljs-symbol">:formGuid</span>]
+  set <span class="hljs-symbol">:email</span>, params[<span class="hljs-symbol">:email</span>]
+  set <span class="hljs-symbol">:callback</span>, params[<span class="hljs-symbol">:callbackUrl</span>]
+  set <span class="hljs-symbol">:source</span>, params[<span class="hljs-symbol">:source</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -270,7 +270,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty?</pre></div></div>
             
         </li>
         
@@ -285,13 +285,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -306,7 +306,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key</pre></div></div>
             
@@ -323,8 +323,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -339,8 +339,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.callback
-      out_file = <span class="constant">File</span>.new(<span class="string">"<span class="subst">#{<span class="constant">File</span>.dirname(__FILE_<span class="number">_</span>)}</span>/../public/user_info.txt"</span>, <span class="string">'w'</span>)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.callback
+      out_file = <span class="hljs-constant">File</span>.new(<span class="hljs-string">"<span class="hljs-subst">#{<span class="hljs-constant">File</span>.dirname(__FILE_<span class="hljs-number">_</span>)}</span>/../public/user_info.txt"</span>, <span class="hljs-string">'w'</span>)</pre></div></div>
             
         </li>
         
@@ -355,17 +355,17 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      out_file.write(<span class="string">"<span class="subst">#{settings.client_id}</span> "</span>)
-      out_file.write(<span class="string">"<span class="subst">#{settings.private_key}</span> "</span>)
-      out_file.write(<span class="string">"<span class="subst">#{settings.email}</span>"</span>)
+            <div class="content"><div class='highlight'><pre>      out_file.write(<span class="hljs-string">"<span class="hljs-subst">#{settings.client_id}</span> "</span>)
+      out_file.write(<span class="hljs-string">"<span class="hljs-subst">#{settings.private_key}</span> "</span>)
+      out_file.write(<span class="hljs-string">"<span class="hljs-subst">#{settings.email}</span>"</span>)
       out_file.close
-    <span class="keyword">end</span>
+    <span class="hljs-keyword">end</span>
 
-    guid = <span class="keyword">nil</span>
-    url = <span class="keyword">nil</span>
+    guid = <span class="hljs-keyword">nil</span>
+    url = <span class="hljs-keyword">nil</span>
 
-    <span class="keyword">case</span> settings.source
-    <span class="keyword">when</span> <span class="string">'form'</span>
+    <span class="hljs-keyword">case</span> settings.source
+    <span class="hljs-keyword">when</span> <span class="hljs-string">'form'</span>
       id = settings.form_guid</pre></div></div>
             
         </li>
@@ -381,9 +381,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      form = <span class="constant">GroupDocs::Signature::Form</span>.new
-      form.name = <span class="string">'test'</span>
-      form.notifyOwnerOnSign = <span class="keyword">true</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      form = <span class="hljs-constant">GroupDocs::Signature::Form</span>.new
+      form.name = <span class="hljs-string">'test'</span>
+      form.notifyOwnerOnSign = <span class="hljs-keyword">true</span></pre></div></div>
             
         </li>
         
@@ -398,8 +398,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      id = form.create!({<span class="symbol">:formId</span> =&gt; guid})
-      form = <span class="constant">GroupDocs::Signature::Form</span>.get!(id)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      id = form.create!({<span class="hljs-symbol">:formId</span> =&gt; guid})
+      form = <span class="hljs-constant">GroupDocs::Signature::Form</span>.get!(id)</pre></div></div>
             
         </li>
         
@@ -414,14 +414,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      form.publish!({<span class="symbol">:callbackUrl</span> =&gt; settings.callback})
+            <div class="content"><div class='highlight'><pre>      form.publish!({<span class="hljs-symbol">:callbackUrl</span> =&gt; settings.callback})
       guid = settings.form_guid
 
-    <span class="keyword">when</span> <span class="string">'template'</span>
+    <span class="hljs-keyword">when</span> <span class="hljs-string">'template'</span>
 
-      form = <span class="constant">GroupDocs::Signature::Form</span>.new
-      form.name = <span class="string">'test'</span>
-      form.notifyOwnerOnSign = <span class="keyword">true</span></pre></div></div>
+      form = <span class="hljs-constant">GroupDocs::Signature::Form</span>.new
+      form.name = <span class="hljs-string">'test'</span>
+      form.notifyOwnerOnSign = <span class="hljs-keyword">true</span></pre></div></div>
             
         </li>
         
@@ -436,7 +436,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>     guid = form.create!({ <span class="symbol">:templateId</span> =&gt; settings.template_guid})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>     guid = form.create!({ <span class="hljs-symbol">:templateId</span> =&gt; settings.template_guid})</pre></div></div>
             
         </li>
         
@@ -451,9 +451,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      form.publish!({<span class="symbol">:callbackUrl</span> =&gt; settings.callback})
+            <div class="content"><div class='highlight'><pre>      form.publish!({<span class="hljs-symbol">:callbackUrl</span> =&gt; settings.callback})
 
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -468,7 +468,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"/signature2/forms/signembed/<span class="subst">#{guid}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="hljs-string">"/signature2/forms/signembed/<span class="hljs-subst">#{guid}</span>"</span></pre></div></div>
             
         </li>
         
@@ -483,7 +483,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    url = <span class="hljs-constant">GroupDocs::Api::Request</span>.new(<span class="hljs-symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
             
         </li>
         
@@ -498,14 +498,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">case</span> base_path
-      <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-        iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
-      <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-        iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-      <span class="keyword">else</span>
-        iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">case</span> base_path
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'https://stage-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="hljs-string">"https://stage-api-groupdocs.dynabic.com<span class="hljs-subst">#{url}</span>"</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'https://dev-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="hljs-string">"https://dev-apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+      <span class="hljs-keyword">else</span>
+        iframe = <span class="hljs-string">"https://apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -520,11 +520,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"&lt;iframe id='downloadframe' src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="hljs-string">"&lt;iframe id='downloadframe' src='<span class="hljs-subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -539,13 +539,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample32</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:userId</span> =&gt; settings.client_id,
-                              <span class="symbol">:privateKey</span> =&gt; settings.private_key,
-                              <span class="symbol">:callback</span> =&gt; settings.callback,
-                              <span class="symbol">:email</span> =&gt; settings.email,
-                              <span class="symbol">:iframe</span> =&gt; iframe,
-                              <span class="symbol">:err</span> =&gt; err}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample32</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:userId</span> =&gt; settings.client_id,
+                              <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key,
+                              <span class="hljs-symbol">:callback</span> =&gt; settings.callback,
+                              <span class="hljs-symbol">:email</span> =&gt; settings.email,
+                              <span class="hljs-symbol">:iframe</span> =&gt; iframe,
+                              <span class="hljs-symbol">:err</span> =&gt; err}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

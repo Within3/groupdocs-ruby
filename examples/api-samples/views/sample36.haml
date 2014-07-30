@@ -1,64 +1,69 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'}GroupDocs Ruby SDK Samples
-  \- Sample36
-
-.samplecontent{:style => 'padding:10px;'}
-  %i How to download signed documents when envelope was signed using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample36.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    Signed Envelope Guid = #{(defined? envelopeGuid) ? envelopeGuid : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %p
-    Results:
+%head
+  %title Sample36 - How to download signed documents when envelope was signed
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'}GroupDocs Ruby SDK Samples
+    %br/
+    Sample36 - How to download signed documents when envelope was signed
+  .samplecontent{:style => 'padding:10px;'}
+    %i How to download signed documents when envelope was signed using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample36.html'} Builtin documentation for this sample
     %br/
     %br/
     %p
-      #{(defined? message) ? message : ''}
-    %br/
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      Signed Envelope Guid = #{(defined? envelopeGuid) ? envelopeGuid : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %p
+      Results:
+      %br/
+      %br/
+      %p
+        #{(defined? message) ? message : ''}
+      %br/
 
 
-    #requestForm{:style => 'padding:20px; border:1px solid black;'}
-      %p Enter data for request and press "Make request" button
-      %form{:action => '/sample36', :enctype => 'multipart/form-data', :method => 'post'}
-        %label{:for => 'clientId'} GroupDocs Client ID
-        %br/
-        %input{:type=>'text', :name=>'clientId'}
-        %br/
-        %label{:for => 'privateKey'} GroupDocs Private Key
-        %br/
-        %input{:type=>'text', :name=>'privateKey'}
-        %br/
-        %label{:for => 'path'} Signed Envelop Guid
-        %br/
-        %input{:type=>'text', :name=>'envelopeGuid'}
-        %br/
-        %label{:for => 'basePath'} Base Path
-        %span{:class => 'optional'} (Optional)
-        %br/
-        %input{:type=>'text', :name=>'basePath'}
-        %br/
-        %br/
-        %input{:type => 'submit', :value => 'Make Request'}
-    %br/
-= partial :_others_samples
+      #requestForm{:style => 'padding:20px; border:1px solid black;'}
+        %p Enter data for request and press "Make request" button
+        %form{:action => '/sample-36-how-to-download-signed-documents-when-envelope-was-signed', :enctype => 'multipart/form-data', :method => 'post'}
+          %label{:for => 'clientId'} GroupDocs Client ID
+          %br/
+          %input{:type=>'text', :name=>'clientId'}
+          %br/
+          %label{:for => 'privateKey'} GroupDocs Private Key
+          %br/
+          %input{:type=>'text', :name=>'privateKey'}
+          %br/
+          %label{:for => 'path'} Signed Envelop Guid
+          %br/
+          %input{:type=>'text', :name=>'envelopeGuid'}
+          %br/
+          %label{:for => 'basePath'} Base Path
+          %span{:class => 'optional'} (Optional)
+          %br/
+          %input{:type=>'text', :name=>'basePath'}
+          %br/
+          %br/
+          %input{:type => 'submit', :value => 'Make Request'}
+      %br/
+  = partial :_others_samples
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  function check() {
-    $.get('/sample36/check', function(data) {
-      $('#results_status').fadeOut("slow");
-      $('#downloadframe').attr("src", "/sample36/downloads/" + data);
-    }, 'text');
-  }
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    function check() {
+      $.get('/sample36/check', function(data) {
+        $('#results_status').fadeOut("slow");
+        $('#downloadframe').attr("src", "/sample36/downloads/" + data);
+      }, 'text');
+    }

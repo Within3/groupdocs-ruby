@@ -1,53 +1,59 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample06
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to add provided signature to provided document using Ruby SDK. Signed file will be uploaded to GroupDocs account and its GUID will be returned and embed into webpage with GroupDocs Ebedded Viewer.
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample06.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  #files_form
-    %form{:action => '/sample06', :enctype => 'multipart/form-data', :method => 'post'}
-      %br/
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :id=>'clientId', :name => 'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :id=>'privateKey', :name => 'privateKey'}
-      %br/
-      %label{:for => 'fiDocument'} Document to sign
-      %br/
-      %input{:type => 'file', :id => 'fiDocument', :name => 'fiDocument'}/
-      %br/
-      %label{:for => 'fiSignature'} Signature
-      %br/
-      %input{:type => 'file',:id => 'fiSignature', :name => 'fiSignature'}/
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Upload and sign the document', :id => "btnLoad"}/
-      %br/
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample06 - How to add a Signature to a document in GroupDocs Signature
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample06 - How to add a Signature to a document in GroupDocs Signature
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to add provided signature to provided document using Ruby SDK. Signed file will be uploaded to GroupDocs account and its GUID will be returned and embed into webpage with GroupDocs Ebedded Viewer.
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample06.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Results:
-    #{(defined? iframe) ? iframe : ''}
-    
-= partial :_others_samples
+      You entered:
+    %p
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    #files_form
+      %form{:action => '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature', :enctype => 'multipart/form-data', :method => 'post'}
+        %br/
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :id=>'clientId', :name => 'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :id=>'privateKey', :name => 'privateKey'}
+        %br/
+        %label{:for => 'fiDocument'} Document to sign
+        %br/
+        %input{:type => 'file', :id => 'fiDocument', :name => 'fiDocument'}/
+        %br/
+        %label{:for => 'fiSignature'} Signature
+        %br/
+        %input{:type => 'file',:id => 'fiSignature', :name => 'fiSignature'}/
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Upload and sign the document', :id => "btnLoad"}/
+        %br/
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+      #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples

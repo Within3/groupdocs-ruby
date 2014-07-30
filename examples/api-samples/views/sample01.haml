@@ -1,59 +1,64 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'}GroupDocs Ruby SDK Samples
-  \- Sample01
-  
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to use Signer object to be authorized at GroupDocs and how to get GroupDocs user infromation using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample01.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
-    %table{:style => 'border:1px double black;'}
-      %tr
-        %th Field
-        %th Value
-      %tr
-        %td First Name
-        %td #{(defined? user.first_name) ? user.first_name : ''}
-      %tr
-        %td Last Name
-        %td #{(defined? user.last_name) ? user.last_name : ''}
-      %tr
-        %td Nick Name
-        %td #{(defined? user.nickname) ? user.nickname : ''}
-      %tr
-        %td Primary Email
-        %td #{(defined? user.primary_email) ? user.primary_email : ''}
+%head
+  %title Sample 1 - How to login to GroupDocs using the API
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'}GroupDocs Ruby SDK Samples
     %br/
-    #requestForm{:style => 'padding:20px; border:1px solid black;'}
-      %p Enter data for request and press "Make request" button
-      %form{:action => '/sample01', :enctype => 'multipart/form-data', :method => 'post'}
-        %label{:for => 'clientId'} GroupDocs Client ID
-        %br/
-        %input{:type=>'text', :name=>'clientId'}
-        %br/
-        %label{:for => 'privateKey'} GroupDocs Private Key
-        %br/
-        %input{:type=>'text', :name=>'privateKey'}
-        %br/
-        %label{:for => 'basePath'} Base Path
-        %span{:class => 'optional'} (Optional)
-        %br/
-        %input{:type=>'text', :name=>'basePath'}
-        %br/
-        %input{:type => 'submit', :value => 'Make Request'}
+    Sample 1 - How to login to GroupDocs using the API
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to use Signer object to be authorized at GroupDocs and how to get GroupDocs user infromation using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample01.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
 
-= partial :_others_samples
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      %table{:style => 'border:1px double black;'}
+        %tr
+          %th Field
+          %th Value
+        %tr
+          %td First Name
+          %td #{(defined? user.first_name) ? user.first_name : ''}
+        %tr
+          %td Last Name
+          %td #{(defined? user.last_name) ? user.last_name : ''}
+        %tr
+          %td Nick Name
+          %td #{(defined? user.nickname) ? user.nickname : ''}
+        %tr
+          %td Primary Email
+          %td #{(defined? user.primary_email) ? user.primary_email : ''}
+      %br/
+      #requestForm{:style => 'padding:20px; border:1px solid black;'}
+        %p Enter data for request and press "Make request" button
+        %form{:action => '/sample-1-how-to-login-to-groupdocs-using-the-api', :enctype => 'multipart/form-data', :method => 'post'}
+          %label{:for => 'clientId'} GroupDocs Client ID
+          %br/
+          %input{:type=>'text', :name=>'clientId'}
+          %br/
+          %label{:for => 'privateKey'} GroupDocs Private Key
+          %br/
+          %input{:type=>'text', :name=>'privateKey'}
+          %br/
+          %label{:for => 'basePath'} Base Path
+          %span{:class => 'optional'} (Optional)
+          %br/
+          %input{:type=>'text', :name=>'basePath'}
+          %br/
+          %input{:type => 'submit', :value => 'Make Request'}
+
+  = partial :_others_samples

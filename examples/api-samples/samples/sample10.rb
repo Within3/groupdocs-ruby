@@ -1,10 +1,10 @@
 #GET request
-get '/sample10' do
+get '/sample-10-how-to-share-a-document-to-other-users' do
   haml :sample10
 end
 
 #POST request
-post '/sample10' do
+post '/sample-10-how-to-share-a-document-to-other-users' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

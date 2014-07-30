@@ -1,5 +1,5 @@
 #GET request
-get '/sample41' do
+get '/sample-41-how-to-set-callback-for-annotation-and-manage-user-rights' do
   haml :sample41
 end
 
@@ -80,7 +80,7 @@ end
 
 
 #POST request
-post '/sample41' do
+post '/sample-41-how-to-set-callback-for-annotation-and-manage-user-rights' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

@@ -1,10 +1,10 @@
 #GET request
-get '/sample13' do
+get '/sample-13-how-to-add-collaborator-to-doc-with-annotations' do
   haml :sample13
 end
 
 #POST request
-post '/sample13' do
+post '/sample-13-how-to-add-collaborator-to-doc-with-annotations' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

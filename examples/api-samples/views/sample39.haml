@@ -1,4 +1,7 @@
 %head
+  %title Sample39 - How to add a Signature to a document and re-direct after signing with GroupDocs widget
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
   %script{:type=>"text/javascript", :src=>'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js'}
   %script{:type=>"text/javascript", :src=>'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'}
   %script{:type=>"text/javascript", :src=>'http://dev-apps-groupdocs.dynabic.com/content/signaturewidgets/groupdocs.sign.js'}
@@ -159,7 +162,8 @@
 %body
   %h3{:style => 'text-align:center;'}
     %a{:href => '/'} GroupDocs Ruby SDK Samples
-    \- Sample39
+    %br/
+    Sample39 - How to add a Signature to a document and re-direct after signing with GroupDocs widget
   .samplecontent{:style => 'padding:10px;'}
     %i This sample will show how to add a Signature to a document and redirect after signing with GroupDocs widget
     %br/
@@ -185,7 +189,7 @@
     %br/
     #requestForm{:style => 'padding:20px; border:1px solid black;'}
       %p Enter data for request and press "Make request" button
-      %form{:action => '/sample39', :enctype => 'multipart/form-data', :method => 'post'}
+      %form{:action => '/sample-39-how-to-add-a-signature-to-a-document-and-re-direct-after-signing-with-groupdocs-widget', :enctype => 'multipart/form-data', :method => 'post'}
         %label{:for => 'clientId'} GroupDocs ClientID
         %br/
         %input{:type=>'text', :name=>'clientId', :id=>'clientId'}

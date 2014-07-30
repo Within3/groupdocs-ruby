@@ -1,10 +1,10 @@
 #GET request
-get '/sample34' do
+get '/sample-34-how-to-create-folder-in-the-groupdocs-account' do
   haml :sample34
 end
 
 #POST request
-post '/sample34' do
+post '/sample-34-how-to-create-folder-in-the-groupdocs-account' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

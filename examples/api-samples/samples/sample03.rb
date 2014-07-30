@@ -1,10 +1,10 @@
 #GET request
-get '/sample03' do
+get '/sample-3-how-to-upload-a-file-to-groupdocs-using-the-storage-api' do
   haml :sample03
 end
 
 #POST request
-post '/sample03' do
+post '/sample-3-how-to-upload-a-file-to-groupdocs-using-the-storage-api' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
