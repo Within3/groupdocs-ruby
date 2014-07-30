@@ -1,49 +1,55 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample17
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to upload a file into the storage and compress it into zip archive using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample17.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample17', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId', :id => 'clientId' }
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey', :id => 'privateKey'}
-      %br/
-      %label{:for => 'file'} File
-      %br/
-      %input{:name => 'file', :type => 'file'}/
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Upload'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample17 - How to upload a file into the storage and compress it into zip archive
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample17 - How to upload a file into the storage and compress it into zip archive
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to upload a file into the storage and compress it into zip archive using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample17.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Results:
-    %span{:style => "color: green"} #{(defined? massage) ? massage : ''}
-    #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId', :id => 'clientId' }
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey', :id => 'privateKey'}
+        %br/
+        %label{:for => 'file'} File
+        %br/
+        %input{:name => 'file', :type => 'file'}/
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Upload'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+      %span{:style => "color: green"} #{(defined? massage) ? massage : ''}
+      #{(defined? iframe) ? iframe : ''}
 
-= partial :_others_samples
+  = partial :_others_samples

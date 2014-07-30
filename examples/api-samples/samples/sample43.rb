@@ -1,10 +1,10 @@
 #GET request
-get '/sample43' do
+get '/sample-43-how-to-add-numeration-in-the-doc-file' do
   haml :sample43
 end
 
 #POST request
-post '/sample43' do
+post '/sample-43-how-to-add-numeration-in-the-doc-file' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

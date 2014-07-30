@@ -1,59 +1,65 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample13
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to add collaborator to doc with annotations using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample13.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileId = #{(defined? fileId) ? fileId : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample13', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'fileId'} GroupDocs FileID
-      %br/
-      %input{:type=>'text', :name=>'fileId'}
-      %br/
-      %label{:for => 'email'} Collaborator Email
-      %br/
-      %input{:type=>'text', :name=>'email'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample13 - How to add collaborator to doc with annotations
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample13 - How to add collaborator to doc with annotations
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to add collaborator to doc with annotations using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample13.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Result:
+      You entered:
     %p
-      New collaborations:
-      - if defined? result.first
-        %span{:style => "color: green"}#{result.first.primary_email}
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileId = #{(defined? fileId) ? fileId : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-13-how-to-add-collaborator-to-doc-with-annotations', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'fileId'} GroupDocs FileID
+        %br/
+        %input{:type=>'text', :name=>'fileId'}
+        %br/
+        %label{:for => 'email'} Collaborator Email
+        %br/
+        %input{:type=>'text', :name=>'email'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Result:
+      %p
+        New collaborations:
+        - if defined? result.first
+          %span{:style => "color: green"}#{result.first.primary_email}
 
-= partial :_others_samples
+  = partial :_others_samples

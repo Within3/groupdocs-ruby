@@ -1,137 +1,143 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample18
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i 
-      This sample will show how to use 
-      %b ConvertFile
-      method to convert Doc to Docx, Docx to Doc, Docx and DOC to PDF and PPT to PDF, HTML to DOC and DOCX using GroupDocs Ruby SDK. When you use optional parameter "Callback URL" - additional logic will be involved: POST request from GroupDocs API server will be handled by convert_callback action. Also from result page an AJAX request will be sent to backend to check if callback was handled and result file was downloaded. If yes, then AJAX request will return a link to the file.
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample18.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileId = #{(defined? fileId.guid) ? fileId.guid : ''}
-  %p
-    Converted file GUID = #{(defined? converted) ? converted : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample18', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'fileId'} GroupDocs FileID
-      %br/
-
-
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+%head
+  %title Sample18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF, PPT to PDF
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF, PPT to PDF
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+        This sample will show how to use
+        %b ConvertFile
+        method to convert Doc to Docx, Docx to Doc, Docx and DOC to PDF and PPT to PDF, HTML to DOC and DOCX using GroupDocs Ruby SDK. When you use optional parameter "Callback URL" - additional logic will be involved: POST request from GroupDocs API server will be handled by convert_callback action. Also from result page an AJAX request will be sent to backend to check if callback was handled and result file was downloaded. If yes, then AJAX request will return a link to the file.
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample18.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileId = #{(defined? fileId.guid) ? fileId.guid : ''}
+    %p
+      Converted file GUID = #{(defined? converted) ? converted : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-ppt-to-pdf', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'text', :name=>'clientId'}
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'fileId'} GroupDocs FileID
         %br/
 
-      %div.guid_field
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
+
+        %div.guid_field
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
+
+
         %br/
-        %input{:type=>'text', :name=>'fileId'}
-      
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'file'} Upload local file
+        %label{:for=>'convertType'} Result file type
+        %select{:name=>'convertType', :id=>'convert_type'}
+          %option{:value => 'doc'}Doc
+          %option{:value => 'docx'}Docx
+          %option{:value => 'pdf'}PDF
+          %option{:value => 'ppt'}PPT
+          %option{:value => 'txt'}TXT
+
         %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
         %br/
-        %input{:type=>'text', :name=>'url'}
+        %label{:for=>'callback'}
+          Callback URL
+          %span.optional (Optional)
+          %br/
+          %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample18/convert_callback)
+        %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callback'}
+
+        %br/
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
 
 
+        %input{:type => 'submit', :value => 'Make request'}
+        %span{:id=>'results_status', :style=>'color:red;display:none;'} (Please wait for ajax response)
 
-      %br/
-      %label{:for=>'convertType'} Result file type
-      %select{:name=>'convertType', :id=>'convert_type'}
-        %option{:value => 'doc'}Doc
-        %option{:value => 'docx'}Docx
-        %option{:value => 'pdf'}PDF
-        %option{:value => 'ppt'}PPT
-        %option{:value => 'txt'}TXT
-        
-      %br/
-      %br/
-      %label{:for=>'callback'}
-        Callback URL 
-        %span.optional (Optional)
-        %br/ 
-        %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample18/convert_callback)
-      %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callback'}
+        %br/
+        %a{:href=>'/templates/testdocument.html'} Download sample HTML file 1
+        %br/
+        %a{:href=>'/templates/base-simple_source.html'} Download sample HTML file 2
+        %br/
+        %a{:href=>'/templates/sampledoc3.html'} Download sample HTML file 3
+        %br/
+        %br/
+      %div{:style => 'padding:20px; border:1px solid black;'}
+        %p
+          Results:
+          %iframe{:id=>'downloadframe', :style=>'display:none'}
+          #{(defined? iframe) ? iframe : ''}
 
-      %br/
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
+  = partial :_others_samples
 
-
-      %input{:type => 'submit', :value => 'Make request'}
-      %span{:id=>'results_status', :style=>'color:red;display:none;'} (Please wait for ajax response)
-      
-      %br/
-      %a{:href=>'/templates/testdocument.html'} Download sample HTML file 1
-      %br/
-      %a{:href=>'/templates/base-simple_source.html'} Download sample HTML file 2
-      %br/
-      %a{:href=>'/templates/sampledoc3.html'} Download sample HTML file 3
-      %br/
-      %br/
-    %div{:style => 'padding:20px; border:1px solid black;'}
-      %p
-        Results:
-        %iframe{:id=>'downloadframe', :style=>'display:none'}
-        #{(defined? iframe) ? iframe : ''}
-
-= partial :_others_samples
-
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  function check() {
-    $.get('/sample18/check', function(data) {
-      $('#results_status').fadeOut("slow");
-      $('#downloadframe').attr("src", "/sample18/downloads/" + data);
-    }, 'text');  
-  }
-
-  $(function($){
-    callbackUrl = $("input[name=callback]").val();
-    
-    if(callbackUrl !== "") {
-      $('#results_status').fadeIn("slow");
-      setTimeout(check, 5000)
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    function check() {
+      $.get('/sample18/check', function(data) {
+        $('#results_status').fadeOut("slow");
+        $('#downloadframe').attr("src", "/sample18/downloads/" + data);
+      }, 'text');
     }
 
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+    $(function($){
+      callbackUrl = $("input[name=callback]").val();
+
+      if(callbackUrl !== "") {
+        $('#results_status').fadeIn("slow");
+        setTimeout(check, 5000)
+      }
+
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

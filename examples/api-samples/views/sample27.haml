@@ -1,128 +1,133 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample27
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i
-      This sample will show how to create your own questionary using forms and show the result document using Ruby SDK
-  %br/
-  %br/
+%head
+  %title Sample27 - How to create your own questionnaire using forms and show the result document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample27 - How to create your own questionnaire using forms and show the result document
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+        This sample will show how to create your own questionary using forms and show the result document using Ruby SDK
+    %br/
+    %br/
 
-  %span.documentation
-    %a{:href => '/docs/sample27.html'} Docs for this sample
+    %span.documentation
+      %a{:href => '/docs/sample27.html'} Docs for this sample
 
-  %br/
-  %br/
-  %p
-    The data you provided:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    Sex = #{(defined? sex) ? sex : ''}
-  %p
-    Age = #{(defined? age) ? age : ''}
-  %p
-    Sunrise = #{(defined? sunrise) ? sunrise : ''}
-  %p
-    Name = #{(defined? name) ? name : ''}
-  %p
-    Result file type = #{(defined? type) ? type : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-
-  %span.documentation
-    %a{:href => '/templates/merge_field1_doc.docx'} Document with merge fields sample
-  %br/
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Assembly" button
-    %form{:action => '/sample27', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-
-
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'}Upload file from URL
-        %br/
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'text', :name=>'fileId'}
-
-      %div.guid_field
-        %label{:for=>'file'} Upload local file
-        %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
-        %br/
-        %input{:type=>'text', :name=>'url'}
-      %div{:style => 'background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;'}
-        %label{:for=>'name'} What is your name?
-        %br/
-        %input{:type=>'text', :name=>'name'}
-        %br/
-        %label{:for=>'sex'} What is your sex?
-        %input{:type=>'checkbox', :name=>'sex', :value=>'man'}Man
-        %input{:type=>'checkbox', :name=>'sex', :value=>'woman'}Woman
-        %br/
-        %br/
-        %label{:for=>'age'} Do you have 21 years old?
-        %select{:name=>'age'}
-          %option{:value=>'Yes'}Yes
-          %option{:value=>'No'}No
-        %br/
-        %br/
-        %label{:for=>'sunrise'} Do you like sunrise?
-        %select{:name=>'sunrise'}
-          %option{:value=>'Yes'}Yes
-          %option{:value=>'No'}No
-        %br/
-        %br/
-      %br/
-      %br/
-      %label{:for=>'type'}Select type of the result file
-      %select{:name=>'type'}
-        %option{:value=>'DOC'}DOC
-        %option{:value=>'DOCX'}DOCX
-        %option{:value=>'PDF'}PDF
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %input{:type => 'submit', :value => 'Assembly'}
-
-
-  %div{:style => 'padding:20px; border:1px solid black;'}
+    %br/
+    %br/
     %p
-      #{(defined? file_name) ? "<a href='/downloads/#{file_name}'>Download converted file</a>" : ''}
-      #{(defined? iframe) ? iframe : ''}
+      The data you provided:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      Sex = #{(defined? sex) ? sex : ''}
+    %p
+      Age = #{(defined? age) ? age : ''}
+    %p
+      Sunrise = #{(defined? sunrise) ? sunrise : ''}
+    %p
+      Name = #{(defined? name) ? name : ''}
+    %p
+      Result file type = #{(defined? type) ? type : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
 
-= partial :_others_samples
+    %span.documentation
+      %a{:href => '/templates/merge_field1_doc.docx'} Document with merge fields sample
+    %br/
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Assembly" button
+      %form{:action => '/sample-27-how-to-create-your-own-questionnaire-using-forms-and-show-the-result-document', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
 
 
-:javascript
-  $(function($){
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'}Upload file from URL
+          %br/
 
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
+
+        %div.guid_field
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+        %div{:style => 'background-color:#e5e5e5;border:3px double gray;width:700px;padding:3px;font-size:10pt;'}
+          %label{:for=>'name'} What is your name?
+          %br/
+          %input{:type=>'text', :name=>'name'}
+          %br/
+          %label{:for=>'sex'} What is your sex?
+          %input{:type=>'checkbox', :name=>'sex', :value=>'man'}Man
+          %input{:type=>'checkbox', :name=>'sex', :value=>'woman'}Woman
+          %br/
+          %br/
+          %label{:for=>'age'} Do you have 21 years old?
+          %select{:name=>'age'}
+            %option{:value=>'Yes'}Yes
+            %option{:value=>'No'}No
+          %br/
+          %br/
+          %label{:for=>'sunrise'} Do you like sunrise?
+          %select{:name=>'sunrise'}
+            %option{:value=>'Yes'}Yes
+            %option{:value=>'No'}No
+          %br/
+          %br/
+        %br/
+        %br/
+        %label{:for=>'type'}Select type of the result file
+        %select{:name=>'type'}
+          %option{:value=>'DOC'}DOC
+          %option{:value=>'DOCX'}DOCX
+          %option{:value=>'PDF'}PDF
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %input{:type => 'submit', :value => 'Assembly'}
+
+
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        #{(defined? file_name) ? "<a href='/downloads/#{file_name}'>Download converted file</a>" : ''}
+        #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples
+
+
+  :javascript
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

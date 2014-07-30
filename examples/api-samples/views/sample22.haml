@@ -1,100 +1,106 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample22
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how create or update user and add him to collaborators using PHP SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample22.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileId = #{(defined? fileId) ? fileId : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    First Name = #{(defined? firstName) ? firstName : ''}
-  %p
-    Last Name = #{(defined? lastName) ? lastName : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample22', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'email'} E-mail
-      %br/
-      %input{:type=>'text', :name=>'email'}
-      %br/
-      %label{:for => 'firstName'} First name
-      %br/
-      %input{:type=>'text', :name=>'firstName'}
-      %br/
-      %label{:for => 'lastName'} Last name
-      %br/
-      %input{:type=>'text', :name=>'lastName'}
-      %br/
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+%head
+  %title Sample22 - How to create or update user and add him to collaborators
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample22 - How to create or update user and add him to collaborators
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how create or update user and add him to collaborators using PHP SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample22.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileId = #{(defined? fileId) ? fileId : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      First Name = #{(defined? firstName) ? firstName : ''}
+    %p
+      Last Name = #{(defined? lastName) ? lastName : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-22-how-to-create-or-update-user-and-add-him-to-collaborators', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'text', :name=>'clientId'}
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
         %br/
-
-      %div.guid_field
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+        %input{:type=>'text', :name=>'privateKey'}
         %br/
-        %input{:type=>'text', :name=>'fileId'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'file'} Upload local file
+        %label{:for => 'email'} E-mail
         %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
+        %input{:type=>'text', :name=>'email'}
         %br/
-        %input{:type=>'text', :name=>'url'}
+        %label{:for => 'firstName'} First name
+        %br/
+        %input{:type=>'text', :name=>'firstName'}
+        %br/
+        %label{:for => 'lastName'} Last name
+        %br/
+        %input{:type=>'text', :name=>'lastName'}
+        %br/
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
 
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}/
-    %div{:style => 'padding:20px; border:1px solid black;'}
-      %p
-        Results:
-        #{(defined? message) ? message : ''}
-        #{(defined? iframe) ? iframe : ''}
+        %div.guid_field
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
 
-= partial :_others_samples
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
 
-  $(function($){
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}/
+      %div{:style => 'padding:20px; border:1px solid black;'}
+        %p
+          Results:
+          #{(defined? message) ? message : ''}
+          #{(defined? iframe) ? iframe : ''}
 
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+  = partial :_others_samples
+
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+
+    $(function($){
+
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

@@ -1,90 +1,96 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample09
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to generate an embedded Viewer URL for particular Document in the GroupDocs account using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample09.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    File GUID = #{(defined? guid) ? guid : ''}
-  %p
-    Height = #{(defined? height) ? height : ''}
-  %p
-    Width = #{(defined? width) ? width : ''}
-  %p
-    Viewer URL = #{(defined? v_url) ? v_url : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample09', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :id => 'clientId' , :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :id => 'privateKey', :name=>'privateKey'}
-      %br/
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+%head
+  %title Sample09 - How to generate an embedded Viewer URL for a Document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample09 - How to generate an embedded Viewer URL for a Document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to generate an embedded Viewer URL for particular Document in the GroupDocs account using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample09.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      File GUID = #{(defined? guid) ? guid : ''}
+    %p
+      Height = #{(defined? height) ? height : ''}
+    %p
+      Width = #{(defined? width) ? width : ''}
+    %p
+      Viewer URL = #{(defined? v_url) ? v_url : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-9-how-to-generate-an-embedded-viewer-url-for-a-document', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'text', :id => 'clientId' , :name=>'clientId'}
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
         %br/
-
-      %div.guid_field
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+        %input{:type=>'text', :id => 'privateKey', :name=>'privateKey'}
         %br/
-        %input{:type=>'text', :name=>'fileId'}
-        
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'file'} Upload local file
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
+
+        %div.guid_field
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
+        %input{:type=>'radio', :name=>'check', :value=>'viewer', :checked=>'checked'} Viewer
+        %input{:type=>'radio', :name=>'check', :value=>'annotation'} Annotation
         %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
+        %label{:for => 'private_key'} Width
         %br/
-        %input{:type=>'text', :name=>'url'}
+        %input{:type=>'text', :name=>'width'}
+        %br/
+        %label{:for => 'private_key'} Height
+        %br/
+        %input{:type=>'text', :name=>'height'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath', :id => "basePath"}
+        %br/
+        %input{:type => 'submit', :value => 'Make Request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %iframe{:src => "#{(defined? v_url) ? v_url : ''}", :width=> "#{(defined? width) ? width : ''}", :height=>"#{(defined? height) ? height : ''}"}
+    %br/
 
-      %input{:type=>'radio', :name=>'check', :value=>'viewer', :checked=>'checked'} Viewer
-      %input{:type=>'radio', :name=>'check', :value=>'annotation'} Annotation
-      %br/
-      %label{:for => 'private_key'} Width
-      %br/
-      %input{:type=>'text', :name=>'width'}
-      %br/
-      %label{:for => 'private_key'} Height
-      %br/
-      %input{:type=>'text', :name=>'height'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath', :id => "basePath"}
-      %br/
-      %input{:type => 'submit', :value => 'Make Request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %iframe{:src => "#{(defined? v_url) ? v_url : ''}", :width=> "#{(defined? width) ? width : ''}", :height=>"#{(defined? height) ? height : ''}"}
-  %br/
+  = partial :_others_samples
 
-= partial :_others_samples
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-
-  $(function($){
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

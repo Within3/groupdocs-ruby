@@ -1,10 +1,10 @@
 #GET request
-get '/sample17' do
+get '/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive' do
   haml :sample17
 end
 
 #POST request
-post '/sample17' do
+post '/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

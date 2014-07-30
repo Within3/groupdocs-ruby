@@ -1,116 +1,122 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample31
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i
-      This sample will show how to dinamically create your own questionary using forms and build signature form from the result document using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample31.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    Template file GUID = #{(defined? templateGuid) ? templateGuid : ''}
-  %p
-    Name = #{(defined? name) ? name : ''}
-  %p
-    Email = #{(defined? email) ? email : ''}
-  %p
-    Country = #{(defined? country) ? country : ''}
-  %p
-    City = #{(defined? city) ? city : ''}
-  %p
-    Street = #{(defined? street) ? street : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample31', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'templateGuid'} Template file GUID
-      %br/
-      %input{:type=>'text', :name=>'templateGuid'}
-      %br/
-      %br/
-      %div{:style => 'background-color:#e5e5e5;border:3px double gray;width:700px;padding:20px;font-size:10pt;'}
-        %label{:for => 'email'} What is your email?
-        %input{:type=>'text', :name=>'email'}
+%head
+  %title Sample31 - How to dynamically create Signature Form using data from HTML form
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample31 - How to dynamically create Signature Form using data from HTML form
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+        This sample will show how to dinamically create your own questionary using forms and build signature form from the result document using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample31.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      Template file GUID = #{(defined? templateGuid) ? templateGuid : ''}
+    %p
+      Name = #{(defined? name) ? name : ''}
+    %p
+      Email = #{(defined? email) ? email : ''}
+    %p
+      Country = #{(defined? country) ? country : ''}
+    %p
+      City = #{(defined? city) ? city : ''}
+    %p
+      Street = #{(defined? street) ? street : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-31-how-to-dynamically-create-signature-form-using-data-from-html-form', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'templateGuid'} Template file GUID
+        %br/
+        %input{:type=>'text', :name=>'templateGuid'}
         %br/
         %br/
-        %label{:for => 'name'} What is your name?
-        %input{:type=>'text', :name=>'name'}
+        %div{:style => 'background-color:#e5e5e5;border:3px double gray;width:700px;padding:20px;font-size:10pt;'}
+          %label{:for => 'email'} What is your email?
+          %input{:type=>'text', :name=>'email'}
+          %br/
+          %br/
+          %label{:for => 'name'} What is your name?
+          %input{:type=>'text', :name=>'name'}
+          %br/
+          %br/
+          %label{:for => 'country'} What is your country?
+          %input{:type=>'text', :name=>'country'}
+          %br/
+          %br/
+          %label{:for => 'city'} What is your city?
+          %input{:type=>'text', :name=>'city'}
+          %br/
+          %br/
+          %label{:for => 'street'} What is your street?
+          %input{:type=>'text', :name=>'street'}
+          %br/
         %br/
-        %br/
-        %label{:for => 'country'} What is your country?
-        %input{:type=>'text', :name=>'country'}
-        %br/
-        %br/
-        %label{:for => 'city'} What is your city?
-        %input{:type=>'text', :name=>'city'}
-        %br/
-        %br/
-        %label{:for => 'street'} What is your street?
-        %input{:type=>'text', :name=>'street'}
-        %br/
-      %br/
-      %label{:for=>'callback'}
-        Callback URL
-        %span.optional (Optional)
-        %br/
-        %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample31/callback)
-      %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callback'}
+        %label{:for=>'callback'}
+          Callback URL
+          %span.optional (Optional)
+          %br/
+          %font{:color=>'grey'} (For test Callback you can use this URL: http://groupdocs-ruby-samples.herokuapp.com/sample31/callback)
+        %input{:type=>'text', :size=>'70', :value=>"#{(defined? callback) ? callback : ''}", :name=>'callback'}
 
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
 
-      %input{:type => 'submit', :value => 'Make request'}
-      %span{:id=>'results_status', :style=>'color:red;display:none;'} (Please wait for ajax response)
-      %br/
-      %a{:href=>'/templates/merge_feid2_doc.docx'} Download sample Docx file
-      %br/
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
-    #{(defined? iframe) ? iframe : ''}
+        %input{:type => 'submit', :value => 'Make request'}
+        %span{:id=>'results_status', :style=>'color:red;display:none;'} (Please wait for ajax response)
+        %br/
+        %a{:href=>'/templates/merge_feid2_doc.docx'} Download sample Docx file
+        %br/
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      #{(defined? iframe) ? iframe : ''}
 
-= partial :_others_samples
+  = partial :_others_samples
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  function check() {
-    $.get('/sample31/check', function(data) {
-      $('#results_status').fadeOut("slow");
-      $('#downloadframe').attr("src", "/sample31/downloads/" + data);
-    }, 'text');
-  }
-
-  $(function($){
-    callbackUrl = $("input[name=callback]").val();
-
-    if(callbackUrl !== "") {
-      $('#results_status').fadeIn("slow");
-      setTimeout(check, 5000)
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    function check() {
+      $.get('/sample31/check', function(data) {
+        $('#results_status').fadeOut("slow");
+        $('#downloadframe').attr("src", "/sample31/downloads/" + data);
+      }, 'text');
     }
 
-  });
+    $(function($){
+      callbackUrl = $("input[name=callback]").val();
+
+      if(callbackUrl !== "") {
+        $('#results_status').fadeIn("slow");
+        setTimeout(check, 5000)
+      }
+
+    });

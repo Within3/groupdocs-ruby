@@ -1,60 +1,66 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample33
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to convert and to merge/combine several HTML documents into one PDF Document
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample33.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-
-
-  %p
-
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-    #requestForm{:style => 'padding:20px; border:1px solid black;'}
-      %p Enter credentials and file URLs to any documents or HTML pages and press "Make request" button
-      %form{:action => '/sample33', :enctype => 'multipart/form-data', :method => 'post'}
-        %label{:for => 'clientId'} GroupDocs ClientID
-        %br/
-        %input{:type=>'text', :name=>'clientId'}
-        %br/
-        %label{:for => 'privateKey'} GroupDocs PrivateKey
-        %br/
-        %input{:type=>'text', :name=>'privateKey'}
-        %br/
-        %label{:for => 'url1'} 1. Document URL
-        %br/
-        %input{:type=>'text', :name=>'url1', :size=>60}
-        %br/
-        %label{:for => 'url2'} 2. Document URL
-        %br/
-        %input{:type=>'text', :name=>'url2', :size=>60}
-        %br/
-        %label{:for => 'url3'} 3. Document URL
-        %br/
-        %input{:type=>'text', :name=>'url3', :size=>60}
-        %br/
-        %label{:for => 'basePath'} Base Path
-        %span{:class => 'optional'} (Optional)
-        %br/
-        %input{:type=>'text', :name=>'basePath'}
-        %br/
-        %br/
-        %input{:type => 'submit', :value => 'Make Request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
+%head
+  %title Sample33 - How to convert and merge/combine several HTML documents into one PDF Document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
     %br/
-    %p #{(defined? iframe) ? iframe : ''}
-  %br/
+    Sample33 - How to convert and merge/combine several HTML documents into one PDF Document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to convert and to merge/combine several HTML documents into one PDF Document
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample33.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
 
-= partial :_others_samples
+
+    %p
+
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+      #requestForm{:style => 'padding:20px; border:1px solid black;'}
+        %p Enter credentials and file URLs to any documents or HTML pages and press "Make request" button
+        %form{:action => '/sample-33-how-to-convert-several-html-documents-into-one-pdf-document', :enctype => 'multipart/form-data', :method => 'post'}
+          %label{:for => 'clientId'} GroupDocs ClientID
+          %br/
+          %input{:type=>'text', :name=>'clientId'}
+          %br/
+          %label{:for => 'privateKey'} GroupDocs PrivateKey
+          %br/
+          %input{:type=>'text', :name=>'privateKey'}
+          %br/
+          %label{:for => 'url1'} 1. Document URL
+          %br/
+          %input{:type=>'text', :name=>'url1', :size=>60}
+          %br/
+          %label{:for => 'url2'} 2. Document URL
+          %br/
+          %input{:type=>'text', :name=>'url2', :size=>60}
+          %br/
+          %label{:for => 'url3'} 3. Document URL
+          %br/
+          %input{:type=>'text', :name=>'url3', :size=>60}
+          %br/
+          %label{:for => 'basePath'} Base Path
+          %span{:class => 'optional'} (Optional)
+          %br/
+          %input{:type=>'text', :name=>'basePath'}
+          %br/
+          %br/
+          %input{:type => 'submit', :value => 'Make Request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      %br/
+      %p #{(defined? iframe) ? iframe : ''}
+    %br/
+
+  = partial :_others_samples
 

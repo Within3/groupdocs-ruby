@@ -1,10 +1,10 @@
 #GET request
-get '/sample06' do
+get '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature' do
   haml :sample06
 end
 
 #POST request
-post '/sample06' do
+post '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

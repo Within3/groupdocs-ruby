@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample33'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample33</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-33-how-to-convert-several-html-documents-into-one-pdf-document'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample33</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample33'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-33-how-to-convert-several-html-documents-into-one-pdf-document'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,14 +63,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:url_1</span>, params[<span class="symbol">:url1</span>]
-  set <span class="symbol">:url_2</span>, params[<span class="symbol">:url2</span>]
-  set <span class="symbol">:url_3</span>, params[<span class="symbol">:url3</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:url_1</span>, params[<span class="hljs-symbol">:url1</span>]
+  set <span class="hljs-symbol">:url_2</span>, params[<span class="hljs-symbol">:url2</span>]
+  set <span class="hljs-symbol">:url_3</span>, params[<span class="hljs-symbol">:url3</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -85,7 +85,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.url_1.empty? <span class="keyword">or</span> settings.url_2.empty? <span class="keyword">or</span> settings.url_3.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.url_1.empty? <span class="hljs-keyword">or</span> settings.url_2.empty? <span class="hljs-keyword">or</span> settings.url_3.empty?</pre></div></div>
             
         </li>
         
@@ -100,13 +100,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -121,7 +121,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key</pre></div></div>
             
@@ -138,9 +138,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
 
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -170,7 +170,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    options = {<span class="symbol">:actions</span> =&gt; [<span class="symbol">:convert</span>, <span class="symbol">:combine</span>], <span class="symbol">:out_formats</span> =&gt; [<span class="string">'pdf'</span>], <span class="symbol">:status</span> =&gt; -<span class="number">1</span>, <span class="symbol">:name</span> =&gt; <span class="string">'sample'</span>}</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    options = {<span class="hljs-symbol">:actions</span> =&gt; [<span class="hljs-symbol">:convert</span>, <span class="hljs-symbol">:combine</span>], <span class="hljs-symbol">:out_formats</span> =&gt; [<span class="hljs-string">'pdf'</span>], <span class="hljs-symbol">:status</span> =&gt; -<span class="hljs-number">1</span>, <span class="hljs-symbol">:name</span> =&gt; <span class="hljs-string">'sample'</span>}</pre></div></div>
             
         </li>
         
@@ -185,7 +185,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    job = <span class="constant">GroupDocs::Job</span>.create!(options)</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    job = <span class="hljs-constant">GroupDocs::Job</span>.create!(options)</pre></div></div>
             
         </li>
         
@@ -200,10 +200,10 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    url.each <span class="keyword">do</span> |url|
-      document = <span class="constant">GroupDocs::Storage::File</span>.upload_web!(url).to_document
-      job.add_document!(document, {<span class="symbol">:check_ownership</span> =&gt; <span class="keyword">false</span>})
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    url.each <span class="hljs-keyword">do</span> |url|
+      document = <span class="hljs-constant">GroupDocs::Storage::File</span>.upload_web!(url).to_document
+      job.add_document!(document, {<span class="hljs-symbol">:check_ownership</span> =&gt; <span class="hljs-keyword">false</span>})
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -214,20 +214,20 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Update the Job with new status. :status =&gt; &#39;0&#39; mean Active status of the job (Start the job)</p>
+              <p>Update the Job with new status. :status =&gt; ‘0’ mean Active status of the job (Start the job)</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    id = job.update!({<span class="symbol">:status</span> =&gt; <span class="string">'0'</span>})
+            <div class="content"><div class='highlight'><pre>    id = job.update!({<span class="hljs-symbol">:status</span> =&gt; <span class="hljs-string">'0'</span>})
     
-	i = <span class="number">1</span>
+	i = <span class="hljs-number">1</span>
     
-    <span class="keyword">while</span> i&lt;<span class="number">5</span> <span class="keyword">do</span>
-      sleep(<span class="number">5</span>)
-      job = <span class="constant">GroupDocs::Job</span>.get!(id[<span class="symbol">:job_id</span>])
-      <span class="keyword">break</span> <span class="keyword">if</span> job.status == <span class="symbol">:archived</span>
-      i  = i + <span class="number">1</span>
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">while</span> i&lt;<span class="hljs-number">5</span> <span class="hljs-keyword">do</span>
+      sleep(<span class="hljs-number">5</span>)
+      job = <span class="hljs-constant">GroupDocs::Job</span>.get!(id[<span class="hljs-symbol">:job_id</span>])
+      <span class="hljs-keyword">break</span> <span class="hljs-keyword">if</span> job.status == <span class="hljs-symbol">:archived</span>
+      i  = i + <span class="hljs-number">1</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -244,7 +244,7 @@
             
             <div class="content"><div class='highlight'><pre>    file = job.documents!()
 
-    document = file[<span class="symbol">:outputs</span>]</pre></div></div>
+    document = file[<span class="hljs-symbol">:outputs</span>]</pre></div></div>
             
         </li>
         
@@ -259,7 +259,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> document</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> document</pre></div></div>
             
         </li>
         
@@ -274,7 +274,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      iframe = <span class="string">"/document-viewer/embed/<span class="subst">#{document[<span class="number">0</span>].guid}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      iframe = <span class="hljs-string">"/document-viewer/embed/<span class="hljs-subst">#{document[<span class="hljs-number">0</span>].guid}</span>"</span></pre></div></div>
             
         </li>
         
@@ -289,7 +289,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      url = <span class="hljs-constant">GroupDocs::Api::Request</span>.new(<span class="hljs-symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
             
         </li>
         
@@ -304,14 +304,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      <span class="keyword">case</span> base_path
-        <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-          iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
-        <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-          iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-        <span class="keyword">else</span>
-          iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-      <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">case</span> base_path
+        <span class="hljs-keyword">when</span> <span class="hljs-string">'https://stage-api-groupdocs.dynabic.com'</span>
+          iframe = <span class="hljs-string">"https://stage-api-groupdocs.dynabic.com<span class="hljs-subst">#{url}</span>"</span>
+        <span class="hljs-keyword">when</span> <span class="hljs-string">'https://dev-api-groupdocs.dynabic.com'</span>
+          iframe = <span class="hljs-string">"https://dev-apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+        <span class="hljs-keyword">else</span>
+          iframe = <span class="hljs-string">"https://apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+      <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -326,14 +326,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      iframe = <span class="string">"&lt;iframe id='downloadframe' src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+            <div class="content"><div class='highlight'><pre>      iframe = <span class="hljs-string">"&lt;iframe id='downloadframe' src='<span class="hljs-subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
 
-    <span class="keyword">else</span>
-      raise <span class="string">'File was not converted'</span>
-    <span class="keyword">end</span>
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+    <span class="hljs-keyword">else</span>
+      raise <span class="hljs-string">'File was not converted'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -348,8 +348,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample33</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:userId</span> =&gt; settings.client_id, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:err</span> =&gt; err, <span class="symbol">:iframe</span> =&gt; iframe}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample33</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:userId</span> =&gt; settings.client_id, <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key, <span class="hljs-symbol">:err</span> =&gt; err, <span class="hljs-symbol">:iframe</span> =&gt; iframe}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

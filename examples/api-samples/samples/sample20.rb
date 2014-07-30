@@ -1,10 +1,10 @@
 #GET request
-get '/sample20' do
+get '/sample-20-how-to-get-compare-change-list-for-document' do
   haml :sample20
 end
 
 #POST request
-post '/sample20' do
+post '/sample-20-how-to-get-compare-change-list-for-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

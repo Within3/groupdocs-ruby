@@ -1,58 +1,64 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample42
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i
-    This sample will show how to download document with annotations using GroupDocs Ruby SDK.
+%head
+  %title Sample42 - How to download document with annotations
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample42 - How to download document with annotations
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+      This sample will show how to download document with annotations using GroupDocs Ruby SDK.
 
-  %br/
-  %br/
-  /
-  %span.documentation
-    %a{:href => '/docs/sample42.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    /
+    %span.documentation
+      %a{:href => '/docs/sample42.html'} Builtin documentation for this sample
 
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample42', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-      %br/
-      %input{:type=>'text', :name=>'fileId'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}
-
-      %br/
-      %br/
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+    %br/
+    %br/
     %p
-      Results:
-      #{(defined? message)? message : ''}
-      #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-42-how-to-download-document-with-annotations-using-groupdocs', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+        %br/
+        %input{:type=>'text', :name=>'fileId'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}
 
-= partial :_others_samples
+        %br/
+        %br/
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+        #{(defined? message)? message : ''}
+        #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples

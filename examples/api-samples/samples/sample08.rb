@@ -1,10 +1,10 @@
 #GET request
-get '/sample08' do
+get '/sample-8-how-to-return-a-url-representing-a-single-page-of-a-document' do
   haml :sample08
 end
 
 #POST request
-post '/sample08' do
+post '/sample-8-how-to-return-a-url-representing-a-single-page-of-a-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

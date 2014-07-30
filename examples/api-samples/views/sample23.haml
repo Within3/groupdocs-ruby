@@ -1,92 +1,97 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample23
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i This sample will show how to View Document pages as images using Ruby SDK
-  %br/
-  %br/
+%head
+  %title Sample23 - How to View Document pages as images
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br\
+    Sample23 - How to View Document pages as images
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i This sample will show how to View Document pages as images using Ruby SDK
+    %br/
+    %br/
 
-  %span.documentation
-    %a{:href => '/docs/sample23.html'} Builtin documentation for this sample
+    %span.documentation
+      %a{:href => '/docs/sample23.html'} Builtin documentation for this sample
 
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample23', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-
-
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-23-how-to-view-document-pages-as-images', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+        %input{:type=>'text', :name=>'clientId'}
         %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
         %br/
 
-      %div.guid_field
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
+
+        %div.guid_field
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
         %br/
-        %input{:type=>'text', :name=>'fileId'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'file'} Upload local file
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
         %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
+        %input{:type=>'text', :name=>'basePath'}
         %br/
-        %input{:type=>'text', :name=>'url'}
+        %br/
 
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-
-      %input{:type => 'submit', :value => 'Make request'}
+        %input{:type => 'submit', :value => 'Make request'}
 
 
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
-    #{(defined? file_name) ? "<a href='/downloads/#{file_name}'>Download converted file</a>" : ''}
-    - if (defined? page_image)
-      -if page_image
-        - page_image.each do |img|
-          %p
-            %a{:href => img}Page
-          %img{:src => img}
-      - else
-        %p Enter the correct id document
-= partial :_others_samples
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      #{(defined? file_name) ? "<a href='/downloads/#{file_name}'>Download converted file</a>" : ''}
+      - if (defined? page_image)
+        -if page_image
+          - page_image.each do |img|
+            %p
+              %a{:href => img}Page
+            %img{:src => img}
+        - else
+          %p Enter the correct id document
+  = partial :_others_samples
 
-:javascript
-  $(function($){
-
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+  :javascript
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

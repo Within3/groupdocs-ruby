@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample17'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample17</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample17</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample17'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,12 +63,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:file</span>, params[<span class="symbol">:file</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:file</span>, params[<span class="hljs-symbol">:file</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -83,7 +83,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.file.<span class="keyword">nil</span>?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.file.<span class="hljs-keyword">nil</span>?</pre></div></div>
             
         </li>
         
@@ -98,13 +98,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -119,7 +119,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key</pre></div></div>
             
@@ -136,8 +136,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -152,7 +152,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    filepath = <span class="string">"<span class="subst">#{<span class="constant">Dir</span>.tmpdir}</span>/<span class="subst">#{params[<span class="symbol">:file</span>][<span class="symbol">:filename</span>]}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    filepath = <span class="hljs-string">"<span class="hljs-subst">#{<span class="hljs-constant">Dir</span>.tmpdir}</span>/<span class="hljs-subst">#{params[<span class="hljs-symbol">:file</span>][<span class="hljs-symbol">:filename</span>]}</span>"</span></pre></div></div>
             
         </li>
         
@@ -167,7 +167,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">File</span>.open(filepath, <span class="string">'wb'</span>) { |f| f.write(params[<span class="symbol">:file</span>][<span class="symbol">:tempfile</span>].read) }</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">File</span>.open(filepath, <span class="hljs-string">'wb'</span>) { |f| f.write(params[<span class="hljs-symbol">:file</span>][<span class="hljs-symbol">:tempfile</span>].read) }</pre></div></div>
             
         </li>
         
@@ -182,7 +182,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    file = <span class="constant">GroupDocs::Storage::File</span>.upload!(filepath, {})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    file = <span class="hljs-constant">GroupDocs::Storage::File</span>.upload!(filepath, {})</pre></div></div>
             
         </li>
         
@@ -212,7 +212,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    massage = <span class="string">"&lt;p&gt;Archive created and saved successfully. Here you can see your &lt;strong&gt;<span class="subst">#{params[<span class="symbol">:file</span>][<span class="symbol">:filename</span>]}</span>&lt;/strong&gt; file in the GroupDocs Embedded Viewer.&lt;/p&gt;"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    massage = <span class="hljs-string">"&lt;p&gt;Archive created and saved successfully. Here you can see your &lt;strong&gt;<span class="hljs-subst">#{params[<span class="hljs-symbol">:file</span>][<span class="hljs-symbol">:filename</span>]}</span>&lt;/strong&gt; file in the GroupDocs Embedded Viewer.&lt;/p&gt;"</span></pre></div></div>
             
         </li>
         
@@ -227,7 +227,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"/document-viewer/embed/<span class="subst">#{file.guid}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="hljs-string">"/document-viewer/embed/<span class="hljs-subst">#{file.guid}</span>"</span></pre></div></div>
             
         </li>
         
@@ -242,7 +242,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    url = <span class="constant">GroupDocs::Api::Request</span>.new(<span class="symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    url = <span class="hljs-constant">GroupDocs::Api::Request</span>.new(<span class="hljs-symbol">:path</span> =&gt; iframe).prepare_and_sign_url</pre></div></div>
             
         </li>
         
@@ -257,14 +257,14 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">case</span> base_path
-      <span class="keyword">when</span> <span class="string">'https://stage-api-groupdocs.dynabic.com'</span>
-        iframe = <span class="string">"https://stage-api-groupdocs.dynabic.com<span class="subst">#{url}</span>"</span>
-      <span class="keyword">when</span> <span class="string">'https://dev-api-groupdocs.dynabic.com'</span>
-        iframe = <span class="string">"https://dev-apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-      <span class="keyword">else</span>
-        iframe = <span class="string">"https://apps.groupdocs.com<span class="subst">#{url}</span>"</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">case</span> base_path
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'https://stage-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="hljs-string">"https://stage-api-groupdocs.dynabic.com<span class="hljs-subst">#{url}</span>"</span>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'https://dev-api-groupdocs.dynabic.com'</span>
+        iframe = <span class="hljs-string">"https://dev-apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+      <span class="hljs-keyword">else</span>
+        iframe = <span class="hljs-string">"https://apps.groupdocs.com<span class="hljs-subst">#{url}</span>"</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -279,11 +279,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    iframe = <span class="string">"&lt;iframe id='downloadframe' src='<span class="subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
+            <div class="content"><div class='highlight'><pre>    iframe = <span class="hljs-string">"&lt;iframe id='downloadframe' src='<span class="hljs-subst">#{iframe}</span>' width='800' height='1000'&gt;&lt;/iframe&gt;"</span>
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -298,8 +298,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample17</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:userId</span> =&gt; settings.client_id, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:iframe</span> =&gt; iframe, <span class="symbol">:massage</span> =&gt; massage, <span class="symbol">:err</span> =&gt; err}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample17</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:userId</span> =&gt; settings.client_id, <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key, <span class="hljs-symbol">:iframe</span> =&gt; iframe, <span class="hljs-symbol">:massage</span> =&gt; massage, <span class="hljs-symbol">:err</span> =&gt; err}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

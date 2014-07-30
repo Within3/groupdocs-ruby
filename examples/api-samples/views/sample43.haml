@@ -1,91 +1,95 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample41
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i
-      This sample will show how to add numeration in the doc file using GroupDocs Ruby SDK.
+%head
+  %title Sample43 - How to add numeration in the doc file
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    Sample43 - How to add numeration in the doc file
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+        This sample will show how to add numeration in the doc file using GroupDocs Ruby SDK.
 
-  %br/
-  %br/
-  /
-  %span.documentation
-    %a{:href => '/docs/sample43.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    /
+    %span.documentation
+      %a{:href => '/docs/sample43.html'} Builtin documentation for this sample
 
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample43', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-
-
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
-        %br/
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'text', :name=>'fileId'}
-
-      %div.guid_field
-        %label{:for=>'file'} Upload local file
-        %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
-        %br/
-        %input{:type=>'text', :name=>'url'}
-
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-
-      %input{:type => 'submit', :value => 'Make request'}
-
-      %br/
-      %br/
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+    %br/
+    %br/
     %p
-      Results:
-      #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-43-how-to-add-numeration-in-the-doc-file', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
 
-= partial :_others_samples
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  $(function($){
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
 
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
+
+        %div.guid_field
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+
+        %input{:type => 'submit', :value => 'Make request'}
+
+        %br/
+        %br/
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+        #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples
+
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

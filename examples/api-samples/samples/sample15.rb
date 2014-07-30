@@ -1,10 +1,10 @@
 #GET request
-get '/sample15' do
+get '/sample-15-how-to-check-the-number-of-document\'s-views' do
   haml :sample15
 end
 
 #POST request
-post '/sample15' do
+post '/sample-15-how-to-check-the-number-of-document\'s-views' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

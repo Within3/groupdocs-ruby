@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample07'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample07</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-7-how-to-create-a-list-of-thumbnails-for-a-document'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample07</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample07'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-7-how-to-create-a-list-of-thumbnails-for-a-document'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,11 +63,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -82,7 +82,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty?</pre></div></div>
             
         </li>
         
@@ -97,13 +97,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -118,7 +118,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
       groupdocs.client_id = settings.client_id
       groupdocs.private_key = settings.private_key</pre></div></div>
             
@@ -135,8 +135,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -151,7 +151,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    files_list = <span class="constant">GroupDocs::Storage::Folder</span>.list!(<span class="string">'/'</span>, {<span class="symbol">:extended</span> =&gt; <span class="keyword">true</span>}, {<span class="symbol">:client_id</span> =&gt; settings.client_id, <span class="symbol">:private_key</span> =&gt; settings.private_key})</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    files_list = <span class="hljs-constant">GroupDocs::Storage::Folder</span>.list!(<span class="hljs-string">'/'</span>, {<span class="hljs-symbol">:extended</span> =&gt; <span class="hljs-keyword">true</span>}, {<span class="hljs-symbol">:client_id</span> =&gt; settings.client_id, <span class="hljs-symbol">:private_key</span> =&gt; settings.private_key})</pre></div></div>
             
         </li>
         
@@ -166,24 +166,24 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    thumbnails = <span class="string">''</span>
-    files_list.each <span class="keyword">do</span> |element|
-      <span class="keyword">if</span> element.<span class="keyword">class</span>.name.split(<span class="string">'::'</span>).last == <span class="string">'Folder'</span>
-        <span class="keyword">next</span>
-      <span class="keyword">end</span>
-      <span class="keyword">if</span> element.thumbnail
+            <div class="content"><div class='highlight'><pre>    thumbnails = <span class="hljs-string">''</span>
+    files_list.each <span class="hljs-keyword">do</span> |element|
+      <span class="hljs-keyword">if</span> element.<span class="hljs-keyword">class</span>.name.split(<span class="hljs-string">'::'</span>).last == <span class="hljs-string">'Folder'</span>
+        <span class="hljs-keyword">next</span>
+      <span class="hljs-keyword">end</span>
+      <span class="hljs-keyword">if</span> element.thumbnail
         name = element.name
-        thumbnails += <span class="string">"&lt;img src='data:image/png;base64,<span class="subst">#{element.thumbnail}</span>', width='40px', height='40px'&gt; <span class="subst">#{name}</span>"</span>
-      <span class="keyword">end</span>
-    <span class="keyword">end</span>
+        thumbnails += <span class="hljs-string">"&lt;img src='data:image/png;base64,<span class="hljs-subst">#{element.thumbnail}</span>', width='40px', height='40px'&gt; <span class="hljs-subst">#{name}</span>"</span>
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
 
-    <span class="keyword">unless</span> thumbnails.empty?
-      set <span class="symbol">:thumbnails</span>, thumbnails
-    <span class="keyword">end</span>
+    <span class="hljs-keyword">unless</span> thumbnails.empty?
+      set <span class="hljs-symbol">:thumbnails</span>, thumbnails
+    <span class="hljs-keyword">end</span>
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -198,8 +198,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample07</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:clientId</span> =&gt; settings.client_id, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:thumbnailList</span> =&gt; thumbnails, <span class="symbol">:err</span> =&gt; err}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample07</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:clientId</span> =&gt; settings.client_id, <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key, <span class="hljs-symbol">:thumbnailList</span> =&gt; thumbnails, <span class="hljs-symbol">:err</span> =&gt; err}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

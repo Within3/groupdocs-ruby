@@ -1,63 +1,69 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample12
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to to list all annotations from document using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample12.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileId = #{(defined? fileId) ? fileId : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample12', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'fileId'} GroupDocs FileID
-      %br/
-      %input{:type=>'text', :name=>'fileId'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Make request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+%head
+  %title Sample12 - How to list all annotations from document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample12 - How to list all annotations from document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to to list all annotations from document using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample12.html'} Builtin documentation for this sample
+    %br/
+    %br/
     %p
-      Results:
+      You entered:
+    %p
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileId = #{(defined? fileId) ? fileId : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-12-how-to-list-all-annotations-from-document', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'fileId'} GroupDocs FileID
+        %br/
+        %input{:type=>'text', :name=>'fileId'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Make request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
 
-      - if defined? annotations.first
-        - annotations.each do |annotation|
-          %div
-            Access: #{annotation.access}
-            %br/
-            Type:  #{annotation.type}
-            %br/
-            Replies:
-            %ul
-              - annotation.replies.each do |reply|
-                %li
-                  #{reply.userName} : #{reply.text}
+        - if defined? annotations.first
+          - annotations.each do |annotation|
+            %div
+              Access: #{annotation.access}
+              %br/
+              Type:  #{annotation.type}
+              %br/
+              Replies:
+              %ul
+                - annotation.replies.each do |reply|
+                  %li
+                    #{reply.userName} : #{reply.text}
 
 
-= partial :_others_samples
+  = partial :_others_samples

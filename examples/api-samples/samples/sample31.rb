@@ -1,5 +1,5 @@
 #GET request
-get '/sample31' do
+get '/sample-31-how-to-dynamically-create-signature-form-using-data-from-html-form' do
   haml :sample31
 end
 
@@ -71,7 +71,7 @@ end
 
 
 #POST request
-post '/sample31' do
+post '/sample-31-how-to-dynamically-create-signature-form-using-data-from-html-form' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

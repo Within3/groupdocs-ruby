@@ -1,10 +1,10 @@
 #GET request
-get '/sample42' do
+get '/sample-42-how-to-download-document-with-annotations-using-groupdocs' do
   haml :sample42
 end
 
 #POST request
-post '/sample42' do
+post '/sample-42-how-to-download-document-with-annotations-using-groupdocs' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

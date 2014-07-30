@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample26'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample26</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-26-how-to-use-login-method-in-the-api'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample26</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,12 +48,12 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample26'</span> <span class="keyword">do</span>
-  set <span class="symbol">:email</span>, params[<span class="symbol">:login</span>]
-  set <span class="symbol">:password</span>, params[<span class="symbol">:password</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-26-how-to-use-login-method-in-the-api'</span> <span class="hljs-keyword">do</span>
+  set <span class="hljs-symbol">:email</span>, params[<span class="hljs-symbol">:login</span>]
+  set <span class="hljs-symbol">:password</span>, params[<span class="hljs-symbol">:password</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span></pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -68,7 +68,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.email.empty? <span class="keyword">or</span> settings.password.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.email.empty? <span class="hljs-keyword">or</span> settings.password.empty?</pre></div></div>
             
         </li>
         
@@ -83,13 +83,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
       base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -104,7 +104,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|</pre></div></div>
             
         </li>
         
@@ -119,8 +119,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment">#Default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment">#Default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -135,11 +135,11 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    user = <span class="constant">GroupDocs::User</span>.login!(settings.email, settings.password)
+            <div class="content"><div class='highlight'><pre>    user = <span class="hljs-constant">GroupDocs::User</span>.login!(settings.email, settings.password)
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -154,8 +154,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample26</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:user</span> =&gt; user, <span class="symbol">:err</span> =&gt; err}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample26</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:user</span> =&gt; user, <span class="hljs-symbol">:err</span> =&gt; err}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

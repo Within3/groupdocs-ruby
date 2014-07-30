@@ -31,9 +31,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="string">'/sample13'</span> <span class="keyword">do</span>
-  haml <span class="symbol">:sample13</span>
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-13-how-to-add-collaborator-to-doc-with-annotations'</span> <span class="hljs-keyword">do</span>
+  haml <span class="hljs-symbol">:sample13</span>
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="string">'/sample13'</span> <span class="keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-13-how-to-add-collaborator-to-doc-with-annotations'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,15 +63,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="symbol">:client_id</span>, params[<span class="symbol">:clientId</span>]
-  set <span class="symbol">:private_key</span>, params[<span class="symbol">:privateKey</span>]
-  set <span class="symbol">:file_id</span>, params[<span class="symbol">:fileId</span>]
-  set <span class="symbol">:email</span>, params[<span class="symbol">:email</span>]
-  set <span class="symbol">:base_path</span>, params[<span class="symbol">:basePath</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:file_id</span>, params[<span class="hljs-symbol">:fileId</span>]
+  set <span class="hljs-symbol">:email</span>, params[<span class="hljs-symbol">:email</span>]
+  set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
-  <span class="keyword">begin</span>
-    <span class="constant">Check</span> required variables
-    raise <span class="string">'Please enter all required parameters'</span> <span class="keyword">if</span> settings.client_id.empty? <span class="keyword">or</span> settings.private_key.empty? <span class="keyword">or</span> settings.file_id.empty? <span class="keyword">or</span> settings.email.empty?</pre></div></div>
+  <span class="hljs-keyword">begin</span></pre></div></div>
             
         </li>
         
@@ -82,17 +80,11 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
-              <p>Prepare base path</p>
+              <p>Check required variables</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="keyword">if</span> settings.base_path.empty?
-      base_path = <span class="string">'https://api.groupdocs.com'</span>
-    <span class="keyword">elsif</span> settings.base_path.match(<span class="string">'/v2.0'</span>)
-      base_path = settings.base_path.split(<span class="string">'/v2.0'</span>)[<span class="number">0</span>]
-    <span class="keyword">else</span>
-      base_path = settings.base_path
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.file_id.empty? <span class="hljs-keyword">or</span> settings.email.empty?</pre></div></div>
             
         </li>
         
@@ -103,13 +95,17 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
-              <p>Configure your access to API server</p>
+              <p>Prepare base path</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    <span class="constant">GroupDocs</span>.configure <span class="keyword">do</span> |groupdocs|
-      groupdocs.client_id = settings.client_id
-      groupdocs.private_key = settings.private_key</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> settings.base_path.empty?
+      base_path = <span class="hljs-string">'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">elsif</span> settings.base_path.match(<span class="hljs-string">'/v2.0'</span>)
+      base_path = settings.base_path.split(<span class="hljs-string">'/v2.0'</span>)[<span class="hljs-number">0</span>]
+    <span class="hljs-keyword">else</span>
+      base_path = settings.base_path
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -120,12 +116,13 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
-              <p>Optionally specify API server and version</p>
+              <p>Configure your access to API server</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="comment"># default is 'https://api.groupdocs.com'</span>
-    <span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-constant">GroupDocs</span>.configure <span class="hljs-keyword">do</span> |groupdocs|
+      groupdocs.client_id = settings.client_id
+      groupdocs.private_key = settings.private_key</pre></div></div>
             
         </li>
         
@@ -136,12 +133,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
-              <p>Make a request to API using client_id and private_key</p>
+              <p>Optionally specify API server and version</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    files_list = <span class="constant">GroupDocs::Storage::Folder</span>.list!(<span class="string">'/'</span>, {})
-    document = <span class="string">''</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      groupdocs.api_server = base_path <span class="hljs-comment"># default is 'https://api.groupdocs.com'</span>
+    <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -152,17 +149,12 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>Get document by file ID</p>
+              <p>Create document object</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    files_list.each <span class="keyword">do</span> |element|
-      <span class="keyword">if</span> element.respond_to?(<span class="string">'guid'</span>) == <span class="keyword">true</span> <span class="keyword">and</span> element.guid == settings.file_id
-        document = element
-      <span class="keyword">end</span>
-    <span class="keyword">end</span>
-
-    <span class="keyword">unless</span> document.instance_of? <span class="constant">String</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>    document = <span class="hljs-constant">GroupDocs::Storage::File</span>.new(<span class="hljs-symbol">guid:</span> settings.file_id)
+    <span class="hljs-keyword">unless</span> document.instance_of? <span class="hljs-constant">String</span></pre></div></div>
             
         </li>
         
@@ -177,13 +169,13 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      result = document.to_document.set_collaborators!(settings.email.split(<span class="string">' '</span>), <span class="number">1</span>)
-    <span class="keyword">end</span>
+            <div class="content"><div class='highlight'><pre>      result = document.to_document.set_collaborators!(settings.email.split(<span class="hljs-string">' '</span>), <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">end</span>
 
 
-  <span class="keyword">rescue</span> <span class="constant">Exception</span> =&gt; e
+  <span class="hljs-keyword">rescue</span> <span class="hljs-constant">Exception</span> =&gt; e
     err = e.message
-  <span class="keyword">end</span></pre></div></div>
+  <span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         
@@ -198,8 +190,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  haml <span class="symbol">:sample13</span>, <span class="symbol">:locals</span> =&gt; {<span class="symbol">:clientId</span> =&gt; settings.client_id, <span class="symbol">:privateKey</span> =&gt; settings.private_key, <span class="symbol">:fileId</span> =&gt; settings.file_id, <span class="symbol">:email</span> =&gt; settings.email, <span class="symbol">:result</span> =&gt; result, <span class="symbol">:err</span> =&gt; err}
-<span class="keyword">end</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>  haml <span class="hljs-symbol">:sample13</span>, <span class="hljs-symbol">:locals</span> =&gt; {<span class="hljs-symbol">:clientId</span> =&gt; settings.client_id, <span class="hljs-symbol">:privateKey</span> =&gt; settings.private_key, <span class="hljs-symbol">:fileId</span> =&gt; settings.file_id, <span class="hljs-symbol">:email</span> =&gt; settings.email, <span class="hljs-symbol">:result</span> =&gt; result, <span class="hljs-symbol">:err</span> =&gt; err}
+<span class="hljs-keyword">end</span></pre></div></div>
             
         </li>
         

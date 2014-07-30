@@ -1,10 +1,10 @@
 #GET request
-get '/sample30' do
+get '/sample-30-how-to-delete-file-from-groupdocs-storage' do
   haml :sample30
 end
 
 #POST request
-post '/sample30' do
+post '/sample-30-how-to-delete-file-from-groupdocs-storage' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

@@ -1,5 +1,5 @@
 #GET request
-get '/sample40' do
+get '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-was-signed' do
   haml :sample40
 end
 
@@ -88,7 +88,7 @@ end
 
 
 #POST request
-post '/sample40' do
+post '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-was-signed' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

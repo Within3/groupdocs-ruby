@@ -1,10 +1,10 @@
 #GET request
-get '/sample44' do
+get '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document' do
   haml :sample44
 end
 
 #POST request
-post '/sample44' do
+post '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

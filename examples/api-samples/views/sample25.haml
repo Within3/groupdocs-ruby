@@ -1,96 +1,102 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample25
-.samplecontent{:style => 'padding:10px;'}
-  %span.description
-    %i
-      This sample will show how to use
-      %b Merge
-      and
-      %b Convert
-      method to fill the fields in Docx and Convert it to PDF by using GroupDocs Ruby SDK.
-  %br/
-  %br/
-  /
-  %span.documentation
-    %a{:href => '/docs/sample25.html'} Builtin documentation for this sample
+%head
+  %title Sample25 - How to merge/assemble and convert document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample25 - How to merge/assemble and convert document
+  .samplecontent{:style => 'padding:10px;'}
+    %span.description
+      %i
+        This sample will show how to use
+        %b Merge
+        and
+        %b Convert
+        method to fill the fields in Docx and Convert it to PDF by using GroupDocs Ruby SDK.
+    %br/
+    %br/
+    /
+    %span.documentation
+      %a{:href => '/docs/sample25.html'} Builtin documentation for this sample
 
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    ClientID = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample25', :enctype => 'multipart/form-data', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-
-
-      %div.guid_radio
-        %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
-        %br/
-        %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
-        %br/
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-        %br/
-        %input{:type=>'text', :name=>'fileId'}
-
-      %div.guid_field
-        %label{:for=>'file'} Upload local file
-        %br/
-        %input{:type=>'file', :name=>'file'}
-
-      %div.guid_field{:style=>'display:none;'}
-        %label{:for=>'url', :id=>'url'} Upload file from URL
-        %br/
-        %input{:type=>'text', :name=>'url'}
-
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-
-      %input{:type => 'submit', :value => 'Make request'}
-
-      %br/
-      %a{:href=>'/templates/merge_feid_doc.docx'} Download sample Docx file
-      %br/
-      %br/
-  %div{:style => 'padding:20px; border:1px solid black;'}
+    %br/
+    %br/
     %p
-      Results:
-      #{(defined? fileName) ? "<a href='/downloads/#{fileName}'>Download converted file</a>" : ''}
-      #{(defined? iframe) ? iframe : ''}
+      You entered:
+    %p
+      ClientID = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+    %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-25-how-to-merge-assemble-and-convert-document', :enctype => 'multipart/form-data', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
 
-= partial :_others_samples
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
-  $(function($){
+        %div.guid_radio
+          %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'local', :checked=>'checked'}Upload local file
+          %br/
+          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+          %br/
 
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+          %br/
+          %input{:type=>'text', :name=>'fileId'}
+
+        %div.guid_field
+          %label{:for=>'file'} Upload local file
+          %br/
+          %input{:type=>'file', :name=>'file'}
+
+        %div.guid_field{:style=>'display:none;'}
+          %label{:for=>'url', :id=>'url'} Upload file from URL
+          %br/
+          %input{:type=>'text', :name=>'url'}
+
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+
+        %input{:type => 'submit', :value => 'Make request'}
+
+        %br/
+        %a{:href=>'/templates/merge_feid_doc.docx'} Download sample Docx file
+        %br/
+        %br/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p
+        Results:
+        #{(defined? fileName) ? "<a href='/downloads/#{fileName}'>Download converted file</a>" : ''}
+        #{(defined? iframe) ? iframe : ''}
+
+  = partial :_others_samples
+
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+    $(function($){
+
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

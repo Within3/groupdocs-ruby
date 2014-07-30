@@ -1,11 +1,11 @@
 #GET request
-get '/sample35' do
+get '/sample-35-how-to-get-fields-and-their-data-from-pdf-file' do
   haml :sample35
 end
 
 
 #POST request
-post '/sample35' do
+post '/sample-35-how-to-get-fields-and-their-data-from-pdf-file' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
@@ -104,12 +104,12 @@ post '/sample35' do
 end
 
 #GET request
-get '/sample35/check' do
+get '//sample-35-how-to-get-fields-and-their-data-from-pdf-file/check' do
   haml :sample35
 end
 
 #POST request
-post '/sample35/check' do
+post '//sample-35-how-to-get-fields-and-their-data-from-pdf-file/check' do
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :base_path, params[:basePath]

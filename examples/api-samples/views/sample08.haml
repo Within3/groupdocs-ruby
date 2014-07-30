@@ -1,95 +1,101 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample08
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to return a URL representing a single page of particular Document in the GroupDocs account using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample08.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? clientId) ? clientId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    File Id = #{(defined? guid) ? guid : ''}
-  %p
-    Page number = #{(defined? pageNumber) ? pageNumber : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-    #requestForm{:style => 'padding:20px; border:1px solid black;'}
-      %p Enter data for request and press "Make request" button
-      %form{:action => '/sample08', :enctype => 'multipart/form-data', :method => 'post'}
-        %label{:for => 'clientId'} GroupDocs ClientID
-        %br/
-        %input{:type=>'text', :id => 'clientId' , :name=>'clientId'}
-        %br/
-        %label{:for => 'privateKey'} GroupDocs PrivateKey
-        %br/
-        %input{:type=>'text', :id => 'privateKey' , :name=>'privateKey'}
-        %br/
-        
-        %div.guid_radio
-          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
-          %br/
-          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
-          %br/
-          %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
-          %br/
-
-        %div.guid_field
-          %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
-          %br/
-          %input{:type=>'text', :name=>'fileId'}
-        
-        %div.guid_field{:style=>'display:none;'}
-          %label{:for=>'file'} Upload local file
-          %br/
-          %input{:type=>'file', :name=>'file'}
-
-        %div.guid_field{:style=>'display:none;'}
-          %label{:for=>'url', :id=>'url'} Upload file from URL
-          %br/
-          %input{:type=>'text', :name=>'url'}
-        
-        %br/
-        %label{:for => 'pageNumber'} GroupDocs page number (starts from zero)
-        %br/
-        %input{:type=>'text', :name=>'pageNumber'}
-        %br/
-        %label{:for => 'basePath'} Base Path
-        %span{:class => 'optional'} (Optional)
-        %br/
-        %input{:type=>'text', :name=>'basePath', :id => "basePath"}
-        %br/
-        %input{:type => 'submit', :value => 'Make Request'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
-    %table{:style => 'border:1px double black;'}
-      %tr
-        %th Field
-        %th Value
-      %tr
-        %td Page URL
-        %td #{(defined? image) ? image : ''}
-    %font{:color => 'green'}#{(defined? image) ? if image.nil? then 'You entered incorrect page number' else 'The page you requested:' end : ''}
+%head
+  %title Sample08 - How to return a URL representing a single page of a Document
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
     %br/
-    %img{:src => "#{(defined? image) ? image : ''}"}
-  %br/
+    Sample08 - How to return a URL representing a single page of a Document
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to return a URL representing a single page of particular Document in the GroupDocs account using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample08.html'} Builtin documentation for this sample
+    %br/
+    %br/
+    %p
+      You entered:
+    %p
+      UserId = #{(defined? clientId) ? clientId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      File Id = #{(defined? guid) ? guid : ''}
+    %p
+      Page number = #{(defined? pageNumber) ? pageNumber : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
+      #requestForm{:style => 'padding:20px; border:1px solid black;'}
+        %p Enter data for request and press "Make request" button
+        %form{:action => '/sample-8-how-to-return-a-url-representing-a-single-page-of-a-document', :enctype => 'multipart/form-data', :method => 'post'}
+          %label{:for => 'clientId'} GroupDocs ClientID
+          %br/
+          %input{:type=>'text', :id => 'clientId' , :name=>'clientId'}
+          %br/
+          %label{:for => 'privateKey'} GroupDocs PrivateKey
+          %br/
+          %input{:type=>'text', :id => 'privateKey' , :name=>'privateKey'}
+          %br/
 
-= partial :_others_samples
+          %div.guid_radio
+            %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+            %br/
+            %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+            %br/
+            %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
+            %br/
 
-%script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
-:javascript
+          %div.guid_field
+            %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
+            %br/
+            %input{:type=>'text', :name=>'fileId'}
 
-  $(function($){
-    $('.guid_radio input').change(function(){
-      var elementIndex = $(this).parent().children('input').index($(this));
-      $('.guid_field').hide();
-      $('.guid_field').eq(elementIndex).show();
+          %div.guid_field{:style=>'display:none;'}
+            %label{:for=>'file'} Upload local file
+            %br/
+            %input{:type=>'file', :name=>'file'}
+
+          %div.guid_field{:style=>'display:none;'}
+            %label{:for=>'url', :id=>'url'} Upload file from URL
+            %br/
+            %input{:type=>'text', :name=>'url'}
+
+          %br/
+          %label{:for => 'pageNumber'} GroupDocs page number (starts from zero)
+          %br/
+          %input{:type=>'text', :name=>'pageNumber'}
+          %br/
+          %label{:for => 'basePath'} Base Path
+          %span{:class => 'optional'} (Optional)
+          %br/
+          %input{:type=>'text', :name=>'basePath', :id => "basePath"}
+          %br/
+          %input{:type => 'submit', :value => 'Make Request'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      %table{:style => 'border:1px double black;'}
+        %tr
+          %th Field
+          %th Value
+        %tr
+          %td Page URL
+          %td #{(defined? image) ? image : ''}
+      %font{:color => 'green'}#{(defined? image) ? if image.nil? then 'You entered incorrect page number' else 'The page you requested:' end : ''}
+      %br/
+      %img{:src => "#{(defined? image) ? image : ''}"}
+    %br/
+
+  = partial :_others_samples
+
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+  :javascript
+
+    $(function($){
+      $('.guid_radio input').change(function(){
+        var elementIndex = $(this).parent().children('input').index($(this));
+        $('.guid_field').hide();
+        $('.guid_field').eq(elementIndex).show();
+      });
     });
-  });

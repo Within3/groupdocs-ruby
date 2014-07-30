@@ -1,52 +1,58 @@
-%h3{:style => 'text-align:center;'}
-  %a{:href => '/'} GroupDocs Ruby SDK Samples
-  \- Sample30
-.samplecontent{:style => 'padding:10px;'}
-  %i This sample will show how to delete file from GroupDocs Storage using Ruby SDK
-  %br/
-  %br/
-  %span.documentation
-    %a{:href => '/docs/sample30.html'} Builtin documentation for this sample
-  %br/
-  %br/
-  %p
-    You entered:
-  %p
-    UserId = #{(defined? userId) ? userId : ''}
-  %p
-    PrivateKey = #{(defined? privateKey) ? privateKey : ''}
-  %p
-    FileId = #{(defined? name) ? name : ''}
-  %p
-    %font{:color => 'red'} #{(defined? err) ? err : ''}
-  %br/
-  #requestForm{:style => 'padding:20px; border:1px solid black;'}
-    %p Enter data for request and press "Make request" button
-    %form{:action => '/sample30', :method => 'post'}
-      %label{:for => 'clientId'} GroupDocs ClientID
-      %br/
-      %input{:type=>'text', :name=>'clientId'}
-      %br/
-      %label{:for => 'privateKey'} GroupDocs PrivateKey
-      %br/
-      %input{:type=>'text', :name=>'privateKey'}
-      %br/
-      %label{:for => 'fileName'} GroupDocs File Name
-      %br/
-      %input{:type=>'text', :name=>'fileName'}
-      %br/
-      %label{:for => 'basePath'} Base Path
-      %span{:class => 'optional'} (Optional)
-      %br/
-      %input{:type=>'text', :name=>'basePath'}
-      %br/
-      %br/
-      %input{:type => 'submit', :value => 'Delete'}/
-  %div{:style => 'padding:20px; border:1px solid black;'}
-    %p Results:
+%head
+  %title Sample30 - How to delete file from GroupDocs Storage
+  %link(rel="stylesheet" type="text/css" href="/css/style.css")
+  %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
+%body
+  %h3{:style => 'text-align:center;'}
+    %a{:href => '/'} GroupDocs Ruby SDK Samples
+    %br/
+    Sample30 - How to delete file from GroupDocs Storage
+  .samplecontent{:style => 'padding:10px;'}
+    %i This sample will show how to delete file from GroupDocs Storage using Ruby SDK
+    %br/
+    %br/
+    %span.documentation
+      %a{:href => '/docs/sample30.html'} Builtin documentation for this sample
+    %br/
     %br/
     %p
-      %span{:style=>"color: red"}#{(defined? message) ? message : ''}
+      You entered:
+    %p
+      UserId = #{(defined? userId) ? userId : ''}
+    %p
+      PrivateKey = #{(defined? privateKey) ? privateKey : ''}
+    %p
+      FileId = #{(defined? name) ? name : ''}
+    %p
+      %font{:color => 'red'} #{(defined? err) ? err : ''}
     %br/
+    #requestForm{:style => 'padding:20px; border:1px solid black;'}
+      %p Enter data for request and press "Make request" button
+      %form{:action => '/sample-30-how-to-delete-file-from-groupdocs-storage', :method => 'post'}
+        %label{:for => 'clientId'} GroupDocs ClientID
+        %br/
+        %input{:type=>'text', :name=>'clientId'}
+        %br/
+        %label{:for => 'privateKey'} GroupDocs PrivateKey
+        %br/
+        %input{:type=>'text', :name=>'privateKey'}
+        %br/
+        %label{:for => 'fileName'} GroupDocs File Name
+        %br/
+        %input{:type=>'text', :name=>'fileName'}
+        %br/
+        %label{:for => 'basePath'} Base Path
+        %span{:class => 'optional'} (Optional)
+        %br/
+        %input{:type=>'text', :name=>'basePath'}
+        %br/
+        %br/
+        %input{:type => 'submit', :value => 'Delete'}/
+    %div{:style => 'padding:20px; border:1px solid black;'}
+      %p Results:
+      %br/
+      %p
+        %span{:style=>"color: red"}#{(defined? message) ? message : ''}
+      %br/
 
-= partial :_others_samples
+  = partial :_others_samples
