@@ -12,7 +12,7 @@ module GroupDocs
     # Changed in release 1.7.0
     #
     #
-    # Returns a list of all templates.  &name={name}&tag={tag}
+    # Returns a list of all templates.  
     #
     # @param [Hash] options Hash of options
     # @option options [Integer] :page Page to start with

@@ -1,3 +1,37 @@
+## v1.7.0
+
+**Changes**
+
+* `Document::Annotation` updated types of annotation
+* `Document#templates!` added parameter<Hash> "settings"
+* `Signature::Envelope#sign!` added parameter<Hash> "settings"
+* `Signature::Form#sign!`  added parameter<Hash> settings and parameter<String> "filepath"
+* `Signature::Form#fields!`  delete parameter "documentGuid"
+
+**New**
+
+* Added `Document#editor_fields!`
+* Added `Document#questionnaire_template!`
+* Added `Job.get_conversions!`
+* Added new attributes `User`
+* Added new attributes `DataSource::Field`
+* Added new attributes `Document::Annotation`
+* Added `Document::TemplateEditorFields`
+* Added new attributes `Document::Field`
+* Added `Document::TemplateEditorFieldStyle`
+* Added `Questionnaire::Collector#decorate!`
+* Added `Questionnaire::Collector#get_decorate!`
+* Added `Questionnaire::QuestionnaireCollectorStyle`
+* Added new attributes `Questionnaire::Question`
+* Added new attributes `Signature::Envelope`
+* Added `Signature::Form#update_partipicant!`
+* Added `Signature::Form#validate_partipicant!`
+* Added `Signature::Form#document_fields!`
+* Added `Signature::Form#get_logs!`
+* Added new attributes `Signature::Recipient`
+* Added new attributes `Signature::Template`
+
+
 ## v1.6.0
 
 **Changes**
