@@ -5,6 +5,8 @@ module GroupDocs
     require 'groupdocs/questionnaire/execution'
     require 'groupdocs/questionnaire/page'
     require 'groupdocs/questionnaire/question'
+    require 'groupdocs/questionnaire/collector_style'
+
 
     include Api::Helpers::Status
 

@@ -383,6 +383,154 @@ module GroupDocs
     # @attr [List] avatar
     attr_accessor :avatar
 
+    # added in release 1.7.0
+    # @attr [Boolean] trial
+    attr_accessor :trial
+    # @attr [Boolean] news_eanbled
+    attr_accessor :news_eanbled
+    # @attr [Boolean] alerts_eanbled
+    attr_accessor :alerts_eanbled
+    # @attr [Boolean] support_eanbled
+    attr_accessor :support_eanbled
+    # @attr [Boolean] support_email
+    attr_accessor :support_email
+    # @attr [String] apps
+    attr_accessor :apps
+    # @attr [Boolean] annotation_branded
+    attr_accessor :annotation_branded
+    # @attr [Boolean] viewer_branded
+    attr_accessor :viewer_branded
+    # @attr [Boolean] is_real_time_broadcast_enabled
+    attr_accessor :is_real_time_broadcast_enabled
+    # @attr [Boolean] is_scroll_broadcast_enabled
+    attr_accessor :is_scroll_broadcast_enabled
+    # @attr [Boolean] is_zoom_broadcast_enabled
+    attr_accessor :is_zoom_broadcast_enabled
+    # @attr [List] annotation_logo
+    attr_accessor :annotation_logo
+    # @attr [List] pointer_tool_cursor
+    attr_accessor :pointer_tool_cursor
+    # @attr [Integer] annotation_header_options
+    attr_accessor :annotation_header_options
+    # @attr [Boolean] is_annotation_navigation_widget_enabled
+    attr_accessor :is_annotation_navigation_widget_enabled
+    # @attr [Boolean] is_annotation_zoom_widget_enabled
+    attr_accessor :is_annotation_zoom_widget_enabled
+    # @attr [Boolean] is_annotation_download_widget_enabled
+    attr_accessor :is_annotation_download_widget_enabled
+    # @attr [Boolean] is_annotation_print_widget_enabled
+    attr_accessor :is_annotation_print_widget_enabled
+    # @attr [Boolean] is_annotation_help_widget_enabled
+    attr_accessor :is_annotation_help_widget_enabled
+    # @attr [Boolean] is_right_panel_enabled
+    attr_accessor :is_right_panel_enabled
+    # @attr [Boolean] is_thumbnails_panel_enabled
+    attr_accessor :is_thumbnails_panel_enabled
+    # @attr [Boolean] is_standard_header_always_shown
+    attr_accessor :is_standard_header_always_shown
+    # @attr [Boolean] is_toolbar_enabled
+    attr_accessor :is_toolbar_enabled
+    # @attr [Boolean] is_text_annotation_button_enabled
+    attr_accessor :is_text_annotation_button_enabled
+    # @attr [Boolean] is_rectangle_annotation_button_enabled
+    attr_accessor :is_rectangle_annotation_button_enabled
+    # @attr [Boolean] is_point_annotation_button_enabled
+    attr_accessor :is_point_annotation_button_enabled
+    # @attr [Boolean] is_strikeout_annotation_button_enabled
+    attr_accessor :is_strikeout_annotation_button_enabled
+    # @attr [Boolean] is_polyline_annotation_button_enabled
+    attr_accessor :is_polyline_annotation_button_enabled
+    # @attr [Boolean] is_typewriter_annotation_button_enabled
+    attr_accessor :is_typewriter_annotation_button_enabled
+    # @attr [Boolean] is_watermark_annotation_button_enabled
+    attr_accessor :is_watermark_annotation_button_enabled
+    # @attr [Boolean] is_annotation_document_name_shown
+    attr_accessor :is_annotation_document_name_shown
+    # @attr [List] annotation_navigation_icons
+    attr_accessor :annotation_navigation_icons
+    # @attr [List] annotation_tool_icons
+    attr_accessor :annotation_tool_icons
+    # @attr [Integer] annotation_background_color
+    attr_accessor :annotation_background_color
+    # @attr [Integer] viewer_logo
+    attr_accessor :viewer_logo
+    # @attr [Integer] viewer_options
+    attr_accessor :viewer_options
+    # @attr [Boolean] is_viewer_navigation_widget_enabled
+    attr_accessor :is_viewer_navigation_widget_enabled
+    # @attr [Boolean] is_viewer_zoom_widget_enabled
+    attr_accessor :is_viewer_zoom_widget_enabled
+    # @attr [Boolean] is_viewer_download_widget_enabled
+    attr_accessor :is_viewer_download_widget_enabled
+    # @attr [Boolean] is_viewer_print_widget_enabled
+    attr_accessor :is_viewer_print_widget_enabled
+    # @attr [Boolean] is_viewer_help_widget_enabled
+    attr_accessor :is_viewer_help_widget_enabled
+    # @attr [Boolean] is_viewer_document_name_shown
+    attr_accessor :is_viewer_document_name_shown
+    # @attr [Boolean] isviewer_right_mouse_button_menu_enabled
+    attr_accessor :isviewer_right_mouse_button_menu_enabled
+    # @attr [Time] signedinOn
+    attr_accessor :signedinOn
+    # @attr [Integer] signin_count
+    attr_accessor :signin_count
+    # @attr [Boolean] signature_watermark_enabled
+    attr_accessor :signature_watermark_enabled
+    # @attr [Boolean] signature_desktop_notifications
+    attr_accessor :signature_desktop_notifications
+    # @attr [Integer] webhook_notification_retries
+    attr_accessor :webhook_notification_retries
+    # @attr [String] webhook_notification_failed_recipients
+    attr_accessor :webhook_notification_failed_recipients
+    # @attr [String] signature_color
+    attr_accessor :signature_color
+    # @attr [Boolean] signature_save_field_changes_automatically
+    attr_accessor :signature_save_field_changes_automatically
+    # @attr [Boolean] signature_use_custom_email_templates
+    attr_accessor :signature_use_custom_email_templates
+    # @attr [String] signature_envelope_sent_owner_template
+    attr_accessor :signature_envelope_sent_owner_template
+    # @attr [String] signature_envelope_sent_other_template
+    attr_accessor :signature_envelope_sent_other_template
+    # @attr [String] signature_envelope_completed_template
+    attr_accessor :signature_envelope_completed_template
+    # @attr [String] signature_envelope_signed_template
+    attr_accessor :signature_envelope_signed_template
+    # @attr [String] signature_envelope_declined_template
+    attr_accessor :signature_envelope_declined_template
+    # @attr [String] signature_envelope_failed_template
+    attr_accessor :signature_envelope_failed_template
+    # @attr [String] signature_envelope_cancelled_template
+    attr_accessor :signature_envelope_cancelled_template
+    # @attr [String] signature_envelope_expired_template
+    attr_accessor :signature_envelope_expired_template
+    # @attr [String] signature_envelope_step_expired_template
+    attr_accessor :signature_envelope_step_expired_template
+    # @attr [String] signature_envelope_recipient_reminder_template
+    attr_accessor :signature_envelope_recipient_reminder_template
+    # @attr [String] signature_form_signed_template
+    attr_accessor :signature_form_signed_template
+    # @attr [Boolean] signature_form_require_user_auth_for_sign
+    attr_accessor :signature_form_require_user_auth_for_sign
+    # @attr [Boolean] signature_form_request_user_auth_by_photo
+    attr_accessor :signature_form_request_user_auth_by_photo
+    # @attr [Boolean] signature_form_require_user_identity_validation
+    attr_accessor :signature_form_require_user_identity_validation
+    # @attr [Boolean] signature_envelope_require_user_auth_for_sign
+    attr_accessor :signature_envelope_require_user_auth_for_sign
+    # @attr [Boolean] signature_envelope_request_user_auth_by_photo
+    attr_accessor :signature_envelope_request_user_auth_by_photo
+    # @attr [Boolean] signature_enable_uploaded_signature
+    attr_accessor :signature_enable_uploaded_signature
+    # @attr [Boolean] signature_enable_typed_signature
+    attr_accessor :signature_enable_typed_signature
+    # @attr [Boolean] signature_enable_envelope_comment
+    attr_accessor :signature_enable_envelope_comment
+    # @attr [Boolean] signature_enable_form_comment
+    attr_accessor :signature_enable_form_comment
+
+
+
     # Human-readable accessors
     alias_accessor :first_name,           :firstname
     alias_accessor :last_name,            :lastname

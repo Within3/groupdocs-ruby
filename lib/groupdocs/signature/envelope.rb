@@ -24,16 +24,20 @@ module GroupDocs
     extend  Signature::ResourceMethods
 
     #
+    # Changed in release 1.7.0
+    #
+    #
     # Returns a list of all envelopes.
     #
     # @param [Hash] options Hash of options
     # @option options [Integer] :page Page to start with
     # @option options [Integer] :records How many items to list
-    # @option options [Integer] :status_id Filter by status identifier
-    # @option options [String] :document Filter by document GUID
-    # @option options [String] :recipient Filter by recipient email
-    # @option options [String] :date Filter by date
-    # @option options [String] :name Filter by name
+    # @option options [Integer] :status_id Filter envelopes by status identifier
+    # @option options [String] :document Filter envelopes by document GUID
+    # @option options [String] :recipient Filter envelopes by recipient email
+    # @option options [String] :date Filter envelopes by date
+    # @option options [String] :name Filter envelopes by name
+    # @option options [String] :tag Filter envelopes by tag
     # @param [Hash] access Access credentials
     # @option access [String] :client_id
     # @option access [String] :private_key
@@ -92,8 +96,33 @@ module GroupDocs
     attr_accessor :envelopeExpireTime
     # @attr [Boolean] isDemo
     attr_accessor :isDemo
-    # @attr [Symbol] status
-    attr_accessor :status
+
+    # added in release 1.7.0
+    # @attr [String] updatedDateTime
+    attr_accessor :updatedDateTime
+    # @attr [Boolean] attachSignedDocument
+    attr_accessor :attachSignedDocument
+    # @attr [Boolean] includeViewLink
+    attr_accessor :includeViewLink
+    # @attr [Boolean] canBeCommented
+    attr_accessor :canBeCommented
+    # @attr [Boolean] inPersonSign
+    attr_accessor :inPersonSign
+    # @attr [String] ownerName
+    attr_accessor :ownerName
+    # @attr [Boolean] enableTypedSignature
+    attr_accessor :enableTypedSignature
+    # @attr [Boolean] enableUploadedSignature
+    attr_accessor :enableUploadedSignature
+    # @attr [Boolean] requireUserAuthForSign
+    attr_accessor :requireUserAuthForSign
+    # @attr [Boolean] requestUserAuthByPhoto
+    attr_accessor :requestUserAuthByPhoto
+    # @attr [Boolean] showRecipientCommentInSignedDocument
+    attr_accessor :showRecipientCommentInSignedDocument
+    # @attr [String] tags
+    attr_accessor :tags
+
 
     # Human-readable accessors
     alias_accessor :creation_date_time,   :creationDateTime
@@ -291,9 +320,14 @@ module GroupDocs
     end
 
     #
+    # Changed in release 1.7.0
+    #
     # Signs envelope.
     #
     # @param [GroupDocs::Signature::Recipient] recipient
+    # @param [Hash] settings
+    # @option settings [String] :authData (required)
+    # @option settings [String] :comment (required)
     # @param [Hash] options
     # @option options [Boolean] :public Defaults to false
     # @param [Hash] access Access credentials
@@ -301,7 +335,7 @@ module GroupDocs
     # @option access [String] :private_key
     # @raise [ArgumentError] if recipient is not GroupDocs::Signature::Recipient
     #
-    def sign!(recipient, options = {}, access = {})
+    def sign!(recipient, settings = {}, options = {}, access = {})
       recipient.is_a?(GroupDocs::Signature::Recipient) or raise ArgumentError,
         "Recipient should be GroupDocs::Signature::Recipient object, received: #{recipient.inspect}"
 
@@ -310,6 +344,7 @@ module GroupDocs
         request[:access] = access
         request[:method] = :PUT
         request[:path] = "/signature/#{client_id}/envelopes/#{id}/recipient/#{recipient.id}/sign"
+        request[:request_body] = settings
       end.execute!
     end
 

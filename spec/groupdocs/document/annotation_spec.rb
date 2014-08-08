@@ -32,7 +32,7 @@ describe GroupDocs::Document::Annotation do
   # Annotation#created_on is overwritten
   it { should have_alias(:created_on=, :createdOn=)                            }
   it { should alias_accessor(:annotation_position, :annotationPosition) }
-  it { should alias_accessor(:position, :annotationPosition)            }
+
 
   it { should have_alias(:annotationGuid=, :guid=) }
 
@@ -206,21 +206,8 @@ describe GroupDocs::Document::Annotation do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.move_marker!(10, 10, :client_id => 'client_id', :private_key => 'private_key')
+        subject.move_marker!(marker, :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
-    end
-
-    it 'updates box coordinates if it is set' do
-      subject.box = { :x => 1, :y => 2 }
-      subject.move_marker! 10, 10
-      subject.box.x.should == 10
-      subject.box.y.should == 10
-    end
-
-    it 'creates box coordinates if it is not set' do
-      subject.move_marker! 10, 10
-      subject.box.x.should == 10
-      subject.box.y.should == 10
     end
   end
 

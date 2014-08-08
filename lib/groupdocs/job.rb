@@ -440,5 +440,29 @@ module GroupDocs
       byte_from_array(actions, ACTIONS)
     end
 
+    #added in release 1.7.0
+
+    #
+    # Get Possible Conversions.
+    #
+    # @example
+    #   GroupDocs::Job.get_conversions! "pdf"
+    #
+    #
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    # @param [String] file_ext File extension to check
+    #
+    def self.get_conversions!(access = {}, file_ext)
+      api = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :GET
+        request[:path] = "/async/{{client_id}}/possibleConversions/#{file_ext}"
+      end
+      json = api.execute!
+      json[:possibleConversions]
+    end
+
   end # Job
 end # GroupDocs

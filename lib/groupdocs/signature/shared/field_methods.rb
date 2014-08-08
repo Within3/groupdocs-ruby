@@ -142,11 +142,13 @@ module GroupDocs
       # @raise [ArgumentError] if field is not GroupDocs::Signature::Field
       # @raise [ArgumentError] if document is not GroupDocs::Document
       #
-      def modify_field!(field, document, access = {})
+      def modify_field!(field, document, recipient, access = {})
         field.is_a?(GroupDocs::Signature::Field) or raise ArgumentError,
           "Field should be GroupDocs::Signature::Field object, received: #{field.inspect}"
         document.is_a?(GroupDocs::Document) or raise ArgumentError,
           "Document should be GroupDocs::Document object, received: #{document.inspect}"
+        recipient.is_a?(GroupDocs::Signature::Recipient) or raise ArgumentError,
+          "Recipient should be GroupDocs::Signature::Recipient object, received: #{recipient.inspect}"
 
         # prepare payload
         payload = field.to_hash # field itself
@@ -156,7 +158,7 @@ module GroupDocs
         Api::Request.new do |request|
           request[:access] = access
           request[:method] = :PUT
-          request[:path] = "/signature/{{client_id}}/#{class_name.pluralize}/#{id}/documents/#{document.file.guid}/field/#{field.id}"
+          request[:path] = "/signature/{{client_id}}/#{class_name.pluralize}/#{id}/documents/#{document.file.guid}/recipientGuid/#{recipient.id}field/#{field.id}"
           request[:request_body] = payload
         end.execute!
       end

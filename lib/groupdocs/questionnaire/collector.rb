@@ -279,5 +279,57 @@ module GroupDocs
 
     end
 
+    #
+    # Added in release 1.7.0
+    #
+    # Decorate questionnaire collector
+    #
+    # @example
+    #   questionnaire = GroupDocs::Questionnaire.get!(1)
+    #   collector = questionnaire.collectors!.first
+    #   style = GroupDocs::Questionnaire::QuestionnaireCollectorStyle.new
+    #   style.collectorId = collector.id
+    #   title = GroupDocs::Questionnaire::QuestionnaireCollectorStyle::Title.new
+    #   title.color = 'blue'
+    #   style.title = title
+    #
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def decorate!(style, access = {})
+      style.is_a?(GroupDocs::Questionnaire::QuestionnaireCollectorStyle) or raise ArgumentError,
+                                                       "Style should be GroupDocs::Questionnaire::QuestionnaireCollectorStyle object, received: #{style.inspect}"
+      Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :POST
+        request[:path] = "/merge/{{client_id}}/questionnaires/collectors/#{guid}/decorate"
+        request[:request_body] = style
+      end.execute!
+    end
+
+
+    #
+    # Added in release 1.7.0
+    #
+    # Returns questionnaire collector style
+    #
+    # @example
+    #   questionnaire = GroupDocs::Questionnaire.get!(1)
+    #   collector = questionnaire.collectors!.first
+    #   collector.decorate!
+    #
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def get_decorate!(access = {})
+      Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :GET
+        request[:path] = "/merge/{{client_id}}/questionnaires/collector/#{guid}/style"
+      end.execute!
+    end
+
   end # Questionnaire::Collector
 end # GroupDocs

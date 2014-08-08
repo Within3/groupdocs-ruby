@@ -8,6 +8,15 @@ module GroupDocs
     # @attr [Array<String>] values
     attr_accessor :values
 
+    # added in release 1.7.0
+    # @attr [String] contentType
+    attr_accessor :contentType
+    # @attr [List<GroupDocs::DataSource::Field>] nested_fields
+    attr_accessor :nested_fields
+    # @attr [String] regionName
+    attr_accessor :regionName
+    # @attr [String] dimension
+    attr_accessor :dimension
     #
     # Updates type with machine-readable format.
     #

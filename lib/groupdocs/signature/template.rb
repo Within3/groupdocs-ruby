@@ -9,11 +9,18 @@ module GroupDocs
     extend  Signature::ResourceMethods
 
     #
-    # Returns a list of all templates.
+    # Changed in release 1.7.0
+    #
+    #
+    # Returns a list of all templates.  &name={name}&tag={tag}
     #
     # @param [Hash] options Hash of options
     # @option options [Integer] :page Page to start with
     # @option options [Integer] :records How many items to list
+    # @option options [String] :documentGuid Fitler templates by document originalMD5
+    # @option options [String] :recipientName Filter templates by recipient nickname
+    # @option options [String] :name Filter templates by signatureTemplate name
+    # @option options [String] :tag Filter templates by tag
     # @param [Hash] access Access credentials
     # @option access [String] :client_id
     # @option access [String] :private_key
@@ -35,6 +42,16 @@ module GroupDocs
 
     # @attr [Integer] templateExpireTime
     attr_accessor :templateExpireTime
+
+    #added in release 1.7.0
+    # @attr [Double] fieldsCount
+    attr_accessor :fieldsCount
+    # @attr [Boolean] enableTypedSignature
+    attr_accessor :enableTypedSignature
+    # @attr [Boolean] enableUploadedSignature
+    attr_accessor :enableUploadedSignature
+    # @attr [String] tags
+    attr_accessor :tags
 
     # Human-readable accessors
     alias_accessor :template_expire_time, :templateExpireTime
@@ -100,6 +117,8 @@ module GroupDocs
       api.add_params(:nickname => recipient.nickname, :role => recipient.role_id , :order => recipient.order)
       api.execute!
     end
+
+
 
   end # Signature::Template
 end # GroupDocs
