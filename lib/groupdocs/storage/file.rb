@@ -29,8 +29,9 @@ module GroupDocs
       # @param [Hash] options
       # @option options [String] path Folder path to upload to
       # @option options [String] name Name of file to be renamed
-      # @option options [String] description File description
-      # @option options [String] callbackUrl will be called after file is uploaded
+      # @option options [String] :description File description
+      # @option options [String] :callbackUrl will be called after file is uploaded
+      # @option options [String] :isKeepBothMode
       # @param [Hash] access Access credentials
       # @option access [String] :client_id
       # @option access [String] :private_key

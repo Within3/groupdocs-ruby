@@ -33,6 +33,15 @@ module GroupDocs
     # @attr [Array<GroupDocs::Questionnaire::Question::Conditions>] conditions
     attr_accessor :conditions
 
+    # added in release 1.7.0
+    #
+    # @attr [String] regionName
+    attr_accessor :regionName
+    ## @attr [String] hint
+    attr_accessor :hint
+    # @attr [Array<String>] dimension
+    attr_accessor :dimension
+
 
     # Human-readable accessors
     alias_accessor :default_answer, :def_answer

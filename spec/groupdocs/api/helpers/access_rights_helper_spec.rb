@@ -6,10 +6,10 @@ describe GroupDocs::Api::Helpers::AccessRights do
   end
 
   describe '#convert_access_rights_to_byte' do
-    let(:rights) { %w(export view proof download) }
+    let(:rights) { %w(view annotate download export all) }
 
     it 'raises error if rights is not an array' do
-      lambda { subject.send(:convert_access_rights_to_byte, :export) }.should raise_error(ArgumentError)
+      lambda { subject.send(:convert_access_rights_to_byte, :view) }.should raise_error(ArgumentError)
     end
 
     it 'raises error if right is unknown' do
@@ -25,19 +25,19 @@ describe GroupDocs::Api::Helpers::AccessRights do
     end
 
     it 'returns correct byte flag' do
-      subject.send(:convert_access_rights_to_byte, rights).should == 15
+      subject.send(:convert_access_rights_to_byte, rights).should == 46
     end
   end
 
   describe '#convert_byte_to_access_rights' do
-    let(:rights) { %w(export view proof) }
+    let(:rights) { %w(view annotate download export) }
 
     it 'raises error if rights is not an integer' do
       lambda { subject.send(:convert_byte_to_access_rights, :export) }.should raise_error(ArgumentError)
     end
 
     it 'returns correct rights array flag' do
-      subject.send(:convert_byte_to_access_rights, 13).should =~ rights.map(&:to_sym)
+      subject.send(:convert_byte_to_access_rights, 15).should =~ rights.map(&:to_sym)
     end
   end
 end

@@ -32,7 +32,7 @@ describe GroupDocs::Document::Annotation do
   # Annotation#created_on is overwritten
   it { should have_alias(:created_on=, :createdOn=)                            }
   it { should alias_accessor(:annotation_position, :annotationPosition) }
-  it { should alias_accessor(:position, :annotationPosition)            }
+
 
   it { should have_alias(:annotationGuid=, :guid=) }
 

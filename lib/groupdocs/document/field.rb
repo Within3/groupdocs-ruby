@@ -18,6 +18,22 @@ module GroupDocs
     # @attr [Array] acceptableValues
     attr_accessor :acceptableValues
 
+    # added in release 1.7.0
+
+    # @attr [Int] selectionPosition
+    attr_accessor :selectionPosition
+    # @attr [Int] selectionLength
+    attr_accessor :selectionLength
+    # @attr [Boolean] isTableStartMarker
+    attr_accessor :isTableStartMarker
+    # @attr [Boolean] isTableEndMarker
+    attr_accessor :isTableEndMarker
+    # @attr [String] regionName
+    attr_accessor :regionName
+
+
+
+
     #
     # Coverts passed hash to GroupDocs::Document::Rectangle object.
     # @param [Hash] options

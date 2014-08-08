@@ -7,6 +7,8 @@ module GroupDocs
     require 'groupdocs/document/metadata'
     require 'groupdocs/document/rectangle'
     require 'groupdocs/document/view'
+    require 'groupdocs/document/editor'
+    require 'groupdocs/document/style'
 
     ACCESS_MODES = {
         :private    => 0,
@@ -49,18 +51,22 @@ module GroupDocs
     #
     # Returns an array of all templates (documents in "Templates" directory).
     #
+    # @param [Hash] options Options
+    # @option options [String] :orderBy Order by column
+    # @option options [Boolean] :isAscending Order by ascending or descending
     # @param [Hash] access Access credentials
     # @option access [String] :client_id
     # @option access [String] :private_key
     # @return [Array<GroupDocs::Document>]
     #
     def self.templates!(options = {}, access = {})
-      json = Api::Request.new do |request|
+      api = Api::Request.new do |request|
         request[:access] = access
         request[:method] = :GET
         request[:path] = '/merge/{{client_id}}/templates'
-      end.execute!
-
+      end
+      api.add_params(options)
+      json = api.execute!
       json[:templates].map do |template|
         template.merge!(:file => Storage::File.new(template))
         Document.new(template)
@@ -199,7 +205,7 @@ module GroupDocs
 
     #added in release 1.6.0
     # @attr [String] fieldType
-    attr_accessor :fileType
+    attr_accessor :fieldType
     # @attr [Int] dependent_questionnaires_count
     attr_accessor :dependent_questionnaires_count
     # @attr [Long] upload_time
@@ -1460,6 +1466,62 @@ module GroupDocs
         request[:method] = :GET
         request[:path] = "/signature/public/documents/#{file.guid}/fields"
       end.execute!
+    end
+
+    # added in release 1.7.0
+    #
+    # Get template fields.
+    #
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def editor_fields!(access = {})
+      json = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :GET
+        request[:path] = "/doc/{{client_id}}/files/#{file.guid}/editor_fields"
+      end.execute!
+      json[:fields].map do |field|
+        TemplateEditorFields.new(field)
+      end
+    end
+
+    # added in release 1.7.0
+    #
+    # Create questionnaire template from file.
+    #
+    #  @example
+    #
+    # file = GroupDocs::Storage::File.new({:guid => '3be4e06494caed131d912c75e17d5f22592e3044032e0f81b35f13a8c9fefb49'}).to_document
+    # field = GroupDocs::Document::TemplateEditorFields.new
+    # field.name = 'test'
+    # field.fieldtype = 'TextBox'
+    # field.page = 1
+    # file.questionnaire_template!([field] )
+    #
+    #
+    # @param List[GroupDocs::Document::TemplateEditorFields] fields
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def questionnaire_template!(fields, access = {})
+
+      fields.each do |field|
+        field.is_a?(GroupDocs::Document::TemplateEditorFields) or raise ArgumentError,
+                                                                        "Fields should be List GroupDocs::Document::TemplateEditorFields objects, received: #{fields.inspect}"
+      end
+
+      json = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :POST
+        request[:path] = "/merge/{{client_id}}/files/#{file.guid}/templates"
+        request[:request_body] = fields
+      end.execute!
+      json[:templateFields].map do |field|
+        Document::Field.new(field)
+      end
     end
 
   end # Document

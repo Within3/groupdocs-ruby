@@ -6,10 +6,10 @@ module GroupDocs
 
     include Api::Helpers::AccessMode
 
-    #AnnotationType = { Text: 0, Area: 1, Point: 2, TextStrikeout: 3, Polyline: 4, TextField: 5, Watermark: 6,  TextReplacement: 7, TextRemoval: 8 }
+    #AnnotationType = { Text: 0, Area: 1, Point: 2, TextStrikeout: 3, Polyline: 4, TextField: 5, Watermark: 6,  TextReplacement: 7, Arrow: 8, TextRedaction 9, ResourceRedaction 10, TextUnderline 11, Distance 12, All 13 }
 
-    # updateed in release 1.6.0
-    TYPES  = %w(Text Area Point TextStrikeout Polyline TextField Watermark TextReplacement TextRemoval )
+    # updated in release 1.7.0
+    TYPES  = %w(Text Area Point TextStrikeout Polyline TextField Watermark TextReplacement Arrow TextRedaction ResourceRedaction ResourceRedaction TextUnderline Distance All)
 
     # @attr [GroupDocs::Document] document
     attr_accessor :document
@@ -54,7 +54,7 @@ module GroupDocs
     attr_accessor :serverTime
     #attr [Array]
 
-    #added in release 1.6.0
+    #added in release 1.7.0
     #@attr [Int] penColor
     attr_accessor :penColor
     #@attr [Int] penWidth
@@ -65,7 +65,10 @@ module GroupDocs
     attr_accessor :creatorName
     #@attr [Int] creatorEmail
     attr_accessor :creatorEmail
-
+    #@attr [Long] penColor
+    attr_accessor :layerId
+    #@attr [Int] penWidth
+    attr_accessor :backgroundColor
 
     # Compatibility with response JSON
     alias_method :annotationGuid=, :guid=
@@ -82,12 +85,14 @@ module GroupDocs
     alias_accessor :page_number,         :pageNumber
     alias_accessor :server_time,         :serverTime
 
-    #added in release 1.6.0
+    #added in release 1.7.0
     alias_accessor :pen_color,           :penColor
     alias_accessor :pen_width,           :penWidth
     alias_accessor :pen_style,           :penStyle
     alias_accessor :creator_name,        :creatorName
     alias_accessor :creator_email,       :creatorEmail
+    alias_accessor :layer_id,            :layerId
+    alias_accessor :background_color,    :backgroundColor
 
     #
     # Creates new GroupDocs::Document::Annotation.
