@@ -39,19 +39,19 @@
         %input{:type => 'text', :name => 'privateKey', :value => "#{(defined? private_key) ? private_key : ''}" }
         %br/
         %div.guid_radio
-          %input{:type=>'radio', :name=>'source', :value=>'guid', :checked=>'checked'} File ID (GUID)
+          %input{:type=>'radio', :name=>'source', :value=>'guid'} File ID (GUID)
           %br/
-          %input{:type=>'radio', :name=>'source', :value=>'local'}Upload local file
+          %input{:type=>'radio', :name=>'source', :value=>'localField', :checked=>'checked'}Upload local file
           %br/
           %input{:type=>'radio', :name=>'source', :value=>'url'} Upload file from URL
           %br/
 
-        %div.guid_field
+        %div.guid_field{:style=>'display:none;'}
           %label{:for=>'fileId', :id=>'guid'} File ID (GUID)
           %br/
           %input{:type=>'text', :name=>'fileId'}
 
-        %div.guid_field{:style=>'display:none;'}
+        %div.guid_field
           %label{:for=>'file'} Upload local file
           %br/
           %input{:type=>'file', :name=>'file'}

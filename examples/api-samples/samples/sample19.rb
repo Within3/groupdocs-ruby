@@ -156,9 +156,10 @@ post '/sample-19-how-to-compare-documents' do
       documents = job.documents!()
       #Get compared file giud
       guid = documents[:outputs].first.file.guid
+      embedkey = GroupDocs::User.get_embed_key!('comparison')
 
       #Prepare to sign url
-      iframe = "/document-viewer/embed/#{guid}"
+      iframe = "/document-comparison2/embed/#{embedkey}/#{guid}"
       # Construct result string
       url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
       #Generate iframe URL

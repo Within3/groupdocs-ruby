@@ -1,10 +1,10 @@
 #GET request
-get '/sample-9-how-to-generate-an-embedded-viewer-url-for-a-document' do
+get '/sample-9-how-to-generate-an-embedded-viewer-annotation-url-for-a-document' do
   haml :sample09
 end
 
 #POST request
-post '/sample-9-how-to-generate-an-embedded-viewer-url-for-a-document' do
+post '/sample-9-how-to-generate-an-embedded-viewer-annotation-url-for-a-document' do
   # Set variables
   set :file_id, params[:fileId]
   set :width, params[:width]

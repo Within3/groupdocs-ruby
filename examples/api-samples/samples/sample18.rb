@@ -1,5 +1,5 @@
 #GET request
-get '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-ppt-to-pdf' do
+get '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-and-ppt-to-pdf' do
   haml :sample18
 end
 
@@ -71,7 +71,7 @@ end
 
 
 #POST request
-post '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-ppt-to-pdf' do
+post '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-and-ppt-to-pdf' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

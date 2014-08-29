@@ -146,7 +146,7 @@ post '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-wa
     form.publish!({:callbackUrl => settings.callback})
 
     #Prepare to sign url
-    iframe = "//signature2/forms/signembed/#{guid}"
+    iframe = "/signature2/forms/signembed/#{id}"
     # Construct result string
     url = GroupDocs::Api::Request.new(:path => iframe).prepare_and_sign_url
     #Generate iframe URL

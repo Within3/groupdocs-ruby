@@ -35,11 +35,13 @@ post '/sample-14-how-to-check-the-list-of-shares-for-a-folder' do
     #Make a request to API using client_id and private_key
     files_list = GroupDocs::Storage::Folder.list!()
 
-    files_list.map do |e|
+    files_list.each do |e|
       if e.name == settings.folder
         folder = e
+        break
       end
     end
+
 
     #Get list of shares for a folder
     shares = folder.sharers!()

@@ -1,11 +1,11 @@
 #GET request
-get '/sample-35-how-to-get-fields-and-their-data-from-pdf-file' do
+get '/sample-35-how-to-create-assembly-from-document-and-merge-fields' do
   haml :sample35
 end
 
 
 #POST request
-post '/sample-35-how-to-get-fields-and-their-data-from-pdf-file' do
+post '/sample-35-how-to-create-assembly-from-document-and-merge-fields' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
@@ -104,12 +104,12 @@ post '/sample-35-how-to-get-fields-and-their-data-from-pdf-file' do
 end
 
 #GET request
-get '//sample-35-how-to-get-fields-and-their-data-from-pdf-file/check' do
+get '/sample-35-how-to-create-assembly-from-document-and-merge-fields/check' do
   haml :sample35
 end
 
 #POST request
-post '//sample-35-how-to-get-fields-and-their-data-from-pdf-file/check' do
+post '/sample-35-how-to-create-assembly-from-document-and-merge-fields/check' do
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
   set :base_path, params[:basePath]

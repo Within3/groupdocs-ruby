@@ -15,7 +15,7 @@ post '/sample-10-how-to-share-a-document-to-other-users' do
 
   begin
     #Check required variables
-    raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty? or settings.guid.empty? or settings.email.empty?
+    raise 'Please enter all required parameters' if settings.client_id.empty? or settings.private_key.empty? or settings.email.empty?
 
 
     #Prepare base path
@@ -41,7 +41,7 @@ post '/sample-10-how-to-share-a-document-to-other-users' do
       when 'guid'
         file = GroupDocs::Storage::File.new({:guid => settings.guid}).to_document.metadata!()
         file = file.last_view.document.file
-      when 'local'
+      when 'localField'
         #Construct path
         filepath = "#{Dir.tmpdir}/#{params[:file][:filename]}"
         #Open file

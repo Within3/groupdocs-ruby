@@ -1,11 +1,13 @@
 #GET request
-get '/sample-16-how-to-insert-assembly-questionnaire-into-webpage' do
+get '/sample-16-how-to-insert-assembly-questionary-into-webpage' do
   haml :sample16
 end
 
 #POST request
-post '/sample-16-how-to-insert-assembly-questionnaire-into-webpage' do
+post '/sample-16-how-to-insert-assembly-questionary-into-webpage' do
   #Set variables
+  set :client_id, params[:clientId]
+  set :private_key, params[:privateKey]
   set :fileId, params[:fileId]
   set :base_path, params[:basePath]
 
