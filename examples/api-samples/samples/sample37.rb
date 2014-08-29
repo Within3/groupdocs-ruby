@@ -1,5 +1,5 @@
 #Route the handler url "/sample37"
-get '/sample-37-how-to-create-envelop-and-download-signed-document-when-envelop-was-signed-using-callback' do
+get '/sample-37-how-to-use-storage-api-to-create-and-upload-envelop-to-groupdocs-account-and-get-signed-document' do
   haml :sample37
 end
 
@@ -36,7 +36,7 @@ get '/sample37/downloads/:filename' do |filename|
 end
 
 #Route the handler url "/sample37". The function block creates new envelope
-post '/sample-37-how-to-create-envelop-and-download-signed-document-when-envelop-was-signed-using-callback' do
+post '/sample-37-how-to-use-storage-api-to-create-and-upload-envelop-to-groupdocs-account-and-get-signed-document' do
   #Set variables from form
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

@@ -1,10 +1,10 @@
 #GET request
-get '/sample-33-how-to-convert-several-html-documents-into-one-pdf-document' do
+get '/sample-33-how-to-convert-several-html-documents-to-pdf-and-merge-them-to-one-document' do
   haml :sample33
 end
 
 #POST request
-post '/sample-33-how-to-convert-several-html-documents-into-one-pdf-document' do
+post '/sample-33-how-to-convert-several-html-documents-to-pdf-and-merge-them-to-one-document' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

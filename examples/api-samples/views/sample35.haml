@@ -6,10 +6,10 @@
   %h3{:style => 'text-align:center;'}
     %a{:href => '/'} GroupDocs Ruby SDK Samples
     %br/
-    Sample 35 - How to get fields and their data from PDF file
+    Sample 35 - How to create assembly from document and merge fields
   .samplecontent{:style => 'padding:10px;'}
     %span.description
-      This sample will show how to get fields and their data from PDF file programmatically and dynamically create HTML form using the data about fields.
+      This sample will show how to create assembly from document and merge fields.
     %br/
     %br/
     /
@@ -30,7 +30,7 @@
     #requestForm{:style => 'padding:20px; border:1px solid black;'}
       %p Enter data for request and press "Make request" button
 
-      %form{:action => "#{(defined? userId) ? '//sample-35-how-to-get-fields-and-their-data-from-pdf-file/check' : '//sample-35-how-to-get-fields-and-their-data-from-pdf-file'}", :enctype => 'multipart/form-data', :method => 'post', :id=>'form'}
+      %form{:action => "#{(defined? userId) ? '/sample-35-how-to-create-assembly-from-document-and-merge-fields/check' : '/sample-35-how-to-create-assembly-from-document-and-merge-fields'}", :enctype => 'multipart/form-data', :method => 'post', :id=>'form'}
         %label{:for => 'clientId'} GroupDocs ClientID
         %br/
         %input{:type=>'text', :name=>'clientId', :id=>'client_id', :value=>"#{(defined? userId) ? userId : ''}"}

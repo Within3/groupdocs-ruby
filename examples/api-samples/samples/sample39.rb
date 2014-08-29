@@ -1,5 +1,5 @@
  #GET request
-get '/sample-39-how-to-add-a-signature-to-a-document-and-re-direct-after-signing-with-groupdocs-widget' do
+get '/sample-39-how-to-add-a-signature-to-a-document-and-redirect-after-signing-with-groupdocs-widget' do
   haml :sample39
 end
 
@@ -136,7 +136,7 @@ end
 
 
 #POST request
-post '/sample-39-how-to-add-a-signature-to-a-document-and-re-direct-after-signing-with-groupdocs-widget' do
+post '/sample-39-how-to-add-a-signature-to-a-document-and-redirect-after-signing-with-groupdocs-widget' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]

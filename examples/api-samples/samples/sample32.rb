@@ -1,5 +1,5 @@
 #GET request
-get '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-via-callback' do
+get '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-when-it-was-signed' do
   haml :sample32
 end
 
@@ -67,7 +67,7 @@ post '/sample32/callback' do
 end
 
 #POST request
-post '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-via-callback' do
+post '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-when-it-was-signed' do
   #Set variables
   set :client_id, params[:clientId]
   set :private_key, params[:privateKey]
