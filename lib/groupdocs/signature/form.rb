@@ -724,7 +724,7 @@ module GroupDocs
     end
 
     #
-    # Changed in release 1.7.0
+    # Added in release 1.7.0
     #
     # Get form audit logs
     #
@@ -741,6 +741,27 @@ module GroupDocs
         request[:access] = access
         request[:method] = :GET
         request[:path] = "/signature/{{client_id}}/forms/#{id}/logs"
+      end.execute!
+    end
+
+    #
+    # Added in release 1.8.0
+    #
+    # Get form participants
+    #
+    # @param  [Hash] options
+    # @option options [String] :field Field GUID
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    # @raise [ArgumentError] if document is not GroupDocs::Document
+    #
+    def get_participants!(access = {})
+
+      Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :GET
+        request[:path] = "/signature/{{client_id}}/forms/#{id}/participants"
       end.execute!
     end
 

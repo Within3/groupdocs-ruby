@@ -22,6 +22,8 @@ module GroupDocs
     attr_accessor :style
     # @attr [Boolean] isTableMarker
     attr_accessor :isTableMarker
+    # @attr [Array] options
+    attr_accessor :options
 
     #
     # Converts passed hash to GroupDocs::Document::Rectangle object.

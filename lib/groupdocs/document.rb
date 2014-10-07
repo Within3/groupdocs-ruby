@@ -1524,5 +1524,114 @@ module GroupDocs
       end
     end
 
+    # added in release 1.8.0
+    #
+    # Add template editor fields to the specific document
+    #
+    #  @example
+    #
+    # file = GroupDocs::Storage::File.new({:guid => '3be4e06494caed131d912c75e17d5f22592e3044032e0f81b35f13a8c9fefb49'}).to_document
+    # field = GroupDocs::Document::TemplateEditorFields.new
+    # field.name = 'test'
+    # field.fieldtype = 'TextBox'
+    # field.page = 1
+    # file.add_questionnaire_template!([field] )
+    #
+    #
+    # @param List[GroupDocs::Document::TemplateEditorFields] fields
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def add_questionnaire_template!(fields, access = {})
+
+      fields.each do |field|
+        field.is_a?(GroupDocs::Document::TemplateEditorFields) or raise ArgumentError,
+                                                                        "Fields should be List GroupDocs::Document::TemplateEditorFields objects, received: #{fields.inspect}"
+      end
+
+      json = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :POST
+        request[:path] = "/merge/{{client_id}}/files/#{file.guid}/templates/add"
+        request[:request_body] = fields
+      end.execute!
+      json[:templateFields].map do |field|
+        Document::Field.new(field)
+      end
+    end
+
+
+    # added in release 1.8.0
+    #
+    # Update template's fields
+    #
+    #  @example
+    #
+    # file = GroupDocs::Storage::File.new({:guid => '3be4e06494caed131d912c75e17d5f22592e3044032e0f81b35f13a8c9fefb49'}).to_document
+    # field = GroupDocs::Document::TemplateEditorFields.new
+    # field.name = 'test'
+    # field.fieldtype = 'TextBox'
+    # field.page = 1
+    # file.update_questionnaire_template!([field] )
+    #
+    #
+    # @param List[GroupDocs::Document::TemplateEditorFields] fields
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def update_questionnaire_template!(fields, access = {})
+
+      fields.each do |field|
+        field.is_a?(GroupDocs::Document::TemplateEditorFields) or raise ArgumentError,
+                                                                        "Fields should be List GroupDocs::Document::TemplateEditorFields objects, received: #{fields.inspect}"
+      end
+
+      json = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :PUT
+        request[:path] = "/merge/{{client_id}}/files/#{file.guid}/templates/update"
+        request[:request_body] = fields
+      end.execute!
+      json[:templateFields].map do |field|
+        Document::Field.new(field)
+      end
+    end
+
+    # added in release 1.8.0
+    #
+    # Delete template's fields
+    #
+    #  @example
+    #
+    # file = GroupDocs::Storage::File.new({:guid => '3be4e06494caed131d912c75e17d5f22592e3044032e0f81b35f13a8c9fefb49'}).to_document
+    # field = file.editor_fields!
+    # file.delete_questionnaire_template!([field] )
+    #
+    #
+    # @param List[GroupDocs::Document::TemplateEditorFields] fields
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    #
+    def delete_questionnaire_template!(fields, access = {})
+
+      fields.each do |field|
+        field.is_a?(GroupDocs::Document::TemplateEditorFields) or raise ArgumentError,
+                                                                        "Fields should be List GroupDocs::Document::TemplateEditorFields objects, received: #{fields.inspect}"
+      end
+
+      json = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :DELETE
+        request[:path] = "/merge/{{client_id}}/files/#{file.guid}/templates/delete"
+        request[:request_body] = fields
+      end.execute!
+      json[:templateFields].map do |field|
+        Document::Field.new(field)
+      end
+    end
+
   end # Document
 end # GroupDocs

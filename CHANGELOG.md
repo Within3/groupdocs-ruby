@@ -1,3 +1,11 @@
+## v1.8.0
+**New**
+
+* Added `Document#add_questionnaire_template!`
+* Added `Document#update_questionnaire_template!`
+* Added `Document#delete_questionnaire_template!`
+* Added `Signature::Form#get_participants!`
+
 ## v1.7.0
 
 **Changes**
