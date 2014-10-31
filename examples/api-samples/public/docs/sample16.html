@@ -31,7 +31,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-16-how-to-insert-assembly-questionnaire-into-webpage'</span> <span class="hljs-keyword">do</span>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-16-how-to-insert-Assembly-questionary-into-webpage'</span> <span class="hljs-keyword">do</span>
   haml <span class="hljs-symbol">:sample16</span>
 <span class="hljs-keyword">end</span></pre></div></div>
             
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-16-how-to-insert-assembly-questionnaire-into-webpage'</span> <span class="hljs-keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-16-how-to-insert-Assembly-questionary-into-webpage'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -63,7 +63,9 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:fileId</span>, params[<span class="hljs-symbol">:fileId</span>]
+            <div class="content"><div class='highlight'><pre>  set <span class="hljs-symbol">:client_id</span>, params[<span class="hljs-symbol">:clientId</span>]
+  set <span class="hljs-symbol">:private_key</span>, params[<span class="hljs-symbol">:privateKey</span>]
+  set <span class="hljs-symbol">:fileId</span>, params[<span class="hljs-symbol">:fileId</span>]
   set <span class="hljs-symbol">:base_path</span>, params[<span class="hljs-symbol">:basePath</span>]
 
   <span class="hljs-keyword">begin</span></pre></div></div>

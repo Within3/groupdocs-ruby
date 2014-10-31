@@ -85,7 +85,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.guid.empty? <span class="hljs-keyword">or</span> settings.email.empty?</pre></div></div>
+            <div class="content"><div class='highlight'><pre>    raise <span class="hljs-string">'Please enter all required parameters'</span> <span class="hljs-keyword">if</span> settings.client_id.empty? <span class="hljs-keyword">or</span> settings.private_key.empty? <span class="hljs-keyword">or</span> settings.email.empty?</pre></div></div>
             
         </li>
         
@@ -159,7 +159,7 @@
       <span class="hljs-keyword">when</span> <span class="hljs-string">'guid'</span>
         file = <span class="hljs-constant">GroupDocs::Storage::File</span>.new({<span class="hljs-symbol">:guid</span> =&gt; settings.guid}).to_document.metadata!()
         file = file.last_view.document.file
-      <span class="hljs-keyword">when</span> <span class="hljs-string">'local'</span></pre></div></div>
+      <span class="hljs-keyword">when</span> <span class="hljs-string">'localField'</span></pre></div></div>
             
         </li>
         
@@ -204,7 +204,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>        file = <span class="hljs-constant">GroupDocs::Storage::File</span>.upload!(filepath, {})
+            <div class="content"><div class='highlight'><pre>        file = <span class="hljs-constant">GroupDocs::Storage::File</span>.upload!(filepath, {<span class="hljs-symbol">overrideMode:</span> <span class="hljs-number">3</span>})
       <span class="hljs-keyword">when</span> <span class="hljs-string">'url'</span>
         file = <span class="hljs-constant">GroupDocs::Storage::File</span>.upload_web!(settings.url)
       <span class="hljs-keyword">else</span>

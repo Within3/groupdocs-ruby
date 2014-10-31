@@ -466,12 +466,15 @@
             <div class="content"><div class='highlight'><pre>    files_list.each <span class="hljs-keyword">do</span> |element|
       <span class="hljs-keyword">if</span> element.respond_to?(<span class="hljs-string">'guid'</span>) == <span class="hljs-keyword">true</span> <span class="hljs-keyword">and</span> element.guid == settings.sourceFileId
         source_document = element
+      <span class="hljs-keyword">else</span>
+        source_document = <span class="hljs-constant">GroupDocs::Storage::File</span>.new(<span class="hljs-symbol">guid:</span> settings.sourceFileId)
       <span class="hljs-keyword">end</span>
       <span class="hljs-keyword">if</span> element.respond_to?(<span class="hljs-string">'guid'</span>) == <span class="hljs-keyword">true</span> <span class="hljs-keyword">and</span> element.guid == settings.targetFileId
         target_document = element
+      <span class="hljs-keyword">else</span>
+        target_document = <span class="hljs-constant">GroupDocs::Storage::File</span>.new(<span class="hljs-symbol">guid:</span> settings.targetFileId)
       <span class="hljs-keyword">end</span>
     <span class="hljs-keyword">end</span>
-
 
     <span class="hljs-keyword">unless</span> source_document.instance_of? <span class="hljs-constant">String</span> <span class="hljs-keyword">and</span> target_document.instance_of? <span class="hljs-constant">String</span>
 
@@ -529,7 +532,8 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      guid = documents[<span class="hljs-symbol">:outputs</span>].first.file.guid</pre></div></div>
+            <div class="content"><div class='highlight'><pre>      guid = documents[<span class="hljs-symbol">:outputs</span>].first.file.guid
+      embedkey = <span class="hljs-constant">GroupDocs::User</span>.get_embed_key!(<span class="hljs-string">'comparison'</span>)</pre></div></div>
             
         </li>
         
@@ -544,7 +548,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>      iframe = <span class="hljs-string">"/document-viewer/embed/<span class="hljs-subst">#{guid}</span>"</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>      iframe = <span class="hljs-string">"/document-comparison2/embed/<span class="hljs-subst">#{embedkey}</span>/<span class="hljs-subst">#{guid}</span>"</span></pre></div></div>
             
         </li>
         
