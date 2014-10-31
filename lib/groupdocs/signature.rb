@@ -170,6 +170,8 @@ module GroupDocs
     attr_accessor :createdTimeStamp
     # @attr [String] image_path
     attr_accessor :image_path
+    # @attr [String] email
+    attr_accessor :email
 
     # Human-readable accessors
     alias_accessor :user_guid,               :userGuid

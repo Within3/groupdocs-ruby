@@ -129,12 +129,15 @@ post '/sample-19-how-to-compare-documents' do
     files_list.each do |element|
       if element.respond_to?('guid') == true and element.guid == settings.sourceFileId
         source_document = element
+      else
+        source_document = GroupDocs::Storage::File.new(guid: settings.sourceFileId)
       end
       if element.respond_to?('guid') == true and element.guid == settings.targetFileId
         target_document = element
+      else
+        target_document = GroupDocs::Storage::File.new(guid: settings.targetFileId)
       end
     end
-
 
     unless source_document.instance_of? String and target_document.instance_of? String
 

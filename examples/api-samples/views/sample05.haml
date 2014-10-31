@@ -8,7 +8,8 @@
     %br/
     Sample 5 - How to copy / move a file using the GroupDocs Storage API
   .samplecontent{:style => 'padding:10px;'}
-    %i This sample will show how to Copy/Move particular file in your GroupDocs account using Ruby SDK
+    %span.documentation
+      %i This sample will show how to Copy/Move particular file in your GroupDocs account using Ruby SDK
     %br/
     %br/
     %span.documentation
@@ -69,8 +70,7 @@
         %br/
         %input{:name => 'copy', :type => 'submit', :value => 'Copy'}/
         %input{:name => 'move', :type => 'submit', :value => 'Move'}/
-    %h4
-      %span{:style => 'color: green'} #{(defined? massage) ? massage : ''}
+    #{(defined? massage) ? massage : ''}
     %br/
 
   = partial :_others_samples

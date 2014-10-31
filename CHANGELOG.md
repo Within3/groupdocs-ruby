@@ -1,3 +1,11 @@
+## v1.8.1
+
+**New**
+* Added new attribute "email" to `Signature`
+
+**Changes**
+* `Document#sign_documents!` added new requere parameter for signer "email"
+
 ## v1.8.0
 **New**
 

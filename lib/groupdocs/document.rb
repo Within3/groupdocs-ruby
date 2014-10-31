@@ -73,7 +73,9 @@ module GroupDocs
       end
     end
 
-    #
+    # Changed in version 1.8.1
+	#
+	#
     # Signs given documents with signatures.
     #
     # @example
@@ -86,7 +88,9 @@ module GroupDocs
     #   signature_one = GroupDocs::Signature.new(name: 'John Smith', image_path: '~/Documents/signature_one.png')
     #   signature_two = GroupDocs::Signature.new(name: 'Sara Smith', image_path: '~/Documents/signature_two.png')
     #   signature_one.position = { top: 0.1, left: 0.07, width: 50, height: 50 }
+	#   signature_one.email = "test1@mail.com"
     #   signature_two.position = { top: 0.2, left: 0.2, width: 100, height: 100 }
+	#   signature_one.email = "test1@mail.com"
     #   # sign documents and download results
     #   signed_documents = GroupDocs::Document.sign_documents!([document_one, document_two], [signature_one, signature_two])
     #   signed_documents.each do |document|
@@ -128,8 +132,10 @@ module GroupDocs
         signer.merge!(signature.position)
         # place signature on is not implemented yet
         signer.merge!(:placeSignatureOn => nil)
+        signer.merge!(:email => signature.email)
 
         signers << signer
+
 
       end
 

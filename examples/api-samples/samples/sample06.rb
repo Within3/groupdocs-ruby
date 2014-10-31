@@ -49,6 +49,7 @@ post '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature' do
     #Add signature to file using API
     signature_one = GroupDocs::Signature.new(name: params[:fiSignature][:filename], image_path: signature_one_path)
     signature_one.position = {top: 0.83319, left: 0.72171, width: 100, height: 40}
+    signature_one.email = "test@email.com"
 
     #Make a request to API using client_id and private_key
     signed_documents = GroupDocs::Document.sign_documents!([document_one], [signature_one], {})

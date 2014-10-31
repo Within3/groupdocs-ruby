@@ -50,7 +50,7 @@ post '/sample-5-how-to-copy-move-a-file-using-the-groupdocs-storage-api' do
         #Open file
         File.open(filepath, 'wb') { |f| f.write(params[:file][:tempfile].read) }
         #Make a request to API using client_id and private_key
-        file = GroupDocs::Storage::File.upload!(filepath, {})
+        file = GroupDocs::Storage::File.upload!(filepath, {overrideMode: 3})
       when 'url'
         file = GroupDocs::Storage::File.upload_web!(settings.url)
       else
@@ -71,7 +71,7 @@ post '/sample-5-how-to-copy-move-a-file-using-the-groupdocs-storage-api' do
 
     #Result message
     if file
-      massage = "File was #{button}'ed to the <font color=\"blue\">#{settings.dest_path}</font> folder"
+      massage = "<h4><span style=\"color: green\">File was #{button}'ed to the <font color=\"blue\">#{settings.dest_path}</font> folder</span></h4>"
     end
 
   rescue Exception => e
