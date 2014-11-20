@@ -73,9 +73,7 @@ module GroupDocs
       end
     end
 
-    # Changed in version 1.8.1
-	#
-	#
+    #
     # Signs given documents with signatures.
     #
     # @example
@@ -88,9 +86,9 @@ module GroupDocs
     #   signature_one = GroupDocs::Signature.new(name: 'John Smith', image_path: '~/Documents/signature_one.png')
     #   signature_two = GroupDocs::Signature.new(name: 'Sara Smith', image_path: '~/Documents/signature_two.png')
     #   signature_one.position = { top: 0.1, left: 0.07, width: 50, height: 50 }
-	#   signature_one.email = "test1@mail.com"
+    #   signature_one.email = "test1@mail.com"
     #   signature_two.position = { top: 0.2, left: 0.2, width: 100, height: 100 }
-	#   signature_one.email = "test1@mail.com"
+    #   signature_one.email = "test1@mail.com"
     #   # sign documents and download results
     #   signed_documents = GroupDocs::Document.sign_documents!([document_one, document_two], [signature_one, signature_two])
     #   signed_documents.each do |document|
@@ -351,65 +349,9 @@ module GroupDocs
     end
 
 
-    #
-    # Returns an HTML Fixed representation of a particular document page
-    #
-    #
-    # @param [Integer] page_number Document page number to get html for
-    # @param [Hash] options
-    # @option options [Boolean] :expires  The date and time in milliseconds since epoch the URL expires.
-    # @param [Hash] access Access credentials
-    # @option access [String] :client_id
-    # @option access [String] :private_key
-    # @return []
-    #
-    def page_fixed_html!(path, name, page_number,  options = {}, access = {})
-      api = Api::Request.new do |request|
-        request[:access] = access
-        request[:method] = :DOWNLOAD
-        request[:path] = "/doc/{{client_id}}/files/#{file.guid}/pages/#{page_number}/htmlFixed"
-      end
-      api.add_params(options)
-      response = api.execute!
 
-      filepath = "#{path}/#{name}"
-      Object::File.open(filepath, 'wb') do |file|
-        file.write(response)
-      end
 
-      filepath
 
-    end
-
-    #
-    # Returns an HTML representation of a particular document page
-    #
-    #
-    # @param [Integer] page_number Document page number to get html for
-    # @param [Hash] options
-    # @option options [Boolean] :expires  The date and time in milliseconds since epoch the URL expires.
-    # @param [Hash] access Access credentials
-    # @option access [String] :client_id
-    # @option access [String] :private_key
-    # @return []
-    #
-    def page_html!(path, name, page_number,  options = {}, access = {})
-      api = Api::Request.new do |request|
-        request[:access] = access
-        request[:method] = :DOWNLOAD
-        request[:path] = "/doc/{{client_id}}/files/#{file.guid}/pages/#{page_number}/htmlRepresentations"
-      end
-      api.add_params(options)
-      response = api.execute!
-
-      filepath = "#{path}/#{name}"
-      Object::File.open(filepath, 'wb') do |file|
-        file.write(response)
-      end
-
-      filepath
-
-    end
 
     #
     # Returns array of URLs to images representing document pages.
@@ -444,33 +386,6 @@ module GroupDocs
       json[:url]
     end
 
-    #
-    # Returns array of URLs to html representing document pages.
-    #
-    # @example
-    #   file = GroupDocs::Storage::Folder.list!.last
-    #   document = file.to_document
-    #   document.page_html_urls!  first_page: 0, page_count: 1
-    #
-    # @param [Hash] options
-    # @option options [Integer] :first_page Start page to return image for (starting with 0)
-    # @option options [Integer] :page_count Number of pages to return image for
-    # @param [Hash] access Access credentials
-    # @option access [String] :client_id
-    # @option access [String] :private_key
-    # @return [Array<String>]
-    #
-    def page_html_urls!(options = {}, access = {})
-      api = Api::Request.new do |request|
-        request[:access] = access
-        request[:method] = :GET
-        request[:path] = "/doc/{{client_id}}/files/#{file.guid}/pages/htmlRepresentationUrls"
-      end
-      api.add_params(options)
-      json = api.execute!
-
-      json[:url]
-    end
 
     #
     # Returns editing metadata.
@@ -604,34 +519,6 @@ module GroupDocs
       json[:image_urls]
     end
 
-    #
-    # Returns array of URLs to images representing document pages htmlRepresentations.
-    #
-    # @example
-    #   file = GroupDocs::Storage::Folder.list!.last
-    #   document = file.to_document
-    #   document.representations! first_page: 0, page_count: 1, passwordSalt: ***
-    #
-    # @param [Hash] options
-    # @option options [Integer] :page_number Start page to return image for (starting with 0)
-    # @option options [Integer] :page_count Number of pages to return image for
-    # @option options [Integer] :passwordSalt
-    # @param [Hash] access Access credentials
-    # @option access [String] :client_id
-    # @option access [String] :private_key
-    # @return [Array<String>]
-    #
-    def representations!(options = {}, access = {})
-      api = Api::Request.new do |request|
-        request[:access] = access
-        request[:method] = :POST
-        request[:path] = "/doc/{{client_id}}/files/#{file.guid}/htmlRepresentations"
-      end
-      api.add_params(options)
-      json = api.execute!
-
-      json[:pageHtml]
-    end
 
 
     #

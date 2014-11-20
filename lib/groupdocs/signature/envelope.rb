@@ -123,6 +123,9 @@ module GroupDocs
     # @attr [String] tags
     attr_accessor :tags
 
+    # added in release 1.9.0
+    # @attr [Boolean] lockDuringSign
+    attr_accessor :lockDuringSign
 
     # Human-readable accessors
     alias_accessor :creation_date_time,   :creationDateTime

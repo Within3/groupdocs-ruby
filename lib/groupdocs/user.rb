@@ -529,6 +529,19 @@ module GroupDocs
     # @attr [Boolean] signature_enable_form_comment
     attr_accessor :signature_enable_form_comment
 
+    # added in release 1.9.0
+    # @attr [Boolean] is_text_replacement_annotation_button_enabled
+    attr_accessor :is_text_replacement_annotation_button_enabled
+    # @attr [Boolean] is_arrow_annotation_button_enabled
+    attr_accessor :is_arrow_annotation_button_enabled
+    # @attr [Boolean] is_text_redaction_annotation_button_enabled
+    attr_accessor :is_text_redaction_annotation_button_enabled
+    # @attr [Boolean] is_resource_redaction_annotation_button_enabled
+    attr_accessor :is_resource_redaction_annotation_button_enabled
+    # @attr [Boolean] is_text_underline_annotation_button_enabled
+    attr_accessor :is_text_underline_annotation_button_enabled
+    # @attr [Boolean] is_distance_annotation_button_enabled
+    attr_accessor :is_distance_annotation_button_enabled
 
 
     # Human-readable accessors

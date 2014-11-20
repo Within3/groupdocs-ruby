@@ -1,3 +1,15 @@
+## v.1.9.0
+
+**Changes**
+* Deleted `Document#page_fixed_html!`
+* Deleted `Document#page_html!`
+* Deleted `Document#page_html_urls!`
+* Deleted `Document#representations!`
+
+**New**
+* Added new attributes `User`
+* Added new attribute `Signature::Envelope` - "lockDuringSign" 
+
 ## v1.8.1
 
 **New**
