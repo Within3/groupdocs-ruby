@@ -1,4 +1,4 @@
-## GroupDocs [![Build Status](https://secure.travis-ci.org/groupdocs/groupdocs-ruby.png)](http://travis-ci.org/groupdocs/groupdocs-ruby)
+## GroupDocs 
 
 Ruby SDK for [GroupDocs](http://groupdocs.com) REST API.
 
