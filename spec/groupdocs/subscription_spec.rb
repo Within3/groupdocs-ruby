@@ -27,12 +27,12 @@ describe GroupDocs::Subscription do
 
     it 'accepts access credentials hash' do
       lambda do
-        described_class.list!(:client_id => 'client_id', :private_key => 'private_key')
+        described_class.list!('invalidate', :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
 
     it 'returns array of GroupDocs::Subscription objects' do
-      plans = described_class.list!
+      plans = described_class.list!'invalidate'
       plans.should be_an(Array)
       plans.each do |plan|
         plan.should be_a(GroupDocs::Subscription)

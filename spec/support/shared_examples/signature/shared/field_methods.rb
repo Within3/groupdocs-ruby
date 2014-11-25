@@ -21,14 +21,6 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
         subject.fields!(*args, :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
-
-    it 'returns array of GroupDocs::Signature::Field objects' do
-      fields = subject.fields!(*args)
-      fields.should be_an(Array)
-      fields.each do |field|
-        field.should be_a(GroupDocs::Signature::Field)
-      end
-    end
   end
 
   describe '#add_field!' do
@@ -81,6 +73,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
   describe '#modify_field!' do
     let(:field)    { GroupDocs::Signature::Field.new }
     let(:document) { GroupDocs::Document.new(:file => GroupDocs::Storage::File.new) }
+    let(:recipient) { GroupDocs::Signature::Recipient.new }
 
     before(:each) do
       mock_api_server(load_json('signature_field_add'))
@@ -88,16 +81,20 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.modify_field!(field, document, :client_id => 'client_id', :private_key => 'private_key')
+        subject.modify_field!(field, document, recipient, :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
 
     it 'raises error if field is not GroupDocs::Signature::Field object' do
-      lambda { subject.modify_field!('Field', document) }.should raise_error(ArgumentError)
+      lambda { subject.modify_field!('Field', document, recipient) }.should raise_error(ArgumentError)
     end
 
     it 'raises error if document is not GroupDocs::Document object' do
-      lambda { subject.modify_field!(field, 'Document') }.should raise_error(ArgumentError)
+      lambda { subject.modify_field!(field, 'Document', recipient) }.should raise_error(ArgumentError)
+    end
+
+    it 'raises error if field is not GroupDocs::Signature::Recipient object' do
+      lambda { subject.modify_field!(field, document, 'Recipient') }.should raise_error(ArgumentError)
     end
 
     it 'uses field and first field location as payload' do
@@ -109,7 +106,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
       field.should_receive(:locations).and_return(locations)
       locations.should_receive(:first).and_return(location)
       payload.should_receive(:merge!).with(location).and_return(payload)
-      subject.modify_field!(field, document)
+      subject.modify_field!(field, document, recipient)
     end
   end
 

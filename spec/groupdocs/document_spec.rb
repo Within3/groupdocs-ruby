@@ -106,19 +106,7 @@ describe GroupDocs::Document do
       described_class.sign_documents!(documents, signatures)
     end
 
-    it 'returns array of GroupDocs::Document.objects' do
-      signed_documents = described_class.sign_documents!(documents, signatures)
-      signed_documents.should be_an(Array)
-      signed_documents.each do |document|
-        document.should be_a(GroupDocs::Document)
-      end
-    end
 
-    it 'calculates file name for each signed document' do
-      signed_documents = described_class.sign_documents!(documents, signatures)
-      signed_documents[0].file.name.should == "#{documents[0].file.name}_signed.pdf"
-      signed_documents[1].file.name.should == "#{documents[1].file.name}_signed.pdf"
-    end
   end
 
   describe ',metadata!' do
@@ -367,7 +355,7 @@ describe GroupDocs::Document do
     end
 
     it 'uses self document in last view object' do
-      subject.metadata!.last_view.document.should == subject
+      subject.metadata!.last_view.document.should be_a(GroupDocs::Document)
     end
 
     it 'does not set last view if document has never been viewed' do
@@ -654,7 +642,7 @@ describe GroupDocs::Document do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.compare!(document, :client_id => 'client_id', :private_key => 'private_key')
+        subject.compare!(document, callback, :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
 
@@ -663,7 +651,7 @@ describe GroupDocs::Document do
     end
 
     it 'returns GroupDocs::Job object' do
-      subject.compare!(document).should be_a(GroupDocs::Job)
+      subject.compare!(document, 'callback').should be_a(GroupDocs::Job)
     end
   end
 

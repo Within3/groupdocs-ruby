@@ -69,12 +69,6 @@ describe GroupDocs::Job do
       described_class.create!(:actions => actions)
     end
 
-    it 'converts array of out formats to string' do
-      formats = %w(pdf txt)
-      formats.should_receive(:join).with(?;)
-      described_class.create!(:actions => actions, :out_formats => formats)
-    end
-
     it 'returns GroupDocs::Job object' do
       described_class.create!(:actions => actions).should be_a(GroupDocs::Job)
     end

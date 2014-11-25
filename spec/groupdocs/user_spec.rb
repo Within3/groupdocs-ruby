@@ -176,20 +176,20 @@ describe GroupDocs::User do
 
   describe '#access_rights' do
     it 'returns rights in human-readable format' do
-      subject.instance_variable_set(:@access_rights, 15)
-      subject.access_rights.should =~ [:export, :view, :proof, :download]
+      subject.instance_variable_set(:@access_rights, 46)
+      subject.access_rights.should =~ [:view, :annotate, :download, :export, :all]
     end
   end
 
   describe '#access_rights=' do
     it 'converts rights in machine-readable format if array is passed' do
-      subject.access_rights = %w(export view proof download)
-      subject.instance_variable_get(:@access_rights).should == 15
+      subject.access_rights = %w(view annotate download export all)
+      subject.instance_variable_get(:@access_rights).should == 46
     end
 
     it 'does nothing if not array is passed' do
-      subject.access_rights = 15
-      subject.instance_variable_get(:@access_rights).should == 15
+      subject.access_rights = 46
+      subject.instance_variable_get(:@access_rights).should == 46
     end
   end
 
