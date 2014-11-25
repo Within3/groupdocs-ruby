@@ -1,108 +1,40 @@
 {
-    "result": {
-        "count": 604,
-        "entries": [
+  "result":
+    {
+      "job_status": "Archived",
+      "inputs":
+      [
+        {
+          "status": "InProgress",
+          "output_formats": "pdf",
+          "outputs":
+          [
             {
-                "inputs": [
-                    {
-                        "status": "Processed",
-                        "proc_date": 1364978283767,
-                        "output_formats": "jpg",
-                        "outputs": [
-                            {
-                                "error": null,
-                                "name": null,
-                                "version": null,
-                                "size": 0,
-                                "type": "Cells",
-                                "type_str": "Cells",
-                                "file_type_str": "Jpg",
-                                "document_path": null,
-                                "access": "Private",
-                                "url": null,
-                                "file_type": "Jpg",
-                                "id": 0,
-                                "guid": null
-                            }
-                        ],
-                        "job_errors": [
-                            {
-                                "job_id": 17205,
-                                "original_document_id": 60804,
-                                "error_code": -1,
-                                "expected_format": "xml"
-                            }
-                        ],
-                        "actions": "View",
-                        "supported_output_file_types": null,
-                        "name": "GroupDocs_Signature_Demo.pdf",
-                        "version": 9,
-                        "size": 1132663,
-                        "type": "Pdf",
-                        "type_str": "Pdf",
-                        "file_type_str": "Pdf",
-                        "document_path": "samples/signature\\GroupDocs_Signature_Demo.pdf",
-                        "access": "Private",
-                        "url": "https://api.groupdocs.com/v2.0/shared/files/7bddf6878cde223426abf285c7d7d320bbcb476d3fcc9778049daea044322038",
-                        "file_type": "Pdf",
-                        "id": 60804,
-                        "guid": "7bddf6878cde223426abf285c7d7d320bbcb476d3fcc9778049daea044322038"
-                    }
-                ],
-                "outputs": null
-            },
-            {
-                "inputs": [
-                    {
-                        "status": "Processed",
-                        "proc_date": 1364994080143,
-                        "output_formats": "jpg",
-                        "outputs": [
-                            {
-                                "error": null,
-                                "name": null,
-                                "version": null,
-                                "size": 0,
-                                "type": "Cells",
-                                "type_str": "Cells",
-                                "file_type_str": "Jpg",
-                                "document_path": null,
-                                "access": "Private",
-                                "url": null,
-                                "file_type": "Jpg",
-                                "id": 0,
-                                "guid": null
-                            }
-                        ],
-                        "job_errors": [
-                            {
-                                "job_id": 17266,
-                                "original_document_id": 60804,
-                                "error_code": -1,
-                                "expected_format": "xml"
-                            }
-                        ],
-                        "actions": "View",
-                        "supported_output_file_types": null,
-                        "name": "GroupDocs_Signature_Demo.pdf",
-                        "version": 9,
-                        "size": 1132663,
-                        "type": "Pdf",
-                        "type_str": "Pdf",
-                        "file_type_str": "Pdf",
-                        "document_path": "samples/signature\\GroupDocs_Signature_Demo.pdf",
-                        "access": "Private",
-                        "url": "https://api.groupdocs.com/v2.0/shared/files/7bddf6878cde223426abf285c7d7d320bbcb476d3fcc9778049daea044322038",
-                        "file_type": "Pdf",
-                        "id": 60804,
-                        "guid": "7bddf6878cde223426abf285c7d7d320bbcb476d3fcc9778049daea044322038"
-                    }
-                ],
-                "outputs": null
+              "ftype": 19,
+              "error": null,
+              "url": "http://groupdocs.com",
+              "name": "Test.pdf"
             }
-        ]
+          ],
+          "id": 123
+        },
+        {
+          "status": "Scheduled",
+          "output_formats": "tiff",
+          "outputs":
+          [
+            {
+              "ftype": 15,
+              "error": null,
+              "url": "http://groupdocs.com",
+              "name": "CV.doc"
+            }
+          ],
+          "id": 345
+        }
+      ],
+      "outputs": null
     },
-    "status": "Ok",
-    "error_message": null,
-    "composedOn": 1380265154451
+  "status": "Ok",
+  "error_message": null
 }

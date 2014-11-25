@@ -47,40 +47,6 @@ describe GroupDocs::Job do
     end
   end
 
-  describe '.get_xml!' do
-    before(:each) do
-      mock_api_server(load_json('job_get'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        described_class.get_xml!(1, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'returns GroupDocs::Job object' do
-      described_class.get_xml!(1).should be_a(GroupDocs::Job)
-    end
-  end
-
-  describe '.get_resources!' do
-    before(:each) do
-      mock_api_server(load_json('job_resources_get'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        described_class.get_resources!(options, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'accepts options credentials hash' do
-      lambda do
-        described_class.get_resources!(:statusIds => 'Draft', :actions => [:convert, :combine], :excluded_actions => 1)
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
   describe '.create!' do
     before(:each) do
       mock_api_server(load_json('job_create'))
@@ -105,6 +71,7 @@ describe GroupDocs::Job do
 
     it 'converts array of out formats to string' do
       formats = %w(pdf txt)
+      formats.should_receive(:join).with(?;)
       described_class.create!(:actions => actions, :out_formats => formats)
     end
 
@@ -179,10 +146,10 @@ describe GroupDocs::Job do
       end.should_not raise_error(ArgumentError)
     end
 
-    #it 'updates job status' do
-     # subject.documents!
-     # subject.status.should == :archived
-    #end
+    it 'updates job status' do
+      subject.documents!
+      subject.status.should == :archived
+    end
 
     it 'returns hash' do
       subject.documents!.should be_a(Hash)
@@ -207,24 +174,6 @@ describe GroupDocs::Job do
     it 'returns empty arrays if there are no documents' do
       mock_api_server('{ "status": "Ok", "result": {}}')
       subject.documents!.should == { :inputs => [], :outputs => [] }
-    end
-  end
-
-  describe '#jobs_documents!' do
-    before(:each) do
-      mock_api_server(load_json('jobs_documents'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.jobs_documents!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.jobs_documents!(:page => 1, :count => 1, :actions => 1, :excluded_actions => 1, :order_by => 'Date', :order_asc => true )
-      end.should_not raise_error(ArgumentError)
     end
   end
 

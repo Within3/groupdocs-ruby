@@ -77,12 +77,12 @@ describe GroupDocs::Signature::Form do
     end
   end
 
-  describe '#fields_in_final_file_name' do
-    it 'returns field names in human-readable format' do
-      subject.fields_in_final_file_name = %w(on off)
-      subject.fields_in_final_file_name.should == %w(on off)
-    end
-  end
+  #describe '#fields_in_final_file_name' do
+  #  it 'returns field names in human-readable format' do
+  #    subject.fields_in_final_file_name = %w(on off)
+  #    subject.fields_in_final_file_name.should == %w(on off)
+  #  end
+  #end
 
   describe '#create!' do
     before(:each) do

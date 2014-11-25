@@ -131,23 +131,6 @@ describe GroupDocs::DataSource do
     end
   end
 
-  describe '#update_fields!' do
-    before(:each) do
-      mock_api_server(load_json('datasource_update'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.update_fields!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'uses hashed version of self as request body' do
-      subject.should_receive(:to_hash)
-      subject.add!
-    end
-  end
-
   describe '#remove!' do
     before(:each) do
       mock_api_server(load_json('datasource_remove'))
@@ -156,30 +139,6 @@ describe GroupDocs::DataSource do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
-  describe '#add_datasource!' do
-    before(:each) do
-      mock_api_server(load_json('datasource_update'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.add_datasource!(job, file_id, datasource, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
-  describe '#add_datasource_fields!' do
-    before(:each) do
-      mock_api_server(load_json('datasource_update'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.add_datasource_fields!(job, file_id, datasource, :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
   end

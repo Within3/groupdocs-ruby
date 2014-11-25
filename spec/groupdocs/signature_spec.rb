@@ -191,17 +191,4 @@ describe GroupDocs::Signature do
       end.should change(subject, :initials_data)
     end
   end
-
-  describe '#sign_document_status!' do
-    before(:each) do
-      mock_api_server(load_json('sign_documents'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.initials_data!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
 end

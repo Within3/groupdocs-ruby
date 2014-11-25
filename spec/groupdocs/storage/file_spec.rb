@@ -45,24 +45,6 @@ describe GroupDocs::Storage::File do
     end
   end
 
-  describe '.decompress!' do
-    before(:each) do
-      mock_api_server(load_json('file_upload'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        described_class.decompress!(__FILE__, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'accepts options hash' do
-      lambda do
-        described_class.decompress!(__FILE__, :path => 'folder1', :archiveType => 'zip')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
   describe '.upload_web!' do
     before(:each) do
       mock_api_server(load_json('file_upload'))
@@ -76,22 +58,6 @@ describe GroupDocs::Storage::File do
 
     it 'returns GroupDocs::Storage::File object' do
       described_class.upload_web!('http://www.google.com').should be_a(GroupDocs::Storage::File)
-    end
-  end
-
-  describe '.upload_google!' do
-    before(:each) do
-      mock_api_server(load_json('file_upload'))
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        described_class.upload_google!('path', 'http://www.google.com', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'returns GroupDocs::Storage::File object' do
-      described_class.upload_google!('path', 'http://www.google.com').should be_a(GroupDocs::Storage::File)
     end
   end
 
@@ -153,32 +119,6 @@ describe GroupDocs::Storage::File do
     it 'returns converted to Time object Unix timestamp' do
       subject.modified_on = 1330450135000
       subject.modified_on.should == Time.at(1330450135)
-    end
-  end
-
-  describe '#download!' do
-    before(:each) do
-      mock_api_server(File.read('spec/support/files/resume.pdf'))
-      subject.stub(:name => 'resume.pdf')
-    end
-
-    let(:path) { Dir.tmpdir }
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.download!(path, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-
-    it 'downloads file to given path' do
-      file = stub('file')
-      Object::File.should_receive(:open).with("#{path}/resume.pdf", 'wb').and_yield(file)
-      file.should_receive(:write).with(File.read('spec/support/files/resume.pdf'))
-      subject.download!(path)
-    end
-
-    it 'returns saved file path' do
-      subject.download!(path).should == "#{path}/resume.pdf"
     end
   end
 
@@ -335,14 +275,6 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         subject.move_to_trash!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
-  describe '#restore_to_trash!' do
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.restore_to_trash!('path', :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
   end

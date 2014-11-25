@@ -32,7 +32,7 @@ describe GroupDocs::Document::Annotation do
   # Annotation#created_on is overwritten
   it { should have_alias(:created_on=, :createdOn=)                            }
   it { should alias_accessor(:annotation_position, :annotationPosition) }
-
+  it { should alias_accessor(:position, :annotationPosition)            }
 
   it { should have_alias(:annotationGuid=, :guid=) }
 
@@ -144,14 +144,18 @@ describe GroupDocs::Document::Annotation do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.create!('info', :client_id => 'client_id', :private_key => 'private_key')
+        subject.create!(:client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
 
+    it 'uses hashed version of self as request body' do
+      subject.should_receive(:to_hash).and_return({})
+      subject.create!
+    end
 
     it 'updated self with response values' do
       lambda do
-        subject.create!('info')
+        subject.create!
       end.should change {
         subject.id
         subject.guid
@@ -206,44 +210,21 @@ describe GroupDocs::Document::Annotation do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.move_marker!(marker, :client_id => 'client_id', :private_key => 'private_key')
+        subject.move_marker!(10, 10, :client_id => 'client_id', :private_key => 'private_key')
       end.should_not raise_error(ArgumentError)
     end
-  end
 
-  describe '#resize!' do
-    before(:each) do
-      mock_api_server('{ "status": "Ok", "result": {}}')
+    it 'updates box coordinates if it is set' do
+      subject.box = { :x => 1, :y => 2 }
+      subject.move_marker! 10, 10
+      subject.box.x.should == 10
+      subject.box.y.should == 10
     end
 
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.resize!(10, 10, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
-  describe '#text_info!' do
-    before(:each) do
-      mock_api_server('{ "status": "Ok", "result": {}}')
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.text_info!(fieldText, fontFamily, fontSize, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
-    end
-  end
-
-  describe '#text_color!' do
-    before(:each) do
-      mock_api_server('{ "status": "Ok", "result": {}}')
-    end
-
-    it 'accepts access credentials hash' do
-      lambda do
-        subject.text_color!(font_color :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+    it 'creates box coordinates if it is not set' do
+      subject.move_marker! 10, 10
+      subject.box.x.should == 10
+      subject.box.y.should == 10
     end
   end
 
