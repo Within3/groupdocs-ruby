@@ -90,7 +90,7 @@ p:last-child { margin-bottom:0; }
 
 ul,ol { margin:0 45px 15px 45px; }
 
-li { list-style-type:disc; }
+li.samples { list-style-type:disc; }
 
 pre,code,tt {
 	font-family:monaco;
@@ -116,7 +116,9 @@ small { font-size:0.6em; }
 a { text-decoration:none; }
 	a:link,a:visited { color:#069; }
 	a:hover { color:#09c; }
-
+a.links {text-decoration:none;}
+a.links:link,a.links:visited { color:#000000; }
+a.links:hover {color:#069;}
 table {
 	margin-bottom:15px;
 	width:100%;
@@ -219,4 +221,10 @@ div.footer h5 {
     float: right;
     background: url(../images/help.png) no-repeat left;
     padding-left: 20px;
+}
+.box {
+    display: none;
+}
+.box.visible {
+    display: block;
 }
