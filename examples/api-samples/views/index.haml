@@ -4,95 +4,233 @@
   %script{:src=>'//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'}
 %body
   %h1{:style => 'text-align:center;'} GroupDocs Ruby SDK Samples
-  %div{:style => 'padding:10px;'}
-  %ul
-    %li
-      %a{:href => '/sample-1-how-to-login-to-groupdocs-using-the-api'} Sample 1 - How to login to GroupDocs using the API
-    %li
-      %a{:href => '/sample-2-how-to-list-files-within-groupdocs-storage-using-the-storage-api'} Sample 2 - How to list files within GroupDocs Storage using the Storage API
-    %li
-      %a{:href => '/sample-3-how-to-upload-a-file-to-groupdocs-using-the-storage-api'} Sample 3 - How to upload a file to GroupDocs using the Storage API
-    %li
-      %a{:href => '/sample-4-how-to-download-a-file-from-groupdocs-storage-using-the-storage-api'} Sample 4 - How to download a file from GroupDocs Storage using the Storage API
-    %li
-      %a{:href => '/sample-5-how-to-copy-move-a-file-using-the-groupdocs-storage-api'} Sample 5 - How to copy / move a file using the GroupDocs Storage API
-    %li
-      %a{:href => '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature'} Sample 6 - How to add a Signature to a document in GroupDocs Signature
-    %li
-      %a{:href => '/sample-7-how-to-create-a-list-of-thumbnails-for-a-document'} Sample 7 - How to create a list of thumbnails for a document
-    %li
-      %a{:href => '/sample-8-how-to-return-a-url-representing-a-single-page-of-a-document'} Sample 8 - How to return a URL representing a single page of a Document
-    %li
-      %a{:href => '/sample-9-how-to-generate-an-embedded-viewer-annotation-url-for-a-document'} Sample 9 - How to generate an embedded Viewer URL for a Document
-    %li
-      %a{:href => '/sample-10-how-to-share-a-document-to-other-users'} Sample 10 - How to share a document to other users
-    %li
-      %a{:href => '/sample-11-how-programmatically-create-and-post-an-annotation-into-document'} Sample 11 - How to programmatically create and post an annotation into document. How to delete the annotation
-    %li
-      %a{:href => '/sample-12-how-to-list-all-annotations-from-document'} Sample 12 - How to list all annotations from document
-    %li
-      %a{:href => '/sample-13-how-to-add-collaborator-to-doc-with-annotations'} Sample 13 - How to add collaborator to doc with annotations
-    %li
-      %a{:href => '/sample-14-how-to-check-the-list-of-shares-for-a-folder'} Sample 14 - How to check the list of shares for a folder
-    %li
-      %a{:href => '/sample-15-how-to-check-the-number-of-document\'s-views'} Sample 15 - How to check the number of document's views
-    %li
-      %a{:href => '/sample-16-how-to-insert-Assembly-questionary-into-webpage'} Sample 16 - How to insert Assembly questionnaire into webpage
-    %li
-      %a{:href => '/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive'} Sample 17 - How to upload a file into the storage and compress it into zip archive
-    %li
-      %a{:href => '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-and-ppt-to-pdf'} Sample 18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF, PPT to PDF
-    %li
-      %a{:href => '/sample-19-how-to-compare-documents'} Sample 19 - How to Compare documents using Ruby SDK
-    %li
-      %a{:href => '/sample-20-how-to-get-compare-change-list-for-document'} Sample 20 - How to Get Compare Change list for document using Ruby SDK
-    %li
-      %a{:href => '/sample-21-how-to-create-and-upload-envelop-to-groupdocs-account'} Sample 21 - How to Create and Upload Envelop to GroupDocs account using Ruby SDK
-    %li
-      %a{:href => '/sample-22-how-to-create-or-update-user-and-add-him-to-collaborators'} Sample 22 - How to create or update user and add him to collaborators using Ruby SDK
-    %li
-      %a{:href => '/sample-23-how-to-view-document-pages-as-images'} Sample 23 - How to View Document pages as images using Ruby SDK
-    %li
-      %a{:href => '/sample-24-how-to-use-storageapi-to-upload-fil-from-url-to-groupdocs-account'} Sample 24 - How to use StorageApi to upload file from URL to GroupDocs account using Ruby SDK
-    %li
-      %a{:href => '/sample-25-how-to-merge-assemble-and-convert-document'} Sample 25 - How to merge/assemble and convert document using Ruby SDK
-    %li
-      %a{:href => '/sample-26-how-to-use-login-method-in-the-api'} Sample 26 - How to use login method in the API
-    %li
-      %a{:href => '/sample-27-how-to-create-your-own-questionnaire-using-forms-and-show-the-result-document'} Sample 27 - How to create your own questionnaire using forms and show the result document using Ruby SDK
-    %li
-      %a{:href => '/sample-28-how-to-delete-all-annotations-from-document'} Sample 28 - How to delete all annotations from document
-    %li
-      %a{:href => '/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url'} Sample 29 - How to use Filepicker.io to upload document and get it's URL
-    %li
-      %a{:href => '/sample-30-how-to-delete-file-from-groupdocs-storage'} Sample 30 - How to delete file from GroupDocs Storage
-    %li
-      %a{:href => '/sample-31-how-to-dynamically-create-signature-form-using-data-from-html-form'} Sample 31 - How to dynamically create Signature Form using data from HTML form
-    %li
-      %a{:href => '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-when-it-was-signed'} Sample 32 - How to create signature form, publish it and configure notification via callback
-    %li
-      %a{:href => '/sample-33-how-to-convert-several-html-documents-to-pdf-and-merge-them-to-one-document'} Sample 33 - How to convert and merge/combine several HTML documents into one PDF Document
-    %li
-      %a{:href => '/sample-34-how-to-create-folder-in-the-groupdocs-account'} Sample 34 - How to create folder in the GroupDocs account
-    %li
-      %a{:href => '/sample-35-how-to-create-assembly-from-document-and-merge-fields'} Sample 35 - How to get fields and their data from PDF file
-    %li
-      %a{:href => '/sample-36-how-to-download-signed-documents-when-envelope-was-signed'} Sample 36 - How to download signed documents when envelope was signed using Ruby SDK
-    %li
-      %a{:href => '/sample-37-how-to-use-storage-api-to-create-and-upload-envelop-to-groupdocs-account-and-get-signed-document'} Sample 37 - How to create envelop and download signed document when envelop was signed using callback
-    %li
-      %a{:href => '/sample-38-how-to-create-new-user-and-add-him-as-collaborator-to-doc-with-annotations'} Sample 38 - How to create new user and add him as collaborator to doc with annotations
-    %li
-      %a{:href => '/sample-39-how-to-add-a-signature-to-a-document-and-redirect-after-signing-with-groupdocs-widget'} Sample 39 - How to add a Signature to a document and re-direct after signing with GroupDocs widget
-    %li
-      %a{:href => '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-was-signed'} Sample 40 - How to set callback for signature form and re-direct when it was signed
-    %li
-      %a{:href => '/sample-41-how-to-set-callback-for-annotation-and-manage-user-rights'} Sample 41 - How to set callback for Annotation and manage user rights using Ruby SDK
-    %li
-      %a{:href => '/sample-42-how-to-download-document-with-annotations-using-groupdocs'} Sample 42 - How to download document with annotations using GroupDocs Ruby SDK
-    %li
-      %a{:href => '/sample-43-how-to-add-numeration-in-the-doc-file'} Sample 43 - How to add numeration in the doc file using GroupDocs Ruby SDK
-    %li
-      %a{:href => '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document'} Sample 44 - How to assemble document and add multiple Signatures and Signers to a document using Ruby SDK
-    %li
-      %a{:href => '/sample-45-how-to-check-statistic-info-for-the-document'} Sample 45 - How to check statistic info for the document using Ruby SDK
+  %div{:style => 'padding:10px;', :class => 'section'}
+    %ul{:class => 'tabs'}
+      %li{:class=>"current, samples"}
+        %a{:href =>'#', :class=>'links'} All samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Viewer samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Annotation samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Assembly samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Signature samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Comparison samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Conversion samples
+      %li{:class=>"samples"}
+        %a{:href =>'#', :class=>'links'} Others samples
+    %div{:class=>"box visible"}
+      %ul
+        %li
+          %a{:href => '/sample-1-how-to-login-to-groupdocs-using-the-api'} Sample 1 - How to login to GroupDocs using the API
+        %li
+          %a{:href => '/sample-2-how-to-list-files-within-groupdocs-storage-using-the-storage-api'} Sample 2 - How to list files within GroupDocs Storage using the Storage API
+        %li
+          %a{:href => '/sample-3-how-to-upload-a-file-to-groupdocs-using-the-storage-api'} Sample 3 - How to upload a file to GroupDocs using the Storage API
+        %li
+          %a{:href => '/sample-4-how-to-download-a-file-from-groupdocs-storage-using-the-storage-api'} Sample 4 - How to download a file from GroupDocs Storage using the Storage API
+        %li
+          %a{:href => '/sample-5-how-to-copy-move-a-file-using-the-groupdocs-storage-api'} Sample 5 - How to copy / move a file using the GroupDocs Storage API
+        %li
+          %a{:href => '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature'} Sample 6 - How to add a Signature to a document in GroupDocs Signature
+        %li
+          %a{:href => '/sample-7-how-to-create-a-list-of-thumbnails-for-a-document'} Sample 7 - How to create a list of thumbnails for a document
+        %li
+          %a{:href => '/sample-8-how-to-return-a-url-representing-a-single-page-of-a-document'} Sample 8 - How to return a URL representing a single page of a Document
+        %li
+          %a{:href => '/sample-9-how-to-generate-an-embedded-viewer-annotation-url-for-a-document'} Sample 9 - How to generate an embedded Viewer URL for a Document
+        %li
+          %a{:href => '/sample-10-how-to-share-a-document-to-other-users'} Sample 10 - How to share a document to other users
+        %li
+          %a{:href => '/sample-11-how-programmatically-create-and-post-an-annotation-into-document'} Sample 11 - How to programmatically create and post an annotation into document. How to delete the annotation
+        %li
+          %a{:href => '/sample-12-how-to-list-all-annotations-from-document'} Sample 12 - How to list all annotations from document
+        %li
+          %a{:href => '/sample-13-how-to-add-collaborator-to-doc-with-annotations'} Sample 13 - How to add collaborator to doc with annotations
+        %li
+          %a{:href => '/sample-14-how-to-check-the-list-of-shares-for-a-folder'} Sample 14 - How to check the list of shares for a folder
+        %li
+          %a{:href => '/sample-15-how-to-check-the-number-of-document\'s-views'} Sample 15 - How to check the number of document's views
+        %li
+          %a{:href => '/sample-16-how-to-insert-Assembly-questionary-into-webpage'} Sample 16 - How to insert Assembly questionary into webpage
+        %li
+          %a{:href => '/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive'} Sample 17 - How to upload a file into the storage and compress it into zip archive
+        %li
+          %a{:href => '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-and-ppt-to-pdf'} Sample 18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF, PPT to PDF
+        %li
+          %a{:href => '/sample-19-how-to-compare-documents'} Sample 19 - How to Compare documents using Ruby SDK
+        %li
+          %a{:href => '/sample-20-how-to-get-compare-change-list-for-document'} Sample 20 - How to Get Compare Change list for document using Ruby SDK
+        %li
+          %a{:href => '/sample-21-how-to-create-and-upload-envelop-to-groupdocs-account'} Sample 21 - How to Create and Upload Envelop to GroupDocs account using Ruby SDK
+        %li
+          %a{:href => '/sample-22-how-to-create-or-update-user-and-add-him-to-collaborators'} Sample 22 - How to create or update user and add him to collaborators using Ruby SDK
+        %li
+          %a{:href => '/sample-23-how-to-view-document-pages-as-images'} Sample 23 - How to View Document pages as images using Ruby SDK
+        %li
+          %a{:href => '/sample-24-how-to-use-storageapi-to-upload-fil-from-url-to-groupdocs-account'} Sample 24 - How to use StorageApi to upload file from URL to GroupDocs account using Ruby SDK
+        %li
+          %a{:href => '/sample-25-how-to-merge-assemble-and-convert-documentt'} Sample 25 - How to merge and convert document using Ruby SDK
+        %li
+          %a{:href => '/sample-26-how-to-use-login-method-in-the-api'} Sample 26 - How to use login method in the API
+        %li
+          %a{:href => '/sample-27-how-to-create-your-own-questionnaire-using-forms-and-show-the-result-document'} Sample 27 - How to create your own questionnaire using forms and show the result document using Ruby SDK
+        %li
+          %a{:href => '/sample-28-how-to-delete-all-annotations-from-document'} Sample 28 - How to delete all annotations from document using Ruby SDK
+        %li
+          %a{:href => '/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url'} Sample 29 - How to use Filepicker.io to upload document and get it's URL
+        %li
+          %a{:href => '/sample-30-how-to-delete-file-from-groupdocs-storage'} Sample 30 - How to delete file from GroupDocs Storage
+        %li
+          %a{:href => '/sample-31-how-to-dynamically-create-signature-form-using-data-from-html-form'} Sample 31 - How to dynamically create Signature Form using data from HTML form
+        %li
+          %a{:href => '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-when-it-was-signed'} Sample 32 - How to create signature form, publish it and configure notification via callback
+        %li
+          %a{:href => '/sample-33-how-to-convert-several-html-documents-to-pdf-and-merge-them-to-one-document'} Sample 33 - How to convert and merge/combine several HTML documents into one PDF Document
+        %li
+          %a{:href => '/sample-34-how-to-create-folder-in-the-groupdocs-account'} Sample 34 - How to create folder in the GroupDocs account
+        %li
+          %a{:href => '/sample-35-how-to-create-assembly-from-document-and-merge-fields'} Sample 35 - How to get fields and their data from PDF file
+        %li
+          %a{:href => '/sample-36-how-to-download-signed-documents-when-envelope-was-signed'} Sample 36 - How to download signed documents when envelope was signed using Ruby SDK
+        %li
+          %a{:href => '/sample-37-how-to-use-storage-api-to-create-and-upload-envelop-to-groupdocs-account-and-get-signed-document'} Sample 37 - How to create envelop and download signed document when envelop was signed using callback
+        %li
+          %a{:href => '/sample-38-how-to-create-new-user-and-add-him-as-collaborator-to-doc-with-annotations'} Sample 38 - How to create new user and add him as collaborator to doc with annotations
+        %li
+          %a{:href => '/sample-39-how-to-add-a-signature-to-a-document-and-redirect-after-signing-with-groupdocs-widget'} Sample 39 - How to add a Signature to a document and redirect after signing with GroupDocs widget
+        %li
+          %a{:href => '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-was-signed'} Sample 40 - How to set callback for signature form and re-direct when it was signed
+        %li
+          %a{:href => '/sample-41-how-to-set-callback-for-annotation-and-manage-user-rights'} Sample 41 - How to set callback for Annotation and manage user rights using Ruby SDK
+        %li
+          %a{:href => '/sample-42-how-to-download-document-with-annotations-using-groupdocs'} Sample 42 - How to download document with annotations using GroupDocs Ruby SDK
+        %li
+          %a{:href => '/sample-43-how-to-add-numeration-in-the-doc-file'} Sample 43 - How to add numeration in the doc file using GroupDocs Ruby SDK
+        %li
+          %a{:href => '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document'} Sample 44 - How to assemble document and add multiple Signatures and Signers to a document using Ruby SDK
+        %li
+          %a{:href => '/sample-45-how-to-check-statistic-info-for-the-document'} Sample 45 - How to check statistic info for the document using Ruby SDK
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-8-how-to-return-a-url-representing-a-single-page-of-a-document'} Sample 8 - How to return a URL representing a single page of a Document
+        %li
+          %a{:href => '/sample-9-how-to-generate-an-embedded-viewer-annotation-url-for-a-document'} Sample 9 - How to generate an embedded Viewer URL for a Document
+        %li
+          %a{:href => '/sample-15-how-to-check-the-number-of-document\'s-views'} Sample 15 - How to check the number of document's views
+        %li
+          %a{:href => '/sample-23-how-to-view-document-pages-as-images'} Sample 23 - How to View Document pages as images using Ruby SDK
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-11-how-programmatically-create-and-post-an-annotation-into-document'} Sample 11 - How to programmatically create and post an annotation into document. How to delete the annotation
+        %li
+          %a{:href => '/sample-12-how-to-list-all-annotations-from-document'} Sample 12 - How to list all annotations from document
+        %li
+          %a{:href => '/sample-13-how-to-add-collaborator-to-doc-with-annotations'} Sample 13 - How to add collaborator to doc with annotations
+        %li
+          %a{:href => '/sample-22-how-to-create-or-update-user-and-add-him-to-collaborators'} Sample 22 - How to create or update user and add him to collaborators using Ruby SDK
+        %li
+          %a{:href => '/sample-28-how-to-delete-all-annotations-from-document'} Sample 28 - How to delete all annotations from document using Ruby SDK
+        %li
+          %a{:href => '/sample-38-how-to-create-new-user-and-add-him-as-collaborator-to-doc-with-annotations'} Sample 38 - How to create new user and add him as collaborator to doc with annotations
+        %li
+          %a{:href => '/sample-41-how-to-set-callback-for-annotation-and-manage-user-rights'} Sample 41 - How to set callback for Annotation and manage user rights using Ruby SDK
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-16-how-to-insert-Assembly-questionary-into-webpage'} Sample 16 - How to insert Assembly questionary into webpage
+        %li
+          %a{:href => '/sample-25-how-to-merge-assemble-and-convert-documentt'} Sample 25 - How to merge and convert document using Ruby SDK
+        %li
+          %a{:href => '/sample-27-how-to-create-your-own-questionnaire-using-forms-and-show-the-result-document'} Sample 27 - How to create your own questionnaire using forms and show the result document using Ruby SDK
+        %li
+          %a{:href => '/sample-35-how-to-create-assembly-from-document-and-merge-fields'} Sample 35 - How to get fields and their data from PDF file
+        %li
+          %a{:href => '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document'} Sample 44 - How to assemble document and add multiple Signatures and Signers to a document using Ruby SDK
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-6-how-to-add-a-signature-to-a-document-in-groupdocs-signature'} Sample 6 - How to add a Signature to a document in GroupDocs Signature
+        %li
+          %a{:href => '/sample-21-how-to-create-and-upload-envelop-to-groupdocs-account'} Sample 21 - How to Create and Upload Envelop to GroupDocs account using Ruby SDK
+        %li
+          %a{:href => '/sample-31-how-to-dynamically-create-signature-form-using-data-from-html-form'} Sample 31 - How to dynamically create Signature Form using data from HTML form
+        %li
+          %a{:href => '/sample-32-how-to-create-signature-form-publish-it-and-configure-notification-when-it-was-signed'} Sample 32 - How to create signature form, publish it and configure notification via callback
+        %li
+          %a{:href => '/sample-36-how-to-download-signed-documents-when-envelope-was-signed'} Sample 36 - How to download signed documents when envelope was signed using Ruby SDK
+        %li
+          %a{:href => '/sample-37-how-to-use-storage-api-to-create-and-upload-envelop-to-groupdocs-account-and-get-signed-document'} Sample 37 - How to create envelop and download signed document when envelop was signed using callback
+        %li
+          %a{:href => '/sample-39-how-to-add-a-signature-to-a-document-and-redirect-after-signing-with-groupdocs-widget'} Sample 39 - How to add a Signature to a document and redirect after signing with GroupDocs widget
+        %li
+          %a{:href => '/sample-40-how-to-set-callback-for-signature-form-and-re-direct-when-it-was-signed'} Sample 40 - How to set callback for signature form and re-direct when it was signed
+        %li
+          %a{:href => '/sample-44-how-to-assemble-document-and-add-multiple-signatures-and-signers-to-a-document'} Sample 44 - How to assemble document and add multiple Signatures and Signers to a document using Ruby SDK
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-19-how-to-compare-documents'} Sample 19 - How to Compare documents using Ruby SDK
+        %li
+          %a{:href => '/sample-20-how-to-get-compare-change-list-for-document'} Sample 20 - How to Get Compare Change list for document using Ruby SDK
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-18-how-to-convert-doc-to-docx-docx-to-doc-docx-to-pdf-and-ppt-to-pdf'} Sample 18 - How to convert Doc to Docx, Docx to Doc, Docx to PDF, PPT to PDF
+        %li
+          %a{:href => '/sample-25-how-to-merge-assemble-and-convert-documentt'} Sample 25 - How to merge and convert document using Ruby SDK
+        %li
+          %a{:href => '/sample-33-how-to-convert-several-html-documents-to-pdf-and-merge-them-to-one-document'} Sample 33 - How to convert and merge/combine several HTML documents into one PDF Document
+    %div{:class=>"box"}
+      %ul
+        %li
+          %a{:href => '/sample-1-how-to-login-to-groupdocs-using-the-api'} Sample 1 - How to login to GroupDocs using the API
+        %li
+          %a{:href => '/sample-2-how-to-list-files-within-groupdocs-storage-using-the-storage-api'} Sample 2 - How to list files within GroupDocs Storage using the Storage API
+        %li
+          %a{:href => '/sample-3-how-to-upload-a-file-to-groupdocs-using-the-storage-api'} Sample 3 - How to upload a file to GroupDocs using the Storage API
+        %li
+          %a{:href => '/sample-4-how-to-download-a-file-from-groupdocs-storage-using-the-storage-api'} Sample 4 - How to download a file from GroupDocs Storage using the Storage API
+        %li
+          %a{:href => '/sample-5-how-to-copy-move-a-file-using-the-groupdocs-storage-api'} Sample 5 - How to copy / move a file using the GroupDocs Storage API
+        %li
+          %a{:href => '/sample-7-how-to-create-a-list-of-thumbnails-for-a-document'} Sample 7 - How to create a list of thumbnails for a document
+        %li
+          %a{:href => '/sample-10-how-to-share-a-document-to-other-users'} Sample 10 - How to share a document to other users
+        %li
+          %a{:href => '/sample-14-how-to-check-the-list-of-shares-for-a-folder'} Sample 14 - How to check the list of shares for a folder
+        %li
+          %a{:href => '/sample-17-how-to-upload-a-file-into-the-storage-and-compress-it-into-zip-archive'} Sample 17 - How to upload a file into the storage and compress it into zip archive
+        %li
+          %a{:href => '/sample-24-how-to-use-storageapi-to-upload-fil-from-url-to-groupdocs-account'} Sample 24 - How to use StorageApi to upload file from URL to GroupDocs account using Ruby SDK
+        %li
+          %a{:href => '/sample-26-how-to-use-login-method-in-the-api'} Sample 26 - How to use login method in the API
+        %li
+          %a{:href => '/sample-29-how-to-use-filepicker-io-to-upload-document-and-get-it\'s-url'} Sample 29 - How to use Filepicker.io to upload document and get it's URL
+        %li
+          %a{:href => '/sample-30-how-to-delete-file-from-groupdocs-storage'} Sample 30 - How to delete file from GroupDocs Storage
+        %li
+          %a{:href => '/sample-34-how-to-create-folder-in-the-groupdocs-account'} Sample 34 - How to create folder in the GroupDocs account
+        %li
+          %a{:href => '/sample-42-how-to-download-document-with-annotations-using-groupdocs'} Sample 42 - How to download document with annotations using GroupDocs Ruby SDK
+        %li
+          %a{:href => '/sample-43-how-to-add-numeration-in-the-doc-file'} Sample 43 - How to add numeration in the doc file using GroupDocs Ruby SDK
+        %li
+          %a{:href => '/sample-45-how-to-check-statistic-info-for-the-document'} Sample 45 - How to check statistic info for the document using Ruby SDK
+  :javascript
+
+    (function($) {
+    $(function() {
+
+      $('ul.tabs').on('click', 'li:not(.current)', function() {
+        $(this).add()
+        $(this).addClass('current').siblings().removeClass('current')
+          .parents('div.section').find('div.box').eq($(this).index()).fadeIn(150).siblings('div.box').hide();
+      })
+    })
+    })(jQuery)
