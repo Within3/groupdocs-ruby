@@ -47,7 +47,6 @@ post '/sample-11-how-programmatically-create-and-post-an-annotation-into-documen
       #Annotation types
       types = {:text => "0", :area => "1", :point => "2"}
 
-
       #Required parameters
       all_params = all_params = ['annotationType', 'boxX', 'boxY', 'text']
 
@@ -57,7 +56,7 @@ post '/sample-11-how-programmatically-create-and-post-an-annotation-into-documen
       elsif settings.annotation_type == 'area'
         all_params = all_params | ['boxWidth', 'boxHeight']
       end
-
+       #raise  all_params.to_yaml
       #Checking required parameters
       all_params.each do |param|
         raise 'Please enter all required parameters' if params[param].empty?
@@ -75,10 +74,10 @@ post '/sample-11-how-programmatically-create-and-post-an-annotation-into-documen
         #Construct requestBody depends on annotation type
         #Text annotation
         if settings.annotation_type == 'text'
-          annotation.box = GroupDocs::Document::Rectangle.new ({x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']})
-          annotation.annotationPosition = {x: params['annotationPositionX'], y: params['annotationPositionY']}
+          annotation_box = {x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']}
+          annotation_position = {x: params['annotationPositionX'], y: params['annotationPositionY']}
           range = {position: params['rangePosition'], length: params['rangeLength']}
-          info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :range => range, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}]}
+          info = { :box => annotation_box, :annotationPosition => annotation_position, :range => range, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}]}
           #Area annotation
         elsif settings.annotation_type == 'area'
           annotation_box = {x: params['boxX'], y: params['boxY'], width: params['boxWidth'], height: params['boxHeight']}
@@ -91,7 +90,6 @@ post '/sample-11-how-programmatically-create-and-post-an-annotation-into-documen
 
           info = {:box => annotation_box, :annotationPosition => annotation_annotationPosition, :type => types[settings.annotation_type.to_sym], :replies => [{:text => params['text']}] }
         end
-
         #Call create method
         annotation.create!(info)
         id = annotation.document.file.id

@@ -31,7 +31,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document'</span> <span class="hljs-keyword">do</span>
+            <div class="content"><div class='highlight'><pre>get <span class="hljs-string">'/sample-11-how-programmatically-create-and-post-an-annotation-into-document'</span> <span class="hljs-keyword">do</span>
   haml <span class="hljs-symbol">:sample11</span>
 <span class="hljs-keyword">end</span></pre></div></div>
             
@@ -48,7 +48,7 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-11-how-to-programmatically-create-and-post-an-annotation-into-document'</span> <span class="hljs-keyword">do</span></pre></div></div>
+            <div class="content"><div class='highlight'><pre>post <span class="hljs-string">'/sample-11-how-programmatically-create-and-post-an-annotation-into-document'</span> <span class="hljs-keyword">do</span></pre></div></div>
             
         </li>
         
@@ -210,7 +210,8 @@
         all_params = all_params | [<span class="hljs-string">'boxWidth'</span>, <span class="hljs-string">'boxHeight'</span>, <span class="hljs-string">'annotationPositionX'</span>, <span class="hljs-string">'annotationPositionY'</span>, <span class="hljs-string">'rangePosition'</span>, <span class="hljs-string">'rangeLength'</span>]
       <span class="hljs-keyword">elsif</span> settings.annotation_type == <span class="hljs-string">'area'</span>
         all_params = all_params | [<span class="hljs-string">'boxWidth'</span>, <span class="hljs-string">'boxHeight'</span>]
-      <span class="hljs-keyword">end</span></pre></div></div>
+      <span class="hljs-keyword">end</span>
+      pp <span class="hljs-string">"test"</span></pre></div></div>
             
         </li>
         
@@ -221,7 +222,8 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
-              <p>Checking required parameters</p>
+              <p>raise  all_params.to_yaml
+Checking required parameters</p>
 
             </div>
             
@@ -278,10 +280,10 @@ Text annotation</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">if</span> settings.annotation_type == <span class="hljs-string">'text'</span>
-          annotation.box = <span class="hljs-constant">GroupDocs::Document::Rectangle</span>.new ({<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'boxX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'boxY'</span>], <span class="hljs-symbol">width:</span> params[<span class="hljs-string">'boxWidth'</span>], <span class="hljs-symbol">height:</span> params[<span class="hljs-string">'boxHeight'</span>]})
-          annotation.annotationPosition = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'annotationPositionX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'annotationPositionY'</span>]}
+          annotation_box = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'boxX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'boxY'</span>], <span class="hljs-symbol">width:</span> params[<span class="hljs-string">'boxWidth'</span>], <span class="hljs-symbol">height:</span> params[<span class="hljs-string">'boxHeight'</span>]}
+          annotation_position = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'annotationPositionX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'annotationPositionY'</span>]}
           range = {<span class="hljs-symbol">position:</span> params[<span class="hljs-string">'rangePosition'</span>], <span class="hljs-symbol">length:</span> params[<span class="hljs-string">'rangeLength'</span>]}
-          info = {<span class="hljs-symbol">:box</span> =&gt; annotation_box, <span class="hljs-symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="hljs-symbol">:range</span> =&gt; range, <span class="hljs-symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="hljs-symbol">:replies</span> =&gt; [{<span class="hljs-symbol">:text</span> =&gt; params[<span class="hljs-string">'text'</span>]}]}</pre></div></div>
+          info = { <span class="hljs-symbol">:box</span> =&gt; annotation_box, <span class="hljs-symbol">:annotationPosition</span> =&gt; annotation_position, <span class="hljs-symbol">:range</span> =&gt; range, <span class="hljs-symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="hljs-symbol">:replies</span> =&gt; [{<span class="hljs-symbol">:text</span> =&gt; params[<span class="hljs-string">'text'</span>]}]}</pre></div></div>
             
         </li>
         
@@ -299,6 +301,7 @@ Text annotation</p>
             <div class="content"><div class='highlight'><pre>        <span class="hljs-keyword">elsif</span> settings.annotation_type == <span class="hljs-string">'area'</span>
           annotation_box = {<span class="hljs-symbol">x:</span> params[<span class="hljs-string">'boxX'</span>], <span class="hljs-symbol">y:</span> params[<span class="hljs-string">'boxY'</span>], <span class="hljs-symbol">width:</span> params[<span class="hljs-string">'boxWidth'</span>], <span class="hljs-symbol">height:</span> params[<span class="hljs-string">'boxHeight'</span>]}
           annotation_annotationPosition = {<span class="hljs-symbol">x:</span> <span class="hljs-number">0</span>, <span class="hljs-symbol">y:</span> <span class="hljs-number">0</span>}
+          raise <span class="hljs-string">"test"</span>
           info = {<span class="hljs-symbol">:box</span> =&gt; annotation_box, <span class="hljs-symbol">:annotationPosition</span> =&gt; annotation_annotationPosition, <span class="hljs-symbol">:type</span> =&gt; types[settings.annotation_type.to_sym], <span class="hljs-symbol">:replies</span> =&gt; [{<span class="hljs-symbol">:text</span> =&gt; params[<span class="hljs-string">'text'</span>]}]}</pre></div></div>
             
         </li>
@@ -335,6 +338,7 @@ Text annotation</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>        annotation.create!(info)
+        raise  annotation.to_yaml
         id = annotation.document.file.id</pre></div></div>
             
         </li>
