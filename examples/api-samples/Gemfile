@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'sinatra', '1.3.6'
-gem 'groupdocs', "1.5.7"
+gem 'groupdocs', "1.9.0"
 gem 'haml'
