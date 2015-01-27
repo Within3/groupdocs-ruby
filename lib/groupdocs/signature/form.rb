@@ -276,9 +276,8 @@ module GroupDocs
     # @param [Hash] access Access credentials
     # @option access [String] :client_id
     # @option access [String] :private_key
-    # @raise [ArgumentError] if document is not GroupDocs::Document
     #
-    def fields!(options = {}, access = {})
+    def get_fields!(options = {}, access = {})
 
       api = Api::Request.new do |request|
         request[:access] = access
@@ -391,7 +390,7 @@ module GroupDocs
       Api::Request.new do |request|
         request[:access] = access
         request[:method] = :POST
-        request[:path] = "/signature/{{client_id}}/forms/#{form.id}/templates/#{template.id}"
+        request[:path] = "/signature/{{client_id}}/forms/#{id}/templates/#{template.id}"
       end.execute!
     end
 

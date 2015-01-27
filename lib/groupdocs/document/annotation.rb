@@ -3,6 +3,7 @@ module GroupDocs
 
     require 'groupdocs/document/annotation/reply'
     require 'groupdocs/document/annotation/reviewer'
+    require 'groupdocs/document/annotation/marker'
 
     include Api::Helpers::AccessMode
 

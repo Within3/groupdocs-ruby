@@ -24,13 +24,13 @@ describe GroupDocs::Document::Annotation::Reply do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!(annotation, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         described_class.get!(annotation, :after => Time.now)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if annotation is not an instance of GroupDocs::Document::Annotation' do
@@ -97,7 +97,7 @@ describe GroupDocs::Document::Annotation::Reply do
     it 'accepts access credentials hash' do
       lambda do
         subject.create!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'gets annotation guid' do
@@ -123,7 +123,7 @@ describe GroupDocs::Document::Annotation::Reply do
     it 'accepts access credentials hash' do
       lambda do
         subject.edit!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -135,7 +135,7 @@ describe GroupDocs::Document::Annotation::Reply do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 

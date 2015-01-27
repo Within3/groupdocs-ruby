@@ -1,6 +1,6 @@
 # added in release 1.5.8
 module GroupDocs
-  class Document::Annotation::MarkerPosition
+  class Document::Annotation::MarkerPosition< Api::Entity
 
     #
     # example

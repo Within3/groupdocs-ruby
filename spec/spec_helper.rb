@@ -44,6 +44,10 @@ RSpec.configure do |spec|
   end
 end
 
+RSpec.configure do |c|
+  c.deprecation_stream = File.open('deprecations.txt', 'w')
+end
+
 
 #
 # Mocks JSON response.

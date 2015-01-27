@@ -18,7 +18,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         described_class.views!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Document::View objects' do
@@ -38,7 +38,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         described_class.templates!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Document objects' do
@@ -64,7 +64,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         described_class.sign_documents!(documents, signatures, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if document is not GroupDocs::Document object' do
@@ -117,7 +117,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         described_class.metadata!('document_one.doc', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Document::MetaData object' do
@@ -228,13 +228,13 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.page_images!(640, 480, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.page_images!(640, 480, :first_page => 0, :page_count => 1)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of URLs' do
@@ -254,13 +254,13 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.thumbnails!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.thumbnails!(:page_number => 0, :page_count => 1)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of URLs' do
@@ -280,7 +280,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.access_mode!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns access mode in human readable presentation' do
@@ -297,7 +297,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.access_mode_set!(:private, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'sets corresponding access mode' do
@@ -323,7 +323,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.formats!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of symbols' do
@@ -343,7 +343,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.metadata!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Document::MetaData object' do
@@ -372,7 +372,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.fields!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Document::Field objects' do
@@ -392,7 +392,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.sharers!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::User objects' do
@@ -412,7 +412,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.sharers_set!(%w(test1@email.com), :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::User objects' do
@@ -442,7 +442,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.sharers_clear!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'clears sharers list and returns nil' do
@@ -458,13 +458,13 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.convert!(:pdf, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.convert!(:pdf, :email_results => true)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Job object' do
@@ -480,7 +480,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.questionnaires!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Questionnaire objects' do
@@ -493,6 +493,10 @@ describe GroupDocs::Document do
   end
 
   describe '#add_questionnaire!' do
+    before(:each) do
+      mock_api_server('{ "status": "Ok", "result": {}}')
+    end
+
     let(:questionnaire) do
       GroupDocs::Questionnaire.new(:id => 1)
     end
@@ -500,7 +504,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_questionnaire!(questionnaire, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if questionnaire is not GroupDocs::Questionnaire object' do
@@ -520,7 +524,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.create_questionnaire!(questionnaire, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if questionnaire is not GroupDocs::Questionnaire object' do
@@ -544,6 +548,10 @@ describe GroupDocs::Document do
   end
 
   describe '#remove_questionnaire!' do
+    before(:each) do
+      mock_api_server('{ "status": "Ok", "result": {}}')
+    end
+
     let(:questionnaire) do
       GroupDocs::Questionnaire.new(:id => 1)
     end
@@ -551,7 +559,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove_questionnaire!(questionnaire, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if questionnaire is not GroupDocs::Questionnaire object' do
@@ -571,13 +579,13 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.datasource!(datasource, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.datasource!(datasource, :new_type => :pdf)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if datasource is not GroupDocs::Datasource object' do
@@ -598,7 +606,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.annotations!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Document::Annotation objects' do
@@ -623,7 +631,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.details!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns hash of document details' do
@@ -642,8 +650,8 @@ describe GroupDocs::Document do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.compare!(document, callback, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+        subject.compare!(document, 'callback', :client_id => 'client_id', :private_key => 'private_key')
+      end.should_not raise_error()
     end
 
     it 'raises error if document is not GroupDocs::Document object' do
@@ -663,7 +671,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.changes!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Document::Change objects' do
@@ -684,7 +692,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.collaborators!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::User objects' do
@@ -704,13 +712,13 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.set_collaborators!(%w(test1@email.com), 1, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts version' do
       lambda do
         subject.set_collaborators!(%w(test1@email.com), 1)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::User objects' do
@@ -732,7 +740,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_collaborator!(collaborator, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of collaborator as request body' do
@@ -755,7 +763,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.set_reviewers!(reviewers, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of each reviewer as request body' do
@@ -774,7 +782,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.shared_link_access_rights!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'converts response byte flag into array of access rights' do
@@ -804,7 +812,7 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.set_shared_link_access_rights!(%w(view), :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'converts array of access rights into byte flag' do
@@ -821,13 +829,13 @@ describe GroupDocs::Document do
     it 'accepts access credentials hash' do
       lambda do
         subject.set_session_callback!('http://www.example.com', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
   describe '#method_missing' do
     it 'passes unknown methods to file object' do
-      lambda { subject.name }.should_not raise_error(NoMethodError)
+      lambda { subject.name }.should_not raise_error()
     end
 
     it 'raises NoMethodError if neither self nor file responds to method' do
@@ -837,15 +845,15 @@ describe GroupDocs::Document do
 
   describe '#respond_to?' do
     it 'returns true if self responds to method' do
-      subject.respond_to?(:metadata!).should be_true
+      subject.respond_to?(:metadata!).should be_truthy
     end
 
     it 'returns true if file object responds to method' do
-      subject.respond_to?(:name).should be_true
+      subject.respond_to?(:name).should be_truthy
     end
 
     it 'returns false if neither self nor file responds to method' do
-      subject.respond_to?(:unknown).should be_false
+      subject.respond_to?(:unknown).should be_falsey
     end
   end
 end

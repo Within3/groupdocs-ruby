@@ -13,19 +13,19 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         described_class.all!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         described_class.all!(:status => :draft)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'parses status if passed' do
       status = :draft
       subject = described_class.new
-      described_class.should_receive(:new).any_number_of_times.and_return(subject)
+      described_class.should_receive(:new).at_least(1).times.and_return(subject)
       subject.should_receive(:parse_status).with(status)
       described_class.all!(:status => status)
     end
@@ -47,7 +47,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!(1, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Questionnaire object' do
@@ -120,7 +120,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.create!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -147,7 +147,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -164,7 +164,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -176,7 +176,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.datasources!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::DataSource objects' do
@@ -196,7 +196,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.executions!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Questionnaire::Execution objects' do
@@ -215,14 +215,14 @@ describe GroupDocs::Questionnaire do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.collectors!(options, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+        subject.collectors!(%w(options), :client_id => 'client_id', :private_key => 'private_key')
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.collectors!(:orderBy => '', :isAsc => '')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Questionnaire::Collector objects' do
@@ -242,7 +242,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.metadata!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Questionnaire object' do
@@ -260,7 +260,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.update_metadata!(metadata, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if metadata is not GroupDocs::Questionnaire object' do
@@ -281,7 +281,7 @@ describe GroupDocs::Questionnaire do
     it 'accepts access credentials hash' do
       lambda do
         subject.fields!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Document::Field objects' do

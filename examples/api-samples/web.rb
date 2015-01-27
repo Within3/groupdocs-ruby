@@ -1,3 +1,4 @@
+require 'active_support'
 require 'sinatra'
 require 'groupdocs'
 require 'haml'

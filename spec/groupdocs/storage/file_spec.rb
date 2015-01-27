@@ -13,13 +13,13 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         described_class.upload!(__FILE__, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         described_class.upload!(__FILE__, :path => 'folder1')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses root folder by default' do
@@ -53,7 +53,7 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         described_class.upload_web!('http://www.google.com', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Storage::File object' do
@@ -133,11 +133,11 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         subject.download!(path, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'downloads file to given path' do
-      file = stub('file')
+      file = double('file')
       Object::File.should_receive(:open).with("#{path}/resume.pdf", 'wb').and_yield(file)
       file.should_receive(:write).with(File.read('spec/support/files/resume.pdf'))
       subject.download!(path)
@@ -156,13 +156,13 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         subject.move!('folder1', {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options credentials hash' do
       lambda do
         subject.move!('folder1', :name => 'file.pdf')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses current file name by default' do
@@ -188,10 +188,14 @@ describe GroupDocs::Storage::File do
       subject.path = '/'
     end
 
+
     it 'accepts access credentials hash' do
       lambda do
         subject.rename!('resume.pdf', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
+    end
+    before(:each) do
+      mock_api_server(load_json('file_move'))
     end
 
     it 'uses #move! to rename file' do
@@ -208,13 +212,13 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         subject.copy!('resume.pdf', {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options credentials hash' do
       lambda do
         subject.copy!('folder1', :name => 'file.pdf')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses current file name by default' do
@@ -243,7 +247,7 @@ describe GroupDocs::Storage::File do
     it 'accepts access credentials hash' do
       lambda do
         subject.compress!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns archived file' do
@@ -258,10 +262,14 @@ describe GroupDocs::Storage::File do
   end
 
   describe '#delete!' do
+    before(:each) do
+      mock_api_server(load_json('file_move'))
+    end
+
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses file guid' do
@@ -272,10 +280,14 @@ describe GroupDocs::Storage::File do
   end
 
   describe '#move_to_trash!' do
+    before(:each) do
+      mock_api_server(load_json('file_move'))
+    end
+
     it 'accepts access credentials hash' do
       lambda do
         subject.move_to_trash!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 

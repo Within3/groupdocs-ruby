@@ -12,7 +12,7 @@ describe GroupDocs::Subscription do
     it 'accepts access credentials hash' do
       lambda do
         described_class.current!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Subscription object' do
@@ -28,7 +28,7 @@ describe GroupDocs::Subscription do
     it 'accepts access credentials hash' do
       lambda do
         described_class.list!('invalidate', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Subscription objects' do

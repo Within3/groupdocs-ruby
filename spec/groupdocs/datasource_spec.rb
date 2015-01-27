@@ -12,13 +12,13 @@ describe GroupDocs::DataSource do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!(1, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         described_class.get!(1, :field => %w(field1 field2))
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::DataSource object if datasource is found' do
@@ -99,7 +99,7 @@ describe GroupDocs::DataSource do
     it 'accepts access credentials hash' do
       lambda do
         subject.add!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -122,7 +122,7 @@ describe GroupDocs::DataSource do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -139,7 +139,7 @@ describe GroupDocs::DataSource do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 end

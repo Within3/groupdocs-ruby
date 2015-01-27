@@ -13,7 +13,7 @@ describe GroupDocs::Questionnaire::Execution do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!('45dsfh9348uf0fj834y92h', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Questionnaire::Execution object' do
@@ -87,7 +87,7 @@ describe GroupDocs::Questionnaire::Execution do
     it 'accepts access credentials hash' do
       lambda do
         subject.set_status!(:submitted, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'parses status' do
@@ -109,7 +109,7 @@ describe GroupDocs::Questionnaire::Execution do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -126,7 +126,7 @@ describe GroupDocs::Questionnaire::Execution do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -142,13 +142,13 @@ describe GroupDocs::Questionnaire::Execution do
     it 'accepts access credentials hash' do
       lambda do
         subject.fill!(datasource, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.fill!(datasource, :new_type => :pdf)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if datasource is not GroupDocs::Datasource object' do

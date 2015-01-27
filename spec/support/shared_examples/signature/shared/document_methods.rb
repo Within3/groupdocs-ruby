@@ -8,7 +8,7 @@ shared_examples_for GroupDocs::Signature::DocumentMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.documents!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Document objects' do
@@ -32,13 +32,13 @@ shared_examples_for GroupDocs::Signature::DocumentMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_document!(document, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.add_document!(document, :order => 1)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if document is not GroupDocs::Document object' do
@@ -58,7 +58,7 @@ shared_examples_for GroupDocs::Signature::DocumentMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove_document!(document, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if document is not GroupDocs::Document object' do

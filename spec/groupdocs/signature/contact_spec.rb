@@ -12,11 +12,11 @@ describe GroupDocs::Signature::Contact do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { described_class.get!(:page => 1, :email => 'com') }.should_not raise_error(ArgumentError)
+      lambda { described_class.get!(:page => 1, :email => 'com') }.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Signature::Contact objects' do
@@ -40,7 +40,7 @@ describe GroupDocs::Signature::Contact do
     it 'accepts access credentials hash' do
       lambda do
         described_class.import!([contact], :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if contacts is not array' do
@@ -74,7 +74,7 @@ describe GroupDocs::Signature::Contact do
     it 'accepts access credentials hash' do
       lambda do
         described_class.add_integration!(integration, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -96,7 +96,7 @@ describe GroupDocs::Signature::Contact do
     it 'accepts access credentials hash' do
       lambda do
         subject.add!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -119,7 +119,7 @@ describe GroupDocs::Signature::Contact do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -136,7 +136,7 @@ describe GroupDocs::Signature::Contact do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 end

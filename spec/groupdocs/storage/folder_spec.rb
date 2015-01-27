@@ -13,7 +13,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         described_class.create!('Test', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Storage::Folder object' do
@@ -30,19 +30,19 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         described_class.list!('', {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing path' do
-      lambda { described_class.list!('test') }.should_not raise_error(ArgumentError)
+      lambda { described_class.list!('test') }.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { described_class.list!('', :page => 1, :count => 1) }.should_not raise_error(ArgumentError)
+      lambda { described_class.list!('', :page => 1, :count => 1) }.should_not raise_error()
     end
 
     it 'creates new instance of GroupDocs::Storage::Folder and calls #list!' do
-      folder = stub('folder')
+      folder = double('folder')
       GroupDocs::Storage::Folder.should_receive(:new).with(:path => '').and_return(folder)
       folder.should_receive(:list!).with({}, {})
       described_class.list!
@@ -83,11 +83,11 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.list!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { subject.list!(:page => 1, :count => 1) }.should_not raise_error(ArgumentError)
+      lambda { subject.list!(:page => 1, :count => 1) }.should_not raise_error()
     end
 
     it 'capitalizes :order_by option' do
@@ -131,7 +131,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.move!('Test', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns moved to folder path' do
@@ -150,7 +150,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.copy!('/Test2', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns moved to folder path' do
@@ -168,7 +168,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.create!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'calls create! class method and pass parameters to it' do
@@ -193,7 +193,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'determines path by name' do
@@ -210,7 +210,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.sharers!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::User objects' do
@@ -230,7 +230,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.sharers_set!(%w(test1@email.com), :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::User objects' do
@@ -260,7 +260,7 @@ describe GroupDocs::Storage::Folder do
     it 'accepts access credentials hash' do
       lambda do
         subject.sharers_clear!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'clears sharers list and returns nil' do

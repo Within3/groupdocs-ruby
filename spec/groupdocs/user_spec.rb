@@ -12,7 +12,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::User object' do
@@ -30,7 +30,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.update_account!(user, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if user is not an instance of GroupDocs::User' do
@@ -52,7 +52,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.delete!(user, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if user is not an instance of GroupDocs::User' do
@@ -72,7 +72,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.generate_embed_key!('test-area', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns new user embed key for defined area' do
@@ -88,7 +88,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get_embed_key!('test-area', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns user embed key for defined area' do
@@ -104,7 +104,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.area!('60a06eg8f23a49cf807977f1444fbdd8', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns area name by defined embed key' do
@@ -120,7 +120,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         described_class.providers!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Storage::Provider' do
@@ -140,7 +140,7 @@ describe GroupDocs::User do
     it 'works without access credentials hash' do
       lambda do
         described_class.login!('doe@john.com', 'password')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::User object' do
@@ -208,7 +208,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -225,7 +225,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         subject.users!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::User objects' do
@@ -245,7 +245,7 @@ describe GroupDocs::User do
     it 'accepts access credentials hash' do
       lambda do
         subject.roles!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array' do
