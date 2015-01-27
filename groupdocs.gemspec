@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email       = 'marketplace@groupdocs.com'
   s.homepage    = 'https://github.com/groupdocs/groupdocs-ruby'
   s.summary     = 'Ruby SDK for GroupDocs REST API'
-  s.description = 'Ruby SDK for GroupDocs REST API'
+  s.description = 'Ruby SDK for GroupDocs REST APIs'
 
   s.license = 'MIT'
 

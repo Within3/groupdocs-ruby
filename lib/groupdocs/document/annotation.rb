@@ -71,6 +71,10 @@ module GroupDocs
     #@attr [Int] penWidth
     attr_accessor :backgroundColor
 
+    #added in release 2.0.0
+    #@attr [String] text
+    attr_accessor :text
+
     # Compatibility with response JSON
     alias_method :annotationGuid=, :guid=
 

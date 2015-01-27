@@ -266,11 +266,10 @@ module GroupDocs
     end
 
     #
-    # Changed in release 1.7.0
+    # Changed in release 2.0.0
     #
     # Returns an array of fields for document per participant.
-    #
-    # @param [GroupDocs::Document] document
+    #    
     # @param  [Hash] options
     # @option options [String] :field Field GUID
     # @param [Hash] access Access credentials
