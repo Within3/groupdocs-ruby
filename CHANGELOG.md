@@ -9,6 +9,7 @@
 * Added new attribute `Document` - "documentDescription"
 * Added new attribute `Document::MetaData` - "type" and "url"
 * Added new attribute `Document::Annotation` - "text"
+* Added new attributes `Document::TemplateEditorFields` - "tableNumber" "tableRow" "tableColumn" "tableCell"
 
 ## v.1.9.0
 
