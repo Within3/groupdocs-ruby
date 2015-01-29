@@ -12,7 +12,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Signature objects' do
@@ -34,7 +34,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get_for_recipient!(recipient, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if recipient is not GroupDocs::Signature::Recipient object' do
@@ -92,7 +92,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         subject.create!('Signature', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -117,7 +117,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         subject.create_for_recipient!(recipient, 'Signature', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if recipient is not GroupDocs::Signature::Recipient object' do
@@ -144,7 +144,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -156,7 +156,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         subject.signature_data!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns data' do
@@ -178,7 +178,7 @@ describe GroupDocs::Signature do
     it 'accepts access credentials hash' do
       lambda do
         subject.initials_data!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns data' do

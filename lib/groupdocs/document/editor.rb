@@ -22,8 +22,20 @@ module GroupDocs
     attr_accessor :style
     # @attr [Boolean] isTableMarker
     attr_accessor :isTableMarker
-    # @attr [Array] options
+
+    # changed in release 2.0.0
+    # @attr [GroupDocs::Document::FieldOption] options
     attr_accessor :options
+
+    # added in release 2.0.0
+    # @attr [Int] tableNumber
+    attr_accessor :tableNumber
+    # @attr [Int] tableRow
+    attr_accessor :tableRow
+    # @attr [Int] tableColumn
+    attr_accessor :tableColumn
+    # @attr [Int] tableCell
+    attr_accessor :tableCell
 
     #
     # Converts passed hash to GroupDocs::Document::Rectangle object.

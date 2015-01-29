@@ -16,11 +16,11 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         described_class.all!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { described_class.all!(:page => 1, :count => 3) }.should_not raise_error(ArgumentError)
+      lambda { described_class.all!(:page => 1, :count => 3) }.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Signature::Form objects' do
@@ -92,13 +92,13 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         subject.create!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.create!(:assembly_id => 'aodfh43yr9834hf943h')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -121,11 +121,11 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         subject.documents!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'can be public' do
-      lambda { subject.documents!(:public => true) }.should_not raise_error(ArgumentError)
+      lambda { subject.documents!(:public => true) }.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Document objects' do
@@ -145,7 +145,7 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         subject.publish!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -157,7 +157,7 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         subject.complete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -169,12 +169,13 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         subject.archive!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
   describe '#update_from_template!' do
     let(:template) { GroupDocs::Signature::Template.new }
+    let(:form) { GroupDocs::Signature::Form.new }
 
     before(:each) do
       mock_api_server('{ "status": "Ok", "result": {}}')
@@ -187,7 +188,18 @@ describe GroupDocs::Signature::Form do
     it 'accepts access credentials hash' do
       lambda do
         subject.update_from_template!(template, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
+    end
+  end
+  describe '#get_fields!' do
+    before(:each) do
+      mock_api_server(load_json('signature_fields_get'))
+    end
+
+    it 'accepts access credentials hash' do
+      lambda do
+        subject.get_fields!({}, :client_id => 'client_id', :private_key => 'private_key')
+      end.should_not raise_error()
     end
   end
 end

@@ -18,11 +18,11 @@ describe GroupDocs::Signature::Template do
     it 'accepts access credentials hash' do
       lambda do
         described_class.all!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { described_class.all!(:page => 1, :count => 3) }.should_not raise_error(ArgumentError)
+      lambda { described_class.all!(:page => 1, :count => 3) }.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Signature::Template objects' do
@@ -50,7 +50,7 @@ describe GroupDocs::Signature::Template do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_recipient!(recipient, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if recipient is not GroupDocs::Signature::Recipient object' do
@@ -70,7 +70,7 @@ describe GroupDocs::Signature::Template do
     it 'accepts access credentials hash' do
       lambda do
         subject.modify_recipient!(recipient, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if recipient is not GroupDocs::Signature::Recipient object' do

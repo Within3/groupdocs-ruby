@@ -3,6 +3,7 @@ module GroupDocs
 
     require 'groupdocs/document/annotation/reply'
     require 'groupdocs/document/annotation/reviewer'
+    require 'groupdocs/document/annotation/marker'
 
     include Api::Helpers::AccessMode
 
@@ -69,6 +70,10 @@ module GroupDocs
     attr_accessor :layerId
     #@attr [Int] penWidth
     attr_accessor :backgroundColor
+
+    #added in release 2.0.0
+    #@attr [String] text
+    attr_accessor :text
 
     # Compatibility with response JSON
     alias_method :annotationGuid=, :guid=

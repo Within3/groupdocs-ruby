@@ -13,13 +13,13 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         described_class.all!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         described_class.all!(:page => 1, :count => 2)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Job objects' do
@@ -39,7 +39,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!(1, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Job object' do
@@ -57,7 +57,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         described_class.create!({ :actions => %w(convert) }, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if actions are passed' do
@@ -137,7 +137,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.documents!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'updates job status' do
@@ -183,13 +183,13 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_document!(document, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.add_document!(document, :output_formats => %w(pdf txt))
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if document is not an instance of GroupDocs::Document' do
@@ -209,7 +209,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete_document!('a9ufg8s7dfgsdf', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns empty hash' do
@@ -218,6 +218,9 @@ describe GroupDocs::Job do
   end
 
   describe '#add_datasource!' do
+    before(:each) do
+      mock_api_server('{ "status": "Ok", "result": {}}')
+    end
     let(:document) do
       GroupDocs::Document.new(:file => GroupDocs::Storage::File.new)
     end
@@ -229,7 +232,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_datasource!(document, datasource, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if document is not an instance of GroupDocs::Document' do
@@ -251,13 +254,13 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_url!(url, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.add_url!(url, :out_formats => %W(pdf txt))
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns document ID' do
@@ -273,7 +276,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'parses status' do
@@ -290,7 +293,7 @@ describe GroupDocs::Job do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 

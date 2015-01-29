@@ -143,8 +143,8 @@ describe GroupDocs::Document::Annotation do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.create!(info, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+        subject.create!(%w(info), :client_id => 'client_id', :private_key => 'private_key')
+      end.should_not raise_error()
     end
 
     it 'updated self with response values' do
@@ -168,7 +168,7 @@ describe GroupDocs::Document::Annotation do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -187,7 +187,7 @@ describe GroupDocs::Document::Annotation do
     it 'accepts access credentials hash' do
       lambda do
         subject.move!(10, 10, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'updates annotation position' do
@@ -202,10 +202,15 @@ describe GroupDocs::Document::Annotation do
       mock_api_server('{ "status": "Ok", "result": {}}')
     end
 
+    let(:marker) { GroupDocs::Document::Annotation::MarkerPosition.new(:position => {:x => 1, :y => 1}, :page=>1)}
+1
     it 'accepts access credentials hash' do
       lambda do
         subject.move_marker!(marker, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
+    end
+    it 'raises error if marker is not GroupDocs::Document::Annotation::MarkerPosition object' do
+      lambda { subject.move_marker!(['MarkerPosition']) }.should raise_error(ArgumentError)
     end
 
   end
@@ -218,7 +223,7 @@ describe GroupDocs::Document::Annotation do
     it 'accepts access credentials hash' do
       lambda do
         subject.set_access!(:private, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'updates annotation access mode' do

@@ -12,11 +12,11 @@ describe GroupDocs::Signature::Field do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { described_class.get!(:id => "dsaoij3928ukr03") }.should_not raise_error(ArgumentError)
+      lambda { described_class.get!(:id => "dsaoij3928ukr03") }.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Signature::Field objects' do
@@ -189,7 +189,7 @@ describe GroupDocs::Signature::Field do
     it 'accepts access credentials hash' do
       lambda do
         subject.create!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -212,7 +212,7 @@ describe GroupDocs::Signature::Field do
     it 'accepts access credentials hash' do
       lambda do
         subject.modify!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'uses hashed version of self as request body' do
@@ -229,7 +229,7 @@ describe GroupDocs::Signature::Field do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 end

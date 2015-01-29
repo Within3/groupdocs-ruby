@@ -18,7 +18,7 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!('9fh349hfdskf', :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns GroupDocs::Questionnaire::Collector object' do
@@ -81,7 +81,7 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         subject.add!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'updates id and guid with response' do
@@ -102,7 +102,7 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         subject.update!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -114,7 +114,7 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         subject.remove!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -126,7 +126,7 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         subject.executions!(:client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'returns an array of GroupDocs::Questionnaire::Execution objects' do
@@ -148,7 +148,7 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_execution!(execution, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if execution is not GroupDocs::Questionnaire::Execution object' do
@@ -177,13 +177,13 @@ describe GroupDocs::Questionnaire::Collector do
     it 'accepts access credentials hash' do
       lambda do
         subject.fill!(datasource, {}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'accepts options hash' do
       lambda do
         subject.fill!(datasource, :new_type => :pdf)
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if datasource is not GroupDocs::Datasource object' do

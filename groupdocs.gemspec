@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email       = 'marketplace@groupdocs.com'
   s.homepage    = 'https://github.com/groupdocs/groupdocs-ruby'
   s.summary     = 'Ruby SDK for GroupDocs REST API'
-  s.description = 'Ruby SDK for GroupDocs REST API'
+  s.description = 'Our SDKs seamlessly integrates with your existing Ruby web or mobile applications, enabling your users to perform online document viewing, online digital signature execution, online document conversion, online document annotation, online document comparison as well as online document automation & document assembly.'
 
   s.license = 'MIT'
 
@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rest-client'   , '~> 1.6'
   s.add_runtime_dependency 'json'          , '~> 1.7'
   s.add_runtime_dependency 'mime-types'    , '~> 1.19'
-  s.add_runtime_dependency 'activesupport' , '>= 3.0'
+  s.add_runtime_dependency 'activesupport' , '~> 4.2'
 
   s.add_development_dependency 'rspec'    , '~> 2.12'
   s.add_development_dependency 'fuubar'   , '~> 1.1'

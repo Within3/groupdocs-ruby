@@ -1,3 +1,4 @@
+require 'active_support'
 require 'active_support/core_ext'
 
 require 'groupdocs/api/helpers'

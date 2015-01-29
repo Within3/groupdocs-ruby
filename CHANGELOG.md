@@ -1,3 +1,16 @@
+## v.2.0.0
+
+**Changes**
+*`Signature::Form#fields!` renamed to `Signature::Form#get_fields!`
+*`Signature::Form#get_fields!` the updates in request path
+*`Document.self.metadata!` added 
+
+**New**
+* Added new attribute `Document` - "documentDescription"
+* Added new attribute `Document::MetaData` - "type" and "url"
+* Added new attribute `Document::Annotation` - "text"
+* Added new attributes `Document::TemplateEditorFields` - "tableNumber" "tableRow" "tableColumn" "tableCell"
+
 ## v.1.9.0
 
 **Changes**

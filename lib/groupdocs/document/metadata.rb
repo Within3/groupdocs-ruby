@@ -12,6 +12,12 @@ module GroupDocs
     # @attr [Hash] last_view
     attr_accessor :last_view
 
+    # added in release 2.0.0
+    # @attr [String] type
+    attr_accessor :type
+    # @attr [String] url
+    attr_accessor :url
+
     #
     # Coverts passed hash to GroupDocs::Document::View object.
     #

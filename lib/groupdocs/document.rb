@@ -166,6 +166,8 @@ module GroupDocs
     end
 
     #
+    # Cnanged in release 2.0.0
+    #
     # Returns a document metadata by given path.
     #
     # @param [String] path Full path to document
@@ -186,6 +188,8 @@ module GroupDocs
         metadata.guid = json[:guid]
         metadata.page_count = json[:page_count]
         metadata.views_count = json[:views_count]
+        metadata.type = json[:type]
+        metadata.url = json[:url]
         if json[:last_view]
           metadata.last_view = json[:last_view]
         end
@@ -214,6 +218,10 @@ module GroupDocs
     attr_accessor :dependent_questionnaires_count
     # @attr [Long] upload_time
     attr_accessor :upload_time
+
+    #added in release 2.0.0
+    # @attr [String] documentDescription
+    attr_accessor :documentDescription
 
     [
         :news                            ,
@@ -583,6 +591,8 @@ module GroupDocs
     end
 
     #
+    # Cnanged in release 2.0.0
+    #
     # Returns document metadata.
     #
     # @param [Hash] access Access credentials
@@ -602,6 +612,8 @@ module GroupDocs
         metadata.guid = json[:guid]
         metadata.page_count = json[:page_count]
         metadata.views_count = json[:views_count]
+        metadata.type = json[:type]
+        metadata.url = json[:url]
         if json[:last_view]
           metadata.last_view = json[:last_view]
         end

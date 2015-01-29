@@ -12,11 +12,11 @@ describe GroupDocs::Signature::Role do
     it 'accepts access credentials hash' do
       lambda do
         described_class.get!({}, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'allows passing options' do
-      lambda { described_class.get!(:id => "dsaoij3928ukr03") }.should_not raise_error(ArgumentError)
+      lambda { described_class.get!(:id => "dsaoij3928ukr03") }.should_not raise_error()
     end
 
     it 'returns array of GroupDocs::Signature::Role objects' do

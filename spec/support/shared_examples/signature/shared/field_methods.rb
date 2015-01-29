@@ -18,8 +18,8 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
 
     it 'accepts access credentials hash' do
       lambda do
-        subject.fields!(*args, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+        subject.fields!(document, recipient, {}, :client_id => 'client_id', :private_key => 'private_key')
+      end.should_not raise_error()
     end
   end
 
@@ -35,7 +35,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.add_field!(field, *args, { :force_new_field => false }, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if field is not GroupDocs::Signature::Field object' do
@@ -71,8 +71,8 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
   end
 
   describe '#modify_field!' do
-    let(:field)    { GroupDocs::Signature::Field.new }
-    let(:document) { GroupDocs::Document.new(:file => GroupDocs::Storage::File.new) }
+    let(:field)     { GroupDocs::Signature::Field.new(:locations=>[GroupDocs::Signature::Field::Location.new]) }
+    let(:document)  { GroupDocs::Document.new(:file => GroupDocs::Storage::File.new) }
     let(:recipient) { GroupDocs::Signature::Recipient.new }
 
     before(:each) do
@@ -82,7 +82,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.modify_field!(field, document, recipient, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
 
     it 'raises error if field is not GroupDocs::Signature::Field object' do
@@ -129,7 +129,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
       it 'accepts access credentials hash' do
         lambda do
           subject.assign_field!(field, document, assign_from, assign_to, :client_id => 'client_id', :private_key => 'private_key')
-        end.should_not raise_error(ArgumentError)
+        end.should_not raise_error()
       end
 
       it 'raises error if field is not GroupDocs::Signature::Field object' do
@@ -166,7 +166,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete_field!(field, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -191,7 +191,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.modify_field_location!(location, field, *args, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 
@@ -214,7 +214,7 @@ shared_examples_for GroupDocs::Signature::FieldMethods do
     it 'accepts access credentials hash' do
       lambda do
         subject.delete_field_location!(location, field, :client_id => 'client_id', :private_key => 'private_key')
-      end.should_not raise_error(ArgumentError)
+      end.should_not raise_error()
     end
   end
 end
