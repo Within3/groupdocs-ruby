@@ -42,7 +42,7 @@ post '/sample-4-how-to-download-a-file-from-groupdocs-storage-using-the-storage-
     #Download file
     dowloaded_file = file.download!("#{File.dirname(__FILE__)}/../public/downloads")
     unless dowloaded_file.empty?
-      massage = "<font color='green'>File was downloaded to the <font color='blue'>#{dowloaded_file}</font> folder</font> <br />"
+      massage = '<font color="green">File was downloaded to the <font color="blue">' + dowloaded_file + '</font> folder</font> <br />'
     end
 
   rescue Exception => e
