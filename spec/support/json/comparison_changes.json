@@ -8,9 +8,9 @@
             "type": "delete",
             "page":
               {
-                "id": 1,
-                "width": 612,
-                "height": 792
+                "Id": 1,
+                "Width": 612,
+                "Height": 792
               },
             "box":
               {
@@ -26,9 +26,9 @@
             "type": "insert",
             "page":
               {
-                "id": 2,
-                "width": 612,
-                "height": 792
+                "Id": 2,
+                "Width": 612,
+                "Height": 792
               },
             "box":
               {
