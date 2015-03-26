@@ -9,6 +9,8 @@ module GroupDocs
     require 'groupdocs/document/view'
     require 'groupdocs/document/editor'
     require 'groupdocs/document/style'
+    require 'groupdocs/document/page'
+
 
     ACCESS_MODES = {
         :private    => 0,
@@ -219,9 +221,11 @@ module GroupDocs
     # @attr [Long] upload_time
     attr_accessor :upload_time
 
+
     #added in release 2.0.0
     # @attr [String] documentDescription
     attr_accessor :documentDescription
+
 
     [
         :news                            ,
@@ -262,6 +266,7 @@ module GroupDocs
       # @attr [Boolean] option
       attr_accessor :"is_#{option}_shown"
     end
+
 
     #
     # Coverts passed array of attributes hash to array of GroupDocs::Storage::File.
@@ -735,7 +740,7 @@ module GroupDocs
     #
     # Sets document user status.
     #
-    # @param [String] status
+    # @param [String] status (Pending = 0,  Accepted = 1,  Declined = 2)
     # @param [Hash] access Access credentials
     # @option access [String] :client_id
     # @option access [String] :private_key
@@ -1026,9 +1031,11 @@ module GroupDocs
     end
 
     #
+    # Updated in release 2.1.0
+    #
     # Schedules a job for comparing document with given.
     #
-    # @param [Array] changes  Comparison changes to update (accept or reject)
+    # @param [Array[GroupDocs::Document::Change]] changes  Comparison changes to update (accept or reject)
     # @option id [Float] :id
     # @option type [String] :type
     # @option action [String] :action
@@ -1041,18 +1048,21 @@ module GroupDocs
     # @return [GroupDocs::Change]
     #
     def update_changes!(changes, access = {})
-
+      if changes.is_a?(Array)
+        changes.each do |e|
+          e.is_a?(GroupDocs::Document::Change) or raise ArgumentError,
+                                                   "Change should be GroupDocs::Document::Change object, received: #{e.inspect}"
+        end
+      else
+        raise ArgumentError, "Changes should be Array , received: #{changes.inspect}"
+      end
       api = Api::Request.new do |request|
         request[:access] = access
         request[:method] = :PUT
         request[:path] = "/comparison/public/#{file.guid}/changes"
         request[:request_body] = changes
       end
-      json = api.execute!
-
-      json[:changes].map do |change|
-        Document::Change.new(change)
-      end
+      api.execute!
     end
 
     #
@@ -1266,6 +1276,7 @@ module GroupDocs
         request[:method] = :PUT
         request[:path] = "/ant/{{client_id}}/files/#{file.guid}/sharedLinkAccessRights"
         request[:request_body] = convert_access_rights_to_byte(rights)
+
       end.execute!
     end
 
@@ -1373,7 +1384,7 @@ module GroupDocs
       end.execute!
     end
 
-    # added in release 1.7.0
+    # changed in release 2.1.0
     #
     # Get template fields.
     #
@@ -1382,14 +1393,11 @@ module GroupDocs
     # @option access [String] :private_key
     #
     def editor_fields!(access = {})
-      json = Api::Request.new do |request|
+      Api::Request.new do |request|
         request[:access] = access
         request[:method] = :GET
         request[:path] = "/doc/{{client_id}}/files/#{file.guid}/editor_fields"
       end.execute!
-      json[:fields].map do |field|
-        TemplateEditorFields.new(field)
-      end
     end
 
     # added in release 1.7.0
