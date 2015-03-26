@@ -1,3 +1,16 @@
+## v.2.1.0
+
+**Changes**
+*`Document.editor_fields!` return the all json
+*`Document.update_changes!` the changes should be array
+* Deleted attribute `Document::Annotation::Reviewer` - "full_name"
+
+
+**New**
+* Added new attributes `Document::Annotation::Reviewer` - "first_name", "last_name' 
+* Added new `Document::Page`
+* Added new attributes `Document::Change` - "type", "typeStr", "action', "actionStr"
+
 ## v.2.0.0
 
 **Changes**

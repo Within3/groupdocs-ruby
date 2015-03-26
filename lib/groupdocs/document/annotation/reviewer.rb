@@ -48,11 +48,19 @@ module GroupDocs
     # @attr [String] emailAddress
     attr_accessor :emailAddress
     # @attr [String] FullName
-    attr_accessor :FullName
+    #attr_accessor :FullName
+
+    # Added in release 2.1.0
+    # @attr [String] firstName
+    attr_accessor :firstName
+    # @attr [String] lastName
+    attr_accessor :lastName
 
     # Human-readable accessors
     alias_accessor :email_address, :emailAddress
-    alias_accessor :full_name,     :FullName
+    #alias_accessor :full_name,     :FullName
+    alias_accessor :first_name, :firstName
+    alias_accessor :last_name, :lastName
 
   end # Document::Annotation::Reviewer
 end # GroupDocs

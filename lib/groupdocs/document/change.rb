@@ -9,8 +9,19 @@ module GroupDocs
     attr_accessor :box
     # @attr [String] text
     attr_accessor :text
-    # @attr [Integer] page
+    # @attr [GroupDocs::Document::Page] page
     attr_accessor :page
+
+
+    #Added in release 2.1.0
+    # @attr [String] type
+    attr_accessor :type
+    # @attr [String] typeStr
+    attr_accessor :typeStr
+    # @attr [String] action
+    attr_accessor :action
+    # @attr [String] actionStr
+    attr_accessor :actionStr
 
     #
     # Returns type as symbol.
@@ -29,6 +40,16 @@ module GroupDocs
     #
     def box=(options)
       @box = GroupDocs::Document::Rectangle.new(options)
+    end
+
+    #
+    # Coverts passed hash to GroupDocs::Document::Page object.
+    #
+    # @param [Hash] options
+    # @return [GroupDocs::Document::Page]
+    #
+    def page=(options)
+      @page = GroupDocs::Document::Page.new(options)
     end
 
   end # Document::Change

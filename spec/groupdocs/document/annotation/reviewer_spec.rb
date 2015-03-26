@@ -46,8 +46,6 @@ describe GroupDocs::Document::Annotation::Reviewer do
   end
 
   it { should have_accessor(:emailAddress) }
-  it { should have_accessor(:FullName)     }
 
-  it { should alias_accessor(:email_address, :emailAddress) }
-  it { should alias_accessor(:full_name, :FullName)         }
+  it { should alias_accessor(:email_address, :emailAddress) } 
 end
