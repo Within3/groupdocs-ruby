@@ -29,11 +29,11 @@ describe GroupDocs::Document::Change do
   end
   describe '#page=' do
     it 'converts passed hash to GroupDocs::Document::Page object' do
-      subject.page = { :Id => 0.90, :Width => 0.06745, :Height => 0.005967 }
+      subject.page = { :Id => 1, :Width => 674, :Height => 596 }
       subject.page.should be_a(GroupDocs::Document::Page)
-      subject.page.Id.should == 0.90
-      subject.page.Width.should == 0.06745
-      subject.page.Height.should == 0.005967
+      subject.page.Id.should == 1
+      subject.page.Width.should == 674
+      subject.page.Height.should == 596
     end
   end
 end
