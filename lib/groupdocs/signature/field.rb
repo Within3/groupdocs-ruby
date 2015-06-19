@@ -105,6 +105,21 @@ module GroupDocs
     # @attr [String] guidanceText
     attr_accessor :guidanceText
 
+    # added in realise 2.2.0
+    # @attr [Integer] page
+    attr_accessor :page
+    # @attr [Integer] locationX
+    attr_accessor :locationX
+    # @attr [Integer] locationY
+    attr_accessor :locationY
+    # @attr [Integer] locationWidth
+    attr_accessor :locationWidth
+    # @attr [Integer] locationHeight
+    attr_accessor :locationHeight
+    # @attr [Integer] forceNewField
+    attr_accessor :forceNewField
+
+
     # Human-readable accessors
     alias_accessor :template_id,        :templateId
     alias_accessor :recipient_id,       :recipientId

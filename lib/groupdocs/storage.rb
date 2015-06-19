@@ -8,7 +8,7 @@ module GroupDocs
   module Storage
 
     #
-    # Changed in release 1.5.8
+    # Changed in release 2.2.0
     #
     # Returns hash of information about user's storage.
     #
@@ -29,11 +29,14 @@ module GroupDocs
       end.execute!
 
       {
-        :total_space       => "#{json[:total_space] / 1048576} MB",
-        :available_space   => "#{json[:avail_space] / 1048576} MB",
-        :document_credits  => json[:doc_credits],
-        :available_credits => json[:avail_credits],
-        :maxViewingFileSize => json[:maxViewingFileSize]
+        :total_space         => "#{json[:total_space] / 1048576} MB",
+        :available_space     => "#{json[:avail_space] / 1048576} MB",
+        :document_credits    => json[:doc_credits],
+        :available_credits   => json[:avail_credits],
+        :maxViewingFileSize  => json[:maxViewingFileSize],
+        :total_documents     => json[:total_documents],
+        :available_documents => json[:avail_documents],
+        :used_documents      => json[:used_documents]
       }
     end
 

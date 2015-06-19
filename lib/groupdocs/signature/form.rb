@@ -337,7 +337,7 @@ module GroupDocs
     #
     # Modifies field location.
     #
-    # @example Modify field location in template
+    # @example Modify field location in form
     #   form = GroupDocs::Signature::Form.get!("g94h5g84hj9g4gf23i40j")
     #   document = form.documents!.first
     #   field = form.fields!(document).first
@@ -374,6 +374,43 @@ module GroupDocs
     end
 
     #
+    # Added in release 2.2.0
+    #
+    # Modifies field location.
+    #
+    # @example Modify field in form
+    #   form = GroupDocs::Signature::Form.get!("g94h5g84hj9g4gf23i40j")
+    #   document = form.documents!.first
+    #   field = form.get_fields!(document).first
+    #   field.name = "New name"
+    #   form.modify_field_location! location, field, document
+    #
+    # @param [GroupDocs::Signature::Field::Location] location
+    # @param [GroupDocs::Signature::Field] field
+    # @param [GroupDocs::Document] document
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    # @raise [ArgumentError] if location is not GroupDocs::Signature::Field::Location
+    # @raise [ArgumentError] if field is not GroupDocs::Signature::Field
+    # @raise [ArgumentError] if document is not GroupDocs::Document
+    #
+    def modify_form_field!(field, document, access = {})
+
+      field.is_a?(GroupDocs::Signature::Field) or raise ArgumentError,
+                                                        "Field should be GroupDocs::Signature::Field object, received: #{field.inspect}"
+      document.is_a?(GroupDocs::Document) or raise ArgumentError,
+                                                   "Document should be GroupDocs::Document object, received: #{document.inspect}"
+
+      Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :PUT
+        request[:path] = "/signature/{{client_id}}/forms/#{id}/documents/#{document.file.guid}/field/#{field.id}"
+        request[:request_body] = field.to_hash
+      end.execute!
+    end
+
+    #
     # Updates form adding fields from template.
     #
     # @param [GroupDocs::Signature::Template] template
@@ -401,7 +438,7 @@ module GroupDocs
     #   document = form.documents!.first
     #   field = form.fields!(document).first
     #   field.name = "Field"
-    #   envelope.modify_field! field, document
+    #   form.modify_field! field, document
     #
     #
     # @param [GroupDocs::Document] document
@@ -429,8 +466,8 @@ module GroupDocs
     # Changed in release 1.5.8
     #
     # Downloads signed documents to given path.
-    # If there is only one file in envelope, it's saved as PDF.
-    # If there are two or more files in envelope, it's saved as ZIP.
+    # If there is only one file in form, it's saved as PDF.
+    # If there are two or more files in form, it's saved as ZIP.
     #
     # @param [String] path Directory to download file to
     # @param [Hash] access Access credentials
@@ -485,7 +522,7 @@ module GroupDocs
     #   field = form.fields!(document).first
     #   fill_form = form.public_fill!
     #   participant = fill_form[:participant][:id]
-    #   envelope.fill_field! "my_data", field, document, participant
+    #   form.fill_field! "my_data", field, document, participant
     #
     # @example Fill signature field
     #   form = GroupDocs::Signature::Form.get!("g94h5g84hj9g4gf23i40j")

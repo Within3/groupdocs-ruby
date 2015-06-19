@@ -1,3 +1,14 @@
+## v.2.2.0
+
+**Changes**
+*`Storage::File.upload_google!` changed the required parameters
+*`Storage.info!` added new parameters of response
+
+**New**
+*`Signature::Form#modify_form_field!` new method
+* Added new attribute `Signature::Field` - "page", "locationX", "locationY", "locationWidth", "locationHeight", "forceNewField"
+
+
 ## v.2.1.0
 
 **Changes**

@@ -97,23 +97,27 @@ module GroupDocs
         Storage::File.new(json)
       end
 
+      # Updated in release 2.2.0
       #
       # Uploads google page as file.
       #
-      # @param [String] path
+      # @param [Hash] options
+      # @option url [String]
+      # @option description [String]
+      # @option accessToken [String]
       # @param [Hash] access Access credentials
       # @option access [String] :client_id
       # @option access [String] :private_key
       # @return [GroupDocs::Storage::File]
       #
-      def self.upload_google!(path, file_id, access = {})
+      def self.upload_google!(options = {}, access = {})
         api = Api::Request.new do |request|
           request[:access] = access
           request[:method] = :POST
-          request[:path] = "/storage/{{client_id}}/google/files/#{path}"
+          request[:path] = "/storage/{{client_id}}/google/files/"
         end
 
-        api.add_params(:file_id => file_id)
+        api.add_params(options)
         json = api.execute!
 
         Storage::File.new(json)
