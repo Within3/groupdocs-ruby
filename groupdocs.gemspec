@@ -7,8 +7,8 @@ Gem::Specification.new do |s|
   s.authors     = 'Marketplace Team'
   s.email       = 'marketplace@groupdocs.com'
   s.homepage    = 'https://github.com/groupdocs/groupdocs-ruby'
-  s.summary     = 'Ruby SDK for GroupDocs REST API'
-  s.description = 'Our SDKs seamlessly integrates with your existing Ruby web or mobile applications, enabling your users to perform online document viewing, online digital signature execution, online document conversion, online document annotation, online document comparison as well as online document automation & document assembly.'
+  s.summary     = 'GroupDocs Cloud SDK for Ruby'
+  s.description = 'With this SDK, you can seamlessly integrate GroupDocs’ document collaboration tools into your Ruby web or mobile application. The tools enable end users to view, securely share, collaboratively annotate, e-sign, assemble, convert and compare over 50 common document and image types (including PDF, Microsoft Office and CAD), all from within your Ruby application and without having to install any office suites or browser plugins. For more details, please visit: http://groupdocs.com/cloud/total-api'
 
   s.license = 'MIT'
 
