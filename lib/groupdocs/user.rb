@@ -543,6 +543,9 @@ module GroupDocs
     # @attr [Boolean] is_distance_annotation_button_enabled
     attr_accessor :is_distance_annotation_button_enabled
 
+    # added in release 2.3.0
+    # @attr [Boolean]  is_viewer_search_widget_enabled
+    attr_accessor :is_viewer_search_widget_enabled
 
     # Human-readable accessors
     alias_accessor :first_name,           :firstname
@@ -924,6 +927,28 @@ module GroupDocs
         request[:method] = :DELETE
         request[:path] = "/mgmt/{{client_id}}/account"
       end.execute!
+    end
+
+
+    # added in release 2.3.0
+    #
+    # Remove account by request.
+    #
+    # @param [String] email User email
+    # @param [String] nonce Removal nonce
+    # @param [Hash] access Access credentials
+    # @option access [String] :client_id
+    # @option access [String] :private_key
+    # @return [String]
+    #
+    def self.delete_account!(email, nonce, access = {})
+      api = Api::Request.new do |request|
+        request[:access] = access
+        request[:method] = :DELETE
+        request[:path] = "/mgmt/{{client_id}}/account/users/removeaccount/#{email}"
+      end
+      api.add_params(nonce)
+      api.execute!
     end
 
   end # User

@@ -1,3 +1,8 @@
+## v.2.3.0
+**Changes**
+* Added new attribute `User` - "is_viewer_search_widget_enabled"
+*`User#delete_account!` new method
+
 ## v.2.2.0
 
 **Changes**
